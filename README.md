@@ -1,6 +1,6 @@
 # Tortoise
 
-The public hub for **tortoise.io** — a 24-month build program documented out loud.
+The public hub for **tortoisehq.io** — a 24-month build program documented out loud.
 
 The name is the thesis: slow is fine, consistent is the point. Most projects die from inconsistency long before they die from bad ideas. This site is the artifact of trying not to.
 

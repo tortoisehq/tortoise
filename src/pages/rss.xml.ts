@@ -10,7 +10,7 @@ export async function GET(context: APIContext) {
   return rss({
     title: 'Tortoise',
     description: 'A 24-month public build program.',
-    site: context.site ?? 'https://tortoise.io',
+    site: context.site ?? 'https://tortoisehq.io',
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.date,
