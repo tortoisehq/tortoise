@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-neutral-950 text-neutral-100;
+  }
+  body {
+    @apply font-serif;
+  }
+  header,
+  nav,
+  footer,
+  button {
+    @apply font-sans;
+  }
+  a {
+    @apply underline-offset-2 hover:underline;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-sans tracking-tight;
+  }
+}

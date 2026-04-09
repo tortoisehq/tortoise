@@ -1,0 +1,17 @@
+---
+import { categories, type CategorySlug } from '../lib/categories';
+
+interface Props {
+  category: CategorySlug;
+}
+
+const { category } = Astro.props;
+const meta = categories[category];
+---
+
+<a
+  href={`/blog/${meta.slug}`}
+  class="inline-block text-xs uppercase tracking-wider font-sans px-2 py-0.5 border border-neutral-700 rounded no-underline hover:border-neutral-400"
+>
+  {meta.name}
+</a>

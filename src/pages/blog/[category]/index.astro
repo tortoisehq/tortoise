@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import PostListItem from '../../../components/PostListItem.astro';
+import { categories, categoryList, type CategorySlug } from '../../../lib/categories';
+
+export async function getStaticPaths() {
+  return categoryList.map((c) => ({ params: { category: c.slug } }));
+}
+
+const { category } = Astro.params as { category: CategorySlug };
+const meta = categories[category];
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft && data.category === category))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<Layout title={meta.name} description={meta.description}>
+  <header class="mb-10">
+    <h1 class="text-4xl font-bold tracking-tight mb-2">{meta.name}</h1>
+    <p class="text-neutral-300">{meta.description}</p>
+  </header>
+
+  {posts.length === 0 ? (
+    <p class="text-neutral-400">No posts in this category yet.</p>
+  ) : (
+    <div>
+      {posts.map((post) => <PostListItem post={post} />)}
+    </div>
+  )}
+</Layout>

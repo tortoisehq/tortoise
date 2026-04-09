@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(git --version)",
+      "Bash(npm install:*)",
+      "Bash(npx astro:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4321/)",
+      "Bash(curl -s http://localhost:4321/rss.xml)",
+      "Bash(node -e \"const fs=require\\('fs'\\);const x=fs.readFileSync\\('/tmp/feed.xml','utf8'\\);const m=x.match\\(/<\\\\\\\\/[a-zA-Z]+>/g\\)||[];const o=x.match\\(/<[a-zA-Z][^/>]*>/g\\)||[];console.log\\('opens:',o.length,'closes:',m.length\\);console.log\\('xml-decl:',x.startsWith\\('<?xml'\\)\\);console.log\\('items:',\\(x.match\\(/<item>/g\\)||[]\\).length\\);\")",
+      "Bash(curl -s http://localhost:4321/rss.xml -o feed-tmp.xml)",
+      "Bash(node -e \"const fs=require\\('fs'\\);const x=fs.readFileSync\\('feed-tmp.xml','utf8'\\);console.log\\('xml-decl:',x.startsWith\\('<?xml'\\)\\);console.log\\('items:',\\(x.match\\(/<item>/g\\)||[]\\).length\\);console.log\\('rss-close:',x.endsWith\\('</rss>'\\)\\);\")",
+      "Bash(rm feed-tmp.xml)",
+      "Bash(curl -s http://localhost:4321/blog/hello-forge)"
+    ]
+  }
+}

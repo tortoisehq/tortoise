@@ -1,0 +1,42 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import CategoryBadge from '../../components/CategoryBadge.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const dateLabel = post.data.date.toISOString().slice(0, 10);
+---
+
+<Layout title={post.data.title} description={post.data.excerpt}>
+  <article>
+    <header class="mb-8">
+      <div class="flex items-center gap-3 mb-3 text-sm text-neutral-400 font-sans">
+        <time datetime={post.data.date.toISOString()}>{dateLabel}</time>
+        <CategoryBadge category={post.data.category} />
+      </div>
+      <h1 class="text-4xl font-bold tracking-tight mb-3">{post.data.title}</h1>
+      {post.data.tags.length > 0 && (
+        <ul class="flex flex-wrap gap-2 text-xs font-sans text-neutral-400">
+          {post.data.tags.map((t) => <li>#{t}</li>)}
+        </ul>
+      )}
+    </header>
+
+    <div class="prose-content space-y-4 text-lg leading-relaxed text-neutral-200">
+      <Content />
+    </div>
+  </article>
+</Layout>

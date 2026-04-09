@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import CategoryBadge from './CategoryBadge.astro';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const dateLabel = post.data.date.toISOString().slice(0, 10);
+---
+
+<article class="py-5 border-b border-neutral-800 last:border-b-0">
+  <div class="flex items-center gap-3 mb-1 text-sm text-neutral-400 font-sans">
+    <time datetime={post.data.date.toISOString()}>{dateLabel}</time>
+    <CategoryBadge category={post.data.category} />
+  </div>
+  <h2 class="text-xl font-semibold mb-1">
+    <a href={`/blog/${post.slug}`} class="no-underline hover:underline">{post.data.title}</a>
+  </h2>
+  <p class="text-neutral-300">{post.data.excerpt}</p>
+</article>
