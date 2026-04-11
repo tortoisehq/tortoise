@@ -1,4 +1,4 @@
-export type CategorySlug = 'forge' | 'guild' | 'engram' | 'endure';
+export type CategorySlug = 'forge' | 'encode' | 'engram' | 'endure';
 
 export interface Category {
   slug: CategorySlug;
@@ -12,10 +12,10 @@ export const categories: Record<CategorySlug, Category> = {
     name: 'Forge',
     description: 'Building and shipping.',
   },
-  guild: {
-    slug: 'guild',
-    name: 'Guild',
-    description: 'Learning in public.',
+  encode: {
+    slug: 'encode',
+    name: 'Encode',
+    description: 'AI learning encoded on memory palaces.',
   },
   engram: {
     slug: 'engram',
@@ -31,7 +31,7 @@ export const categories: Record<CategorySlug, Category> = {
 
 export const categoryList: Category[] = [
   categories.forge,
-  categories.guild,
+  categories.encode,
   categories.engram,
   categories.endure,
 ];

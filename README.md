@@ -9,7 +9,7 @@ The name is the thesis: slow is fine, consistent is the point. Most projects die
 Every post belongs to exactly one of these:
 
 - **Forge** — Building and shipping. Code, tools, prototypes, postmortems. The actual work.
-- **Guild** — Learning in public. Books, papers, ideas, the friction of trying to use them.
+- **Encode** — AI learning encoded on memory palaces. Concepts placed, retrieved, tested.
 - **Engram** — Memory training and encoding. Spaced repetition, retention experiments, what actually sticks.
 - **Endure** — Life, health, the long game. Sleep, training, food, attention — the boring habits that make 24 months survivable.
 
@@ -37,7 +37,7 @@ Create a `.md` file in `src/content/blog/` with this frontmatter:
 ---
 title: "Post title"
 date: 2026-04-09
-category: forge       # forge | guild | engram | endure
+category: forge       # forge | encode | engram | endure
 tags: ["tag1", "tag2"]
 excerpt: "One sentence under 160 characters."
 draft: false
@@ -51,5 +51,5 @@ The filename becomes the URL slug (`my-post.md` → `/blog/my-post`). Posts with
 - `/` — landing with category cards and the three most recent posts
 - `/blog` — all posts, newest first
 - `/blog/[slug]` — a single post
-- `/blog/forge`, `/blog/guild`, `/blog/engram`, `/blog/endure` — one page per category
+- `/blog/forge`, `/blog/encode`, `/blog/engram`, `/blog/endure` — one page per category
 - `/rss.xml` — global RSS feed
