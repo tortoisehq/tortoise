@@ -24,4 +24,46 @@
   h4 {
     @apply font-sans tracking-tight;
   }
+
+  /* Hover definitions for jargon terms */
+  abbr[title] {
+    text-decoration: underline dotted;
+    text-underline-offset: 3px;
+    text-decoration-color: theme('colors.neutral.500');
+    cursor: help;
+    position: relative;
+  }
+}
+
+/* Custom tooltip — replaces the tiny native browser tooltip */
+@layer components {
+  abbr[title] {
+    position: relative;
+  }
+  abbr[title]::after {
+    content: attr(title);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: theme('colors.neutral.800');
+    color: theme('colors.neutral.200');
+    font-family: theme('fontFamily.sans');
+    font-size: 0.8rem;
+    line-height: 1.4;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid theme('colors.neutral.700');
+    white-space: normal;
+    width: max-content;
+    max-width: 280px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    z-index: 50;
+  }
+  abbr[title]:hover::after,
+  abbr[title]:focus::after {
+    opacity: 1;
+  }
 }
