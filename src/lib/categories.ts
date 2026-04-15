@@ -1,4 +1,4 @@
-export type CategorySlug = 'forge' | 'encode' | 'engram' | 'endure';
+export type CategorySlug = 'forge' | 'encode' | 'endure';
 
 export interface Category {
   slug: CategorySlug;
@@ -15,12 +15,7 @@ export const categories: Record<CategorySlug, Category> = {
   encode: {
     slug: 'encode',
     name: 'Encode',
-    description: 'AI learning encoded on memory palaces.',
-  },
-  engram: {
-    slug: 'engram',
-    name: 'Engram',
-    description: 'Memory training and encoding.',
+    description: 'AI learning.',
   },
   endure: {
     slug: 'endure',
@@ -32,6 +27,5 @@ export const categories: Record<CategorySlug, Category> = {
 export const categoryList: Category[] = [
   categories.forge,
   categories.encode,
-  categories.engram,
   categories.endure,
 ];

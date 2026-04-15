@@ -1,7 +1,7 @@
 ---
 title: "Nine Days Off and the Palace Starts to Fog"
 date: "2026-04-12"
-category: "engram"
+category: "encode"
 tags: ["memory-palace", "carnegie", "maintenance", "encoding"]
 excerpt: "A nine-day gap proved that memory decay is a maintenance problem, not a technique problem."
 ---

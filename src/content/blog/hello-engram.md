@@ -1,7 +1,7 @@
 ---
 title: "Hello, Engram"
 date: 2026-04-09
-category: engram
+category: encode
 tags: ["intro", "memory"]
 excerpt: "Engram is the memory training thread — spaced repetition, encoding techniques, and what I can actually recall a year from now."
 draft: false
