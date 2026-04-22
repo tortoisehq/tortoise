@@ -3,7 +3,7 @@ title: "Protection That Takes Longer Than the Work Is Not Protection"
 date: "2026-04-22"
 category: "encode"
 tags: [encode, building-in-public, pipelines, tooling]
-excerpt: "Session four was supposed to be CS50P Lecture 0. Fifty-five minutes in, I hadn't typed a line of Python — the pipeline I'd built to protect the session was eating it."
+excerpt: "Session four was CS50P Lecture 0. Fifty-five minutes in, I hadn't typed a line of Python — the pipeline I built to protect the session was eating it."
 ---
 
 Session four was supposed to be CS50P Lecture 0 — the `def` keyword, functions and variables, the simplest thing a Python program can be. Fifty-five minutes in, I hadn't typed a line of Python. I'd pasted the lecture transcript for the fifth time across five separate chats. I'd force-closed the session. I'd negotiated with the pipeline about what "reinit" meant versus what "recover" meant. I'd answered a vault save question that wasn't really a question because the vault had never been wired up to save to. I'd also heard myself tell the pipeline: fuck you, I have fifteen minutes.
