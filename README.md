@@ -4,14 +4,13 @@ The public hub for **tortoisehq.io** — a 24-month build program documented out
 
 The name is the thesis: slow is fine, consistent is the point. Most projects die from inconsistency long before they die from bad ideas. This site is the artifact of trying not to.
 
-## The four categories
+## The three pillars
 
 Every post belongs to exactly one of these:
 
-- **Forge** — Building and shipping. Code, tools, prototypes, postmortems. The actual work.
-- **Encode** — AI learning encoded on memory palaces. Concepts placed, retrieved, tested.
-- **Engram** — Memory training and encoding. Spaced repetition, retention experiments, what actually sticks.
-- **Endure** — Life, health, the long game. Sleep, training, food, attention — the boring habits that make 24 months survivable.
+- **Forge** — Building and shipping projects. Code, tools, prototypes, postmortems. The actual work.
+- **Encode** — The lifetime learning vault. Concepts placed, retrieved, tested — AI, systems, whatever sticks.
+- **Endure** — Health and fitness. Sleep, training, food, attention — the boring habits that make 24 months survivable.
 
 ## Stack
 
@@ -37,7 +36,7 @@ Create a `.md` file in `src/content/blog/` with this frontmatter:
 ---
 title: "Post title"
 date: 2026-04-09
-category: forge       # forge | encode | engram | endure
+category: forge       # forge | encode | endure
 tags: ["tag1", "tag2"]
 excerpt: "One sentence under 160 characters."
 draft: false
@@ -51,5 +50,5 @@ The filename becomes the URL slug (`my-post.md` → `/blog/my-post`). Posts with
 - `/` — landing with category cards and the three most recent posts
 - `/blog` — all posts, newest first
 - `/blog/[slug]` — a single post
-- `/blog/forge`, `/blog/encode`, `/blog/engram`, `/blog/endure` — one page per category
+- `/blog/forge`, `/blog/encode`, `/blog/endure` — one page per pillar
 - `/rss.xml` — global RSS feed
