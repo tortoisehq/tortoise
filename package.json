@@ -4,14 +4,15 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "predev": "node scripts/build-completion.mjs",
     "dev": "astro dev",
+    "prebuild": "node scripts/build-completion.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.14",
-    "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.2",
     "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.18.1",

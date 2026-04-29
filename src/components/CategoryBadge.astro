@@ -3,15 +3,25 @@ import { categories, type CategorySlug } from '../lib/categories';
 
 interface Props {
   category: CategorySlug;
+  /**
+   * Palette context the badge is rendering inside. When set, the badge tunes
+   * its border/text contrast to read on that background. Falls back to the
+   * neutral dark style when omitted.
+   */
+  palette?: CategorySlug;
 }
 
-const { category } = Astro.props;
+const { category, palette } = Astro.props;
 const meta = categories[category];
+
+const p = palette ? categories[palette].palette : null;
+const border = p ? p.border : 'border-neutral-700';
+const hover = p ? p.borderHover : 'hover:border-neutral-400';
 ---
 
 <a
-  href={`/blog/${meta.slug}`}
-  class="inline-block text-xs uppercase tracking-wider font-sans px-2 py-0.5 border border-neutral-700 rounded no-underline hover:border-neutral-400"
+  href={`/${meta.slug}`}
+  class={`inline-block text-xs uppercase tracking-wider font-sans px-2 py-0.5 border ${border} ${hover} rounded-sm no-underline`}
 >
   {meta.name}
 </a>

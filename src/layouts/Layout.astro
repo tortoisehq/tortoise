@@ -1,35 +1,50 @@
 ---
 import '../styles/global.css';
-import { categoryList } from '../lib/categories';
+import { categoryList, categories, type CategorySlug } from '../lib/categories';
 
 interface Props {
   title?: string;
   description?: string;
+  /**
+   * Color palette for this page. 'forge' = black, 'encode' = white,
+   * undefined = the neutral default (dark gray) used for blog index, 404, etc.
+   */
+  palette?: CategorySlug;
 }
 
-const { title = 'Tortoise', description = 'A 24-month public build program.' } = Astro.props;
+const { title = 'Tortoise', description = 'A 24-month public build program.', palette } = Astro.props;
 const fullTitle = title === 'Tortoise' ? title : `${title} — Tortoise`;
 const year = new Date().getFullYear();
+
+const p = palette ? categories[palette].palette : null;
+
+// Resolve classes per palette. Default falls back to the legacy dark-neutral palette.
+const rootBg = p ? p.bg : 'bg-neutral-950';
+const rootText = p ? p.text : 'text-neutral-100';
+const navText = p ? p.textMuted : 'text-neutral-400';
+const navHover = p ? (palette === 'forge' ? 'hover:text-white' : 'hover:text-black') : 'hover:text-neutral-100';
+const borderColor = p ? p.border : 'border-neutral-800';
+const footerMuted = p ? p.textMuted : 'text-neutral-400';
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en" class={palette === 'encode' ? '' : 'dark'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <link rel="alternate" type="application/rss+xml" title="Tortoise" href="/rss.xml" />
     <title>{fullTitle}</title>
   </head>
-  <body class="min-h-screen flex flex-col">
-    <header class="border-b border-neutral-800">
+  <body class={`min-h-screen flex flex-col ${rootBg} ${rootText}`}>
+    <header class={`border-b ${borderColor}`}>
       <div class="max-w-3xl mx-auto px-6 py-5 flex items-center justify-between">
         <a href="/" class="text-lg font-semibold tracking-tight no-underline">Tortoise</a>
-        <nav class="text-sm">
-          <ul class="flex flex-wrap gap-x-4 gap-y-1">
-            <li><a href="/">Home</a></li>
-            {categoryList.map((c) => <li><a href={`/blog/${c.slug}`}>{c.name}</a></li>)}
-            <li><a href="/rss.xml">RSS</a></li>
+        <nav class={`text-sm ${navText}`}>
+          <ul class="flex flex-wrap gap-x-5 gap-y-1">
+            <li><a class={navHover} href="/">Home</a></li>
+            {categoryList.map((c) => (
+              <li><a class={navHover} href={`/${c.slug}`}>{c.name}</a></li>
+            ))}
           </ul>
         </nav>
       </div>
@@ -39,10 +54,10 @@ const year = new Date().getFullYear();
       <slot />
     </main>
 
-    <footer class="border-t border-neutral-800 mt-16">
-      <div class="max-w-3xl mx-auto px-6 py-6 text-sm text-neutral-400 flex items-center justify-between">
+    <footer class={`border-t ${borderColor} mt-16`}>
+      <div class={`max-w-3xl mx-auto px-6 py-6 text-sm ${footerMuted} flex items-center justify-between`}>
         <span>&copy; {year} Tortoise</span>
-        <a href="https://github.com/" rel="noopener noreferrer">GitHub</a>
+        <a class={navHover} href="https://github.com/tortoisehq" rel="noopener noreferrer">GitHub</a>
       </div>
     </footer>
   </body>

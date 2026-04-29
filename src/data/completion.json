@@ -1,0 +1,52 @@
+[
+  {
+    "date": "2026-04-15",
+    "forge": true,
+    "encode": false
+  },
+  {
+    "date": "2026-04-16",
+    "forge": true,
+    "encode": false
+  },
+  {
+    "date": "2026-04-17",
+    "forge": true,
+    "encode": false
+  },
+  {
+    "date": "2026-04-19",
+    "forge": true,
+    "encode": false
+  },
+  {
+    "date": "2026-04-20",
+    "forge": true,
+    "encode": true
+  },
+  {
+    "date": "2026-04-21",
+    "forge": false,
+    "encode": true
+  },
+  {
+    "date": "2026-04-22",
+    "forge": false,
+    "encode": true
+  },
+  {
+    "date": "2026-04-23",
+    "forge": true,
+    "encode": true
+  },
+  {
+    "date": "2026-04-26",
+    "forge": true,
+    "encode": true
+  },
+  {
+    "date": "2026-04-29",
+    "forge": false,
+    "encode": true
+  }
+]

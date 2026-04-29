@@ -18,24 +18,32 @@ interface Props {
 const { post } = Astro.props;
 const { Content } = await post.render();
 const dateLabel = post.data.date.toISOString().slice(0, 10);
+
+// Post pages inherit the palette of their category — Forge posts are black,
+// Encode posts are white. This is the per-post visual identity.
+const palette = post.data.category;
+
+const dateText = palette === 'encode' ? 'text-neutral-600' : 'text-neutral-400';
+const tagText = palette === 'encode' ? 'text-neutral-500' : 'text-neutral-500';
+const proseText = palette === 'encode' ? 'text-neutral-800' : 'text-neutral-200';
 ---
 
-<Layout title={post.data.title} description={post.data.excerpt}>
+<Layout title={post.data.title} description={post.data.excerpt} palette={palette}>
   <article>
-    <header class="mb-8">
-      <div class="flex items-center gap-3 mb-3 text-sm text-neutral-400 font-sans">
+    <header class="mb-10">
+      <div class={`flex items-center gap-3 mb-4 text-sm font-sans ${dateText}`}>
         <time datetime={post.data.date.toISOString()}>{dateLabel}</time>
-        <CategoryBadge category={post.data.category} />
+        <CategoryBadge category={post.data.category} palette={palette} />
       </div>
-      <h1 class="text-4xl font-bold tracking-tight mb-3">{post.data.title}</h1>
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-[1.1]">{post.data.title}</h1>
       {post.data.tags.length > 0 && (
-        <ul class="flex flex-wrap gap-2 text-xs font-sans text-neutral-400">
+        <ul class={`flex flex-wrap gap-3 text-xs font-mono uppercase tracking-wider ${tagText}`}>
           {post.data.tags.map((t) => <li>#{t}</li>)}
         </ul>
       )}
     </header>
 
-    <div class="prose-content space-y-4 text-lg leading-relaxed text-neutral-200">
+    <div class={`prose-content space-y-5 text-lg leading-relaxed ${proseText}`}>
       <Content />
     </div>
   </article>

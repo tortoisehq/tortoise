@@ -1,22 +1,34 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import CategoryBadge from './CategoryBadge.astro';
+import { categories, type CategorySlug } from '../lib/categories';
 
 interface Props {
   post: CollectionEntry<'blog'>;
+  /**
+   * Optional palette override. If provided, the item styles itself for that
+   * palette context (e.g. the /forge subpage passes 'forge'). If omitted the
+   * legacy dark-neutral palette is used.
+   */
+  palette?: CategorySlug;
 }
 
-const { post } = Astro.props;
+const { post, palette } = Astro.props;
 const dateLabel = post.data.date.toISOString().slice(0, 10);
+
+const p = palette ? categories[palette].palette : null;
+const borderColor = p ? p.border : 'border-neutral-800';
+const dateText = p ? p.textMuted : 'text-neutral-400';
+const excerptText = p ? (palette === 'encode' ? 'text-neutral-700' : 'text-neutral-300') : 'text-neutral-300';
 ---
 
-<article class="py-5 border-b border-neutral-800 last:border-b-0">
-  <div class="flex items-center gap-3 mb-1 text-sm text-neutral-400 font-sans">
+<article class={`py-5 border-b ${borderColor} last:border-b-0`}>
+  <div class={`flex items-center gap-3 mb-1 text-sm font-sans ${dateText}`}>
     <time datetime={post.data.date.toISOString()}>{dateLabel}</time>
-    <CategoryBadge category={post.data.category} />
+    <CategoryBadge category={post.data.category} palette={palette} />
   </div>
-  <h2 class="text-xl font-semibold mb-1">
+  <h2 class="text-xl font-semibold mb-1 tracking-tight">
     <a href={`/blog/${post.slug}`} class="no-underline hover:underline">{post.data.title}</a>
   </h2>
-  <p class="text-neutral-300">{post.data.excerpt}</p>
+  <p class={excerptText}>{post.data.excerpt}</p>
 </article>

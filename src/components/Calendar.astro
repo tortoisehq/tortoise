@@ -1,0 +1,157 @@
+---
+import completion from '../data/completion.json';
+
+interface Props {
+  /** ISO date "YYYY-MM-DD" — defaults to today. Calendar shows this month. */
+  today?: string;
+  /** How many months back to render (in addition to current). Default 1. */
+  monthsBack?: number;
+}
+
+const { today, monthsBack = 1 } = Astro.props;
+
+// Build a map { "YYYY-MM-DD": { forge, encode } } for fast lookup.
+type Row = { date: string; forge: boolean; encode: boolean };
+const completionMap = new Map<string, Row>(
+  (completion as Row[]).map((r) => [r.date, r]),
+);
+
+// Resolve "today" — accept ISO date string (YYYY-MM-DD) or default to actual today.
+const todayDate = today ?? new Date().toISOString().slice(0, 10);
+const [tY, tM, tD] = todayDate.split('-').map(Number);
+
+const MONTH_NAMES = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
+
+// Build the list of months to render: oldest first.
+function monthsToRender(yearNow: number, monthNow: number, back: number) {
+  const months: { year: number; month: number }[] = [];
+  for (let i = back; i >= 0; i--) {
+    let y = yearNow;
+    let m = monthNow - i;
+    while (m < 1) { m += 12; y -= 1; }
+    months.push({ year: y, month: m });
+  }
+  return months;
+}
+
+const monthsList = monthsToRender(tY, tM, monthsBack);
+
+// Build day cells for one month.
+type Cell = {
+  day: number | null;
+  iso?: string;
+  forge?: boolean;
+  encode?: boolean;
+  isToday?: boolean;
+  isFuture?: boolean;
+};
+
+function pad2(n: number) { return n < 10 ? `0${n}` : `${n}`; }
+
+function buildMonth(year: number, month: number): Cell[] {
+  const firstDayOfMonth = new Date(`${year}-${pad2(month)}-01T00:00:00`);
+  const offset = firstDayOfMonth.getDay(); // 0 = Sunday
+  const daysInMonth = new Date(year, month, 0).getDate();
+
+  const cells: Cell[] = [];
+  // Leading blanks
+  for (let i = 0; i < offset; i++) cells.push({ day: null });
+  // Days
+  for (let d = 1; d <= daysInMonth; d++) {
+    const iso = `${year}-${pad2(month)}-${pad2(d)}`;
+    const row = completionMap.get(iso);
+    const isToday = iso === todayDate;
+    const isFuture = iso > todayDate;
+    cells.push({
+      day: d,
+      iso,
+      forge: row?.forge ?? false,
+      encode: row?.encode ?? false,
+      isToday,
+      isFuture,
+    });
+  }
+  // Trailing blanks to fill out 6 rows of 7 (max 42 cells)
+  while (cells.length % 7 !== 0) cells.push({ day: null });
+  return cells;
+}
+
+const renderedMonths = monthsList.map(({ year, month }) => ({
+  year,
+  month,
+  name: MONTH_NAMES[month - 1],
+  cells: buildMonth(year, month),
+}));
+
+const DOW = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+
+// Compute rollup stats from data
+const totalDays = (completion as Row[]).length;
+const bothDays = (completion as Row[]).filter((r) => r.forge && r.encode).length;
+---
+
+<section class="bg-neutral-900 border-y border-neutral-800">
+  <div class="max-w-6xl mx-auto px-6 py-12 md:py-16">
+    <div class="flex items-baseline justify-between mb-8 flex-wrap gap-3">
+      <div>
+        <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-2">// Daily Completion</p>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white">Both, every day.</h2>
+      </div>
+      <div class="flex items-center gap-6 text-sm font-mono text-neutral-400">
+        <span><span class="text-white font-semibold">{bothDays}</span> / {totalDays} full days</span>
+        <span class="hidden md:inline">|</span>
+        <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 bg-black border border-neutral-700"></span> Forge</span>
+        <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 bg-white"></span> Encode</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12">
+      {renderedMonths.map((m) => (
+        <div>
+          <div class="flex items-baseline justify-between mb-4">
+            <h3 class="text-sm font-mono uppercase tracking-[0.25em] text-neutral-300">
+              {m.name} {m.year}
+            </h3>
+          </div>
+          <div class="grid grid-cols-7 gap-1.5">
+            {DOW.map((d) => (
+              <div class="text-[10px] font-mono uppercase tracking-wider text-neutral-600 text-center pb-1">{d}</div>
+            ))}
+            {m.cells.map((cell) => {
+              if (cell.day === null) {
+                return <div class="aspect-square"></div>;
+              }
+              const both = cell.forge && cell.encode;
+              const forgeOnly = cell.forge && !cell.encode;
+              const encodeOnly = !cell.forge && cell.encode;
+              const empty = !cell.forge && !cell.encode;
+              return (
+                <div class={`aspect-square relative ${cell.isToday ? 'ring-2 ring-amber-400' : ''}`}>
+                  {both && (
+                    <div class="absolute inset-0 flex">
+                      <div class="w-1/2 bg-black border border-neutral-700"></div>
+                      <div class="w-1/2 bg-white"></div>
+                    </div>
+                  )}
+                  {forgeOnly && <div class="absolute inset-0 bg-black border border-neutral-700"></div>}
+                  {encodeOnly && <div class="absolute inset-0 bg-white"></div>}
+                  {empty && !cell.isFuture && <div class="absolute inset-0 bg-neutral-800"></div>}
+                  {empty && cell.isFuture && <div class="absolute inset-0 border border-neutral-800"></div>}
+                  <span class={`relative z-10 flex items-center justify-center w-full h-full text-[11px] font-mono ${
+                    both ? 'text-neutral-400 mix-blend-difference' :
+                    forgeOnly ? 'text-white' :
+                    encodeOnly ? 'text-black' :
+                    cell.isFuture ? 'text-neutral-600' : 'text-neutral-500'
+                  }`}>{cell.day}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
