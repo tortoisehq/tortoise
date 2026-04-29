@@ -9,7 +9,8 @@
     "prebuild": "node scripts/build-completion.mjs",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "sync": "node scripts/build-completion.mjs && echo 'src/data/completion.json synced. Commit + push to deploy.'"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.14",

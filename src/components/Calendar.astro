@@ -4,11 +4,11 @@ import completion from '../data/completion.json';
 interface Props {
   /** ISO date "YYYY-MM-DD" — defaults to today. Calendar shows this month. */
   today?: string;
-  /** How many months back to render (in addition to current). Default 1. */
+  /** How many months back to render (in addition to current). Default 0 (current month only). */
   monthsBack?: number;
 }
 
-const { today, monthsBack = 1 } = Astro.props;
+const { today, monthsBack = 0 } = Astro.props;
 
 // Build a map { "YYYY-MM-DD": { forge, encode } } for fast lookup.
 type Row = { date: string; forge: boolean; encode: boolean };
@@ -103,12 +103,12 @@ const bothDays = (completion as Row[]).filter((r) => r.forge && r.encode).length
       <div class="flex items-center gap-6 text-sm font-mono text-neutral-400">
         <span><span class="text-white font-semibold">{bothDays}</span> / {totalDays} full days</span>
         <span class="hidden md:inline">|</span>
-        <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 bg-black border border-neutral-700"></span> Forge</span>
         <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 bg-white"></span> Encode</span>
+        <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 bg-black border border-neutral-700"></span> Forge</span>
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12">
+    <div class={`grid gap-x-10 gap-y-12 ${renderedMonths.length > 1 ? 'grid-cols-1 md:grid-cols-2' : 'max-w-md mx-auto'}`}>
       {renderedMonths.map((m) => (
         <div>
           <div class="flex items-baseline justify-between mb-4">
@@ -132,8 +132,8 @@ const bothDays = (completion as Row[]).filter((r) => r.forge && r.encode).length
                 <div class={`aspect-square relative ${cell.isToday ? 'ring-2 ring-amber-400' : ''}`}>
                   {both && (
                     <div class="absolute inset-0 flex">
-                      <div class="w-1/2 bg-black border border-neutral-700"></div>
                       <div class="w-1/2 bg-white"></div>
+                      <div class="w-1/2 bg-black border border-neutral-700"></div>
                     </div>
                   )}
                   {forgeOnly && <div class="absolute inset-0 bg-black border border-neutral-700"></div>}

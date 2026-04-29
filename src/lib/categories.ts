@@ -62,4 +62,5 @@ export const categories: Record<CategorySlug, Category> = {
   },
 };
 
-export const categoryList: Category[] = [categories.forge, categories.encode];
+// Pillar order: Encode (I) first, Forge (II) second.
+export const categoryList: Category[] = [categories.encode, categories.forge];

@@ -53,43 +53,14 @@ const year = new Date().getFullYear();
     </section>
 
     <!-- Daily completion calendar — neutral-900 band -->
-    <Calendar monthsBack={1} />
+    <Calendar />
 
-    <!-- The Split — Forge | Encode -->
+    <!-- The Split — Encode (Pillar I) | Forge (Pillar II) -->
     <section class="grid grid-cols-1 md:grid-cols-2 border-b border-neutral-800">
-      <!-- FORGE side — black -->
-      <div class="bg-black text-white border-b md:border-b-0 md:border-r border-neutral-800">
+      <!-- ENCODE side — white — Pillar I -->
+      <div class="bg-white text-black border-b md:border-b-0 md:border-r border-neutral-800">
         <div class="px-6 md:px-10 py-16 md:py-20 max-w-2xl md:ml-auto md:w-full">
-          <p class="text-xs font-mono uppercase tracking-[0.3em] text-neutral-500 mb-4">// Pillar I — Build</p>
-          <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-4">FORGE</h2>
-          <p class="text-lg text-neutral-300 mb-10 leading-relaxed">Building and shipping. Sessions where code lands in production. The trade-offs that earned it. The rules I write so I don't make the same mistake twice.</p>
-
-          <div class="space-y-5 mb-10">
-            {forgePosts.length === 0 ? (
-              <p class="text-neutral-500">No Forge posts yet.</p>
-            ) : forgePosts.map((post) => (
-              <article class="border-b border-neutral-900 pb-5 last:border-b-0">
-                <p class="text-xs font-mono uppercase tracking-wider text-neutral-500 mb-2">
-                  {post.data.date.toISOString().slice(0, 10)}
-                </p>
-                <h3 class="text-xl font-bold mb-1 tracking-tight leading-snug">
-                  <a href={`/blog/${post.slug}`} class="no-underline hover:underline">{post.data.title}</a>
-                </h3>
-                <p class="text-neutral-400 text-sm leading-relaxed">{post.data.excerpt}</p>
-              </article>
-            ))}
-          </div>
-
-          <a href="/forge" class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-neutral-300 hover:text-white no-underline border-b border-neutral-700 hover:border-white pb-1">
-            All Forge sessions →
-          </a>
-        </div>
-      </div>
-
-      <!-- ENCODE side — white -->
-      <div class="bg-white text-black">
-        <div class="px-6 md:px-10 py-16 md:py-20 max-w-2xl md:mr-auto md:w-full">
-          <p class="text-xs font-mono uppercase tracking-[0.3em] text-neutral-500 mb-4">// Pillar II — Learn</p>
+          <p class="text-xs font-mono uppercase tracking-[0.3em] text-neutral-500 mb-4">// Pillar I — Learn</p>
           <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-4">ENCODE</h2>
           <p class="text-lg text-neutral-700 mb-10 leading-relaxed">Learning in public. Sessions where I sit down at zero and try to leave with one thing locked. The misses are part of the data.</p>
 
@@ -111,6 +82,35 @@ const year = new Date().getFullYear();
 
           <a href="/encode" class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-neutral-700 hover:text-black no-underline border-b border-neutral-300 hover:border-black pb-1">
             All Encode sessions →
+          </a>
+        </div>
+      </div>
+
+      <!-- FORGE side — black — Pillar II -->
+      <div class="bg-black text-white">
+        <div class="px-6 md:px-10 py-16 md:py-20 max-w-2xl md:mr-auto md:w-full">
+          <p class="text-xs font-mono uppercase tracking-[0.3em] text-neutral-500 mb-4">// Pillar II — Build</p>
+          <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-4">FORGE</h2>
+          <p class="text-lg text-neutral-300 mb-10 leading-relaxed">Building and shipping. Sessions where code lands in production. The trade-offs that earned it. The rules I write so I don't make the same mistake twice.</p>
+
+          <div class="space-y-5 mb-10">
+            {forgePosts.length === 0 ? (
+              <p class="text-neutral-500">No Forge posts yet.</p>
+            ) : forgePosts.map((post) => (
+              <article class="border-b border-neutral-900 pb-5 last:border-b-0">
+                <p class="text-xs font-mono uppercase tracking-wider text-neutral-500 mb-2">
+                  {post.data.date.toISOString().slice(0, 10)}
+                </p>
+                <h3 class="text-xl font-bold mb-1 tracking-tight leading-snug">
+                  <a href={`/blog/${post.slug}`} class="no-underline hover:underline">{post.data.title}</a>
+                </h3>
+                <p class="text-neutral-400 text-sm leading-relaxed">{post.data.excerpt}</p>
+              </article>
+            ))}
+          </div>
+
+          <a href="/forge" class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-neutral-300 hover:text-white no-underline border-b border-neutral-700 hover:border-white pb-1">
+            All Forge sessions →
           </a>
         </div>
       </div>
