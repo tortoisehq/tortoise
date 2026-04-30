@@ -51,7 +51,7 @@
   },
   {
     "date": "2026-04-30",
-    "forge": false,
+    "forge": true,
     "encode": true
   }
 ]
