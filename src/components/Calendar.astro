@@ -2,44 +2,42 @@
 import completion from '../data/completion.json';
 
 interface Props {
-  /** ISO date "YYYY-MM-DD" — defaults to today. Calendar shows this month. */
+  /** ISO date "YYYY-MM-DD" — defaults to today. Calendar shows through this month. */
   today?: string;
-  /** How many months back to render (in addition to current). Default 0 (current month only). */
-  monthsBack?: number;
+  /** ISO date "YYYY-MM-DD" — first month to render. Defaults to program start (April 2026). */
+  start?: string;
 }
 
-const { today, monthsBack = 0 } = Astro.props;
+const { today, start = '2026-04-01' } = Astro.props;
 
-// Build a map { "YYYY-MM-DD": { forge, encode } } for fast lookup.
 type Row = { date: string; forge: boolean; encode: boolean };
 const completionMap = new Map<string, Row>(
   (completion as Row[]).map((r) => [r.date, r]),
 );
 
-// Resolve "today" — accept ISO date string (YYYY-MM-DD) or default to actual today.
 const todayDate = today ?? new Date().toISOString().slice(0, 10);
 const [tY, tM, tD] = todayDate.split('-').map(Number);
+const [sY, sM] = start.split('-').map(Number);
 
 const MONTH_NAMES = [
   'January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December',
 ];
 
-// Build the list of months to render: oldest first.
-function monthsToRender(yearNow: number, monthNow: number, back: number) {
+// Build the list of months from start month through current month, oldest first.
+function monthsBetween(startY: number, startM: number, endY: number, endM: number) {
   const months: { year: number; month: number }[] = [];
-  for (let i = back; i >= 0; i--) {
-    let y = yearNow;
-    let m = monthNow - i;
-    while (m < 1) { m += 12; y -= 1; }
+  let y = startY, m = startM;
+  while (y < endY || (y === endY && m <= endM)) {
     months.push({ year: y, month: m });
+    m += 1;
+    if (m > 12) { m = 1; y += 1; }
   }
   return months;
 }
 
-const monthsList = monthsToRender(tY, tM, monthsBack);
+const monthsList = monthsBetween(sY, sM, tY, tM);
 
-// Build day cells for one month.
 type Cell = {
   day: number | null;
   iso?: string;
@@ -53,13 +51,11 @@ function pad2(n: number) { return n < 10 ? `0${n}` : `${n}`; }
 
 function buildMonth(year: number, month: number): Cell[] {
   const firstDayOfMonth = new Date(`${year}-${pad2(month)}-01T00:00:00`);
-  const offset = firstDayOfMonth.getDay(); // 0 = Sunday
+  const offset = firstDayOfMonth.getDay();
   const daysInMonth = new Date(year, month, 0).getDate();
 
   const cells: Cell[] = [];
-  // Leading blanks
   for (let i = 0; i < offset; i++) cells.push({ day: null });
-  // Days
   for (let d = 1; d <= daysInMonth; d++) {
     const iso = `${year}-${pad2(month)}-${pad2(d)}`;
     const row = completionMap.get(iso);
@@ -74,7 +70,6 @@ function buildMonth(year: number, month: number): Cell[] {
       isFuture,
     });
   }
-  // Trailing blanks to fill out 6 rows of 7 (max 42 cells)
   while (cells.length % 7 !== 0) cells.push({ day: null });
   return cells;
 }
@@ -84,13 +79,21 @@ const renderedMonths = monthsList.map(({ year, month }) => ({
   month,
   name: MONTH_NAMES[month - 1],
   cells: buildMonth(year, month),
+  // Stable id used to auto-scroll the current month into view.
+  id: `cal-${year}-${pad2(month)}`,
+  isCurrent: year === tY && month === tM,
 }));
 
 const DOW = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
-// Compute rollup stats from data
-const totalDays = (completion as Row[]).length;
-const bothDays = (completion as Row[]).filter((r) => r.forge && r.encode).length;
+// Rollup stats — only count days up to and including today (no future).
+const completedRows = (completion as Row[]).filter((r) => r.date <= todayDate);
+const totalDays = completedRows.length;
+const bothDays = completedRows.filter((r) => r.forge && r.encode).length;
+const forgeDays = completedRows.filter((r) => r.forge).length;
+const encodeDays = completedRows.filter((r) => r.encode).length;
+
+const currentMonthId = `cal-${tY}-${pad2(tM)}`;
 ---
 
 <section class="bg-neutral-900 border-y border-neutral-800">
@@ -100,21 +103,34 @@ const bothDays = (completion as Row[]).filter((r) => r.forge && r.encode).length
         <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-2">// Daily Completion</p>
         <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white">Both, every day.</h2>
       </div>
-      <div class="flex items-center gap-6 text-sm font-mono text-neutral-400">
+      <div class="flex items-center gap-x-6 gap-y-2 text-sm font-mono text-neutral-400 flex-wrap">
         <span><span class="text-white font-semibold">{bothDays}</span> / {totalDays} full days</span>
-        <span class="hidden md:inline">|</span>
+        <span class="text-neutral-600 hidden md:inline">|</span>
+        <span><span class="text-white">F</span> {forgeDays} · <span class="text-white">E</span> {encodeDays}</span>
+        <span class="text-neutral-600 hidden md:inline">|</span>
         <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 bg-white"></span> Encode</span>
         <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 bg-black border border-neutral-700"></span> Forge</span>
       </div>
     </div>
 
-    <div class={`grid gap-x-10 gap-y-12 ${renderedMonths.length > 1 ? 'grid-cols-1 md:grid-cols-2' : 'max-w-md mx-auto'}`}>
+    <!-- Horizontally scrollable track of months. Each month is a snap point. -->
+    <div
+      id="calendar-track"
+      class="flex gap-8 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 scroll-smooth"
+      style="scrollbar-width: thin; scrollbar-color: #404040 transparent;"
+    >
       {renderedMonths.map((m) => (
-        <div>
+        <div
+          id={m.id}
+          class={`snap-start shrink-0 w-[280px] md:w-[320px] ${m.isCurrent ? 'ring-1 ring-amber-400/40 rounded-md p-3 -m-3' : ''}`}
+        >
           <div class="flex items-baseline justify-between mb-4">
             <h3 class="text-sm font-mono uppercase tracking-[0.25em] text-neutral-300">
-              {m.name} {m.year}
+              {m.name} <span class="text-neutral-600">{m.year}</span>
             </h3>
+            {m.isCurrent && (
+              <span class="text-[10px] font-mono uppercase tracking-wider text-amber-400">now</span>
+            )}
           </div>
           <div class="grid grid-cols-7 gap-1.5">
             {DOW.map((d) => (
@@ -153,5 +169,19 @@ const bothDays = (completion as Row[]).filter((r) => r.forge && r.encode).length
         </div>
       ))}
     </div>
+
+    <p class="mt-3 text-[11px] font-mono uppercase tracking-wider text-neutral-600">
+      ← scroll →
+    </p>
   </div>
 </section>
+
+<script define:vars={{ currentMonthId }}>
+  // Auto-scroll the current month into view on load.
+  const track = document.getElementById('calendar-track');
+  const current = document.getElementById(currentMonthId);
+  if (track && current) {
+    // Use scrollLeft directly to avoid hijacking page scroll.
+    track.scrollLeft = current.offsetLeft - track.offsetLeft - 16;
+  }
+</script>

@@ -61,7 +61,7 @@
   },
   {
     "date": "2026-05-02",
-    "forge": false,
+    "forge": true,
     "encode": true
   }
 ]

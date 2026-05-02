@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import completion from '../data/completion.json';
+
+type Row = { date: string; forge: boolean; encode: boolean };
+
+const PROGRAM_START = '2026-04-09'; // First public post — "Hello, Forge" / "Hello, Encode"
+
+const todayISO = new Date().toISOString().slice(0, 10);
+const completedRows = (completion as Row[]).filter((r) => r.date <= todayISO);
+const daysSinceStart = Math.floor(
+  (Date.parse(todayISO) - Date.parse(PROGRAM_START)) / 86_400_000
+) + 1;
+const totalLogged = completedRows.length;
+const bothDays = completedRows.filter((r) => r.forge && r.encode).length;
+const forgeDays = completedRows.filter((r) => r.forge).length;
+const encodeDays = completedRows.filter((r) => r.encode).length;
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const latestForge = posts.filter((p) => p.data.category === 'forge').slice(0, 3);
+const latestEncode = posts.filter((p) => p.data.category === 'encode').slice(0, 3);
+const totalShipped = posts.length;
+
+// Top tags across all posts (a coarse signal of what I'm spending time on).
+const tagCounts = new Map<string, number>();
+for (const p of posts) {
+  for (const t of p.data.tags ?? []) {
+    if (t === 'forge' || t === 'encode' || t === 'building-in-public') continue;
+    tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
+  }
+}
+const topTags = [...tagCounts.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 8)
+  .map(([t, n]) => ({ t, n }));
+
+const lastUpdated = todayISO;
+---
+
+<Layout title="Resume" description="Living resume — what I'm building, what I'm learning, and what the work suggests about the builder.">
+  <header class="mb-10">
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-3">// Living resume + cover letter</p>
+    <h1 class="text-5xl font-bold tracking-tight mb-3">Miles Miller</h1>
+    <p class="text-lg text-neutral-300 max-w-2xl leading-relaxed">
+      Running a 24-month public build program out of Kamloops, BC. Two pillars, every day:
+      <span class="text-white">Forge</span> ships code, <span class="text-white">Encode</span> locks the lessons. The site you're on is the audit.
+    </p>
+    <p class="mt-4 text-xs font-mono text-neutral-500">
+      Updated automatically · Last sync {lastUpdated}
+    </p>
+  </header>
+
+  <!-- Cover letter — the prose. -->
+  <section class="mb-14">
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 01 — Cover letter</p>
+    <div class="space-y-5 text-neutral-200 leading-relaxed">
+      <p>
+        I build software, and I write down what the building taught me. Not as a daily journal — as a forensic record. Each Forge session ships something real and earns the right to a principle. Each Encode session sits down at zero with a concept and tries to leave with one thing locked. A day only counts when both pillars are done. The calendar on the home page is the audit; if you want to know whether I've been honest with the rule, scroll back through April.
+      </p>
+      <p>
+        The thing I'm building right now is <span class="text-white">Workhorse</span> — a personal agent and vault that I use every day. It's the first of twelve products in the program. The point of building in front of people is that I can't quietly walk away from a bad design decision. Every trade-off lands in a post within a day. The post explains the mechanism, names the rule the mechanism enforces, and earns the rule via the artifact that prompted it. The freight-train air-brake post is a representative example: a sixty-second timeout was declared, threaded, and never connected to the wire. The fix was four lines. The principle was a type signature that makes the missing connection a compile error.
+      </p>
+      <p>
+        I'm not currently looking for a full-time role, but I am open to short engagements that put the same muscle to work — applied AI in production, tooling that closes the gap between a prompt and a shipped artifact, and post-incident or post-launch writing that turns a near-miss into a rule the organization can carry forward. If you read three posts and a pattern shows up that you want on a problem of yours, the email at the bottom of this page is the right way in.
+      </p>
+    </div>
+  </section>
+
+  <!-- Right now — the live data. -->
+  <section class="mb-14">
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 02 — Right now</p>
+    <dl class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="border border-neutral-800 p-4">
+        <dt class="text-[10px] font-mono uppercase tracking-wider text-neutral-500 mb-1">Day</dt>
+        <dd class="text-2xl font-bold tracking-tight text-white">{daysSinceStart}<span class="text-neutral-600 text-base font-normal"> / 730</span></dd>
+      </div>
+      <div class="border border-neutral-800 p-4">
+        <dt class="text-[10px] font-mono uppercase tracking-wider text-neutral-500 mb-1">Both pillars</dt>
+        <dd class="text-2xl font-bold tracking-tight text-white">{bothDays}<span class="text-neutral-600 text-base font-normal"> / {totalLogged}</span></dd>
+      </div>
+      <div class="border border-neutral-800 p-4">
+        <dt class="text-[10px] font-mono uppercase tracking-wider text-neutral-500 mb-1">Forge ships</dt>
+        <dd class="text-2xl font-bold tracking-tight text-white">{forgeDays}</dd>
+      </div>
+      <div class="border border-neutral-800 p-4">
+        <dt class="text-[10px] font-mono uppercase tracking-wider text-neutral-500 mb-1">Encode locks</dt>
+        <dd class="text-2xl font-bold tracking-tight text-white">{encodeDays}</dd>
+      </div>
+    </dl>
+    <p class="text-neutral-300 leading-relaxed">
+      Active build: <span class="text-white font-semibold">Workhorse</span> — personal agent + vault, used daily. Build 1 of 12. The pipeline (audit chain, type-checked side channels, three-rounds-then-stop) is being designed by being used.
+    </p>
+  </section>
+
+  <!-- Building — latest Forge. -->
+  <section class="mb-14">
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 03 — Building (latest from Forge)</p>
+    <div class="space-y-5">
+      {latestForge.map((post) => (
+        <article class="border-b border-neutral-800 pb-5 last:border-b-0">
+          <p class="text-xs font-mono uppercase tracking-wider text-neutral-500 mb-2">
+            {post.data.date.toISOString().slice(0, 10)}
+          </p>
+          <h3 class="text-xl font-bold mb-1 tracking-tight leading-snug">
+            <a href={`/blog/${post.slug}`} class="no-underline text-white hover:underline">{post.data.title}</a>
+          </h3>
+          <p class="text-neutral-400 text-sm leading-relaxed">{post.data.excerpt}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Learning — latest Encode. -->
+  <section class="mb-14">
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 04 — Learning (latest from Encode)</p>
+    <div class="space-y-5">
+      {latestEncode.map((post) => (
+        <article class="border-b border-neutral-800 pb-5 last:border-b-0">
+          <p class="text-xs font-mono uppercase tracking-wider text-neutral-500 mb-2">
+            {post.data.date.toISOString().slice(0, 10)}
+          </p>
+          <h3 class="text-xl font-bold mb-1 tracking-tight leading-snug">
+            <a href={`/blog/${post.slug}`} class="no-underline text-white hover:underline">{post.data.title}</a>
+          </h3>
+          <p class="text-neutral-400 text-sm leading-relaxed">{post.data.excerpt}</p>
+        </article>
+      ))}
+    </div>
+    {topTags.length > 0 && (
+      <div class="mt-6">
+        <p class="text-[10px] font-mono uppercase tracking-wider text-neutral-500 mb-3">Recurring threads</p>
+        <ul class="flex flex-wrap gap-2">
+          {topTags.map(({ t, n }) => (
+            <li class="text-xs font-mono text-neutral-300 border border-neutral-800 px-2 py-1">
+              {t} <span class="text-neutral-600">×{n}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </section>
+
+  <!-- Inferred — Claude-eye-view, evidence-based. -->
+  <section class="mb-14">
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 05 — What the work suggests</p>
+    <p class="text-sm text-neutral-500 mb-6 italic">
+      Observations a model can make from {totalShipped} posts and {totalLogged} logged days. Claims linked to evidence; revised as the corpus grows.
+    </p>
+    <div class="space-y-6">
+      <div class="border-l-2 border-neutral-700 pl-5">
+        <h3 class="text-base font-bold text-white mb-1">Treats the pipeline as the product.</h3>
+        <p class="text-neutral-400 text-sm leading-relaxed">
+          Audit chain, prompt-revision phases, "forge Temper" — the artifacts ship, but the more interesting commits are the rules that govern how the artifacts ship. See <a class="text-neutral-200 underline decoration-neutral-700 hover:decoration-white" href="/blog/forge-s10-three-rounds-of-audit">the audit-chain post</a>: caps audit at three rounds because the cost-of-finding curve flattens.
+        </p>
+      </div>
+      <div class="border-l-2 border-neutral-700 pl-5">
+        <h3 class="text-base font-bold text-white mb-1">Reaches for industrial-history analogies to teach engineering principles.</h3>
+        <p class="text-neutral-400 text-sm leading-relaxed">
+          Freight-train air brakes for the AbortSignal that wasn't connected. Therac-25 for the UI flag that wasn't tied to hardware state. Railway interlocking for state machines. The analogy isn't decorative — it picks the failure mode out of the noise.
+        </p>
+      </div>
+      <div class="border-l-2 border-neutral-700 pl-5">
+        <h3 class="text-base font-bold text-white mb-1">Names the principle, then earns it via the artifact.</h3>
+        <p class="text-neutral-400 text-sm leading-relaxed">
+          Posts open with the concrete failure, name the mechanism, then generalize. The generalization is held to the bar of the artifact that prompted it; nothing gets named until something concrete forced the name.
+        </p>
+      </div>
+      <div class="border-l-2 border-neutral-700 pl-5">
+        <h3 class="text-base font-bold text-white mb-1">Type signatures over conventions.</h3>
+        <p class="text-neutral-400 text-sm leading-relaxed">
+          When a wrapper had to be remembered to be used, the fix was a signature change that makes forgetting a compile error. Comments aren't trusted to enforce invariants; the type system is.
+        </p>
+      </div>
+      <div class="border-l-2 border-neutral-700 pl-5">
+        <h3 class="text-base font-bold text-white mb-1">Sizes effort to artifact, not to tooling.</h3>
+        <p class="text-neutral-400 text-sm leading-relaxed">
+          A vault writer touching twenty-four years of personal data gets the full audit chain. A record button on a dashboard gets three rounds, then ships. The same person who designed the audit decides when to stop using it.
+        </p>
+      </div>
+      <div class="border-l-2 border-neutral-700 pl-5">
+        <h3 class="text-base font-bold text-white mb-1">Calibrates from misses, not just hits.</h3>
+        <p class="text-neutral-400 text-sm leading-relaxed">
+          Days where only one pillar lands are visible on the calendar by design. The misses are the data; flattening them would defeat the audit.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trajectory — past + present. -->
+  <section class="mb-14">
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 06 — Trajectory</p>
+    <ul class="space-y-4">
+      <li class="grid grid-cols-[100px_1fr] gap-4">
+        <span class="text-xs font-mono uppercase tracking-wider text-neutral-500 pt-1">2026 — now</span>
+        <div>
+          <p class="text-white font-semibold">Tortoise — 24-month public build program</p>
+          <p class="text-neutral-400 text-sm leading-relaxed">Forge + Encode, both every day. Twelve products in twenty-four months. Workhorse is build one.</p>
+        </div>
+      </li>
+      <li class="grid grid-cols-[100px_1fr] gap-4">
+        <span class="text-xs font-mono uppercase tracking-wider text-neutral-500 pt-1">prior</span>
+        <div>
+          <p class="text-white font-semibold">Ironridge / NightOwl</p>
+          <p class="text-neutral-400 text-sm leading-relaxed">Product work pre-dating Tortoise. Sessions S33–S47 carried forward the pillar system that Tortoise's pipeline now extends.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Contact. -->
+  <section class="mb-6">
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 07 — Contact</p>
+    <ul class="space-y-2 text-neutral-300">
+      <li><a class="text-white underline decoration-neutral-700 hover:decoration-white" href="mailto:milesmiller1990@gmail.com">milesmiller1990@gmail.com</a></li>
+      <li><a class="text-white underline decoration-neutral-700 hover:decoration-white" href="https://github.com/tortoisehq" rel="noopener noreferrer">github.com/tortoisehq</a></li>
+    </ul>
+  </section>
+</Layout>
