@@ -78,6 +78,42 @@
     "session": "E7"
   },
   {
+    "term": "literal (the noun)",
+    "category": "python",
+    "definition": "A value written directly in source code, not computed at runtime. 5 is an integer literal; \"hello\" is a string literal; [1,2,3] is a list literal; f\"hello\" is a formatted string literal. The programming term 'literal' (noun) is distinct from the everyday adverb 'literally' — same root, different meanings.",
+    "session": "E12"
+  },
+  {
+    "term": "string immutability",
+    "category": "python",
+    "definition": "Once a string is created it cannot be modified in place. Methods like .lower(), .upper(), .strip() return NEW strings; the original is unchanged. To 'change' a variable's value, you must reassign: name = name.lower(). Tuples, integers, floats, frozensets, and booleans are also immutable. Lists, dicts, and sets are mutable.",
+    "session": "E12"
+  },
+  {
+    "term": "string method",
+    "category": "python",
+    "definition": "A function attached to a string object, called with dot syntax: name.lower(), s.split(), text.strip(). Most string methods return a NEW string (because strings are immutable) rather than modifying the original. The original variable stays unchanged unless you reassign.",
+    "session": "E12"
+  },
+  {
+    "term": "NameError",
+    "category": "python",
+    "definition": "Python's error when you reference a variable, function, or name that hasn't been defined. The interpreter looked it up, didn't find it, reported the gap. Useful diagnostic — means 'you asked for a thing that doesn't exist.' Fix: define the name first, or check spelling.",
+    "session": "E12"
+  },
+  {
+    "term": "SyntaxError",
+    "category": "python",
+    "definition": "Python's error when the parser can't make sense of the code structure — missing quote, missing parenthesis, malformed statement. Fires before the code runs at all (different from runtime errors). Python 3.14 ships tutor-grade hints in many SyntaxErrors (\"unterminated string literal\", \"Did you mean ==?\").",
+    "session": "E12"
+  },
+  {
+    "term": "AttributeError",
+    "category": "python",
+    "definition": "Python's error when you call a method or access a property that doesn't exist on the object's type. Example: \"hello\".lowe() throws AttributeError because str has no .lowe() method (typo for .lower()). Python 3.14 often suggests the correct attribute in the error message (\"Did you mean: 'lower'?\").",
+    "session": "E12"
+  },
+  {
     "term": "EPIC framework",
     "category": "memory",
     "definition": "Energize · Physics-breaking · Impossible scale · Charged emotion. My upgrade of the standard SEE principle. Construction rule for every encoded image — must hit all four pillars to be championship-grade.",
@@ -114,6 +150,12 @@
     "session": "E5+"
   },
   {
+    "term": "physics-breaking images",
+    "category": "memory",
+    "definition": "Lesson 2 of 170. Mental images that defy gravity, scale, or time survive long-term retrieval better than realistic ones because the brain pays extra attention to anomalies. The P pillar of EPIC. Examples: chalkboard producing 3D binary code, microscopic objects with massive impact, rooms larger than countries.",
+    "session": "E12"
+  },
+  {
     "term": "generation effect",
     "category": "learning",
     "definition": "The act of self-generating an answer, image, or example produces stronger encoding than reading or hearing the same content. Why I build my own palace images instead of being given them.",
@@ -130,5 +172,11 @@
     "category": "learning",
     "definition": "Per video segment: (1) pre-test predict before play, (2) watch the segment, (3) type it in IDE/REPL, (4) break it on purpose to see the error, (5) Feynman gate — explain in 2 sentences as if to a 6-year-old. The trace built by typing and breaking is what survives the 30-day cold test.",
     "session": "E11"
+  },
+  {
+    "term": "architectural-pivot rule",
+    "category": "learning",
+    "definition": "When repeated effort fails to produce results, change the technique — not the intensity. After 3 failed reps, stop and diagnose: is the substrate right (verbal vs concrete vs visual)? The frame? The tool? Pivot before pushing. Repetition strengthens existing traces; if the trace is wrong, repetition strengthens the wrongness.",
+    "session": "E12"
   }
 ]
