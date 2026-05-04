@@ -189,9 +189,37 @@ const lastUpdated = todayISO;
     </div>
   </section>
 
+  <!-- Built independently — what's shipped solo with AI as the team. -->
+  <section class="mb-14">
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 06 — Built independently (with AI as the team)</p>
+    <p class="text-sm text-neutral-500 mb-6 italic">
+      Things designed, built, and shipped solo — outside paid work, AI as the only collaborator. The list is conservative; if it's listed, the artifact runs and the source is in a repo you can read.
+    </p>
+    <div class="space-y-6">
+      <div class="border-l-2 border-neutral-700 pl-5">
+        <h3 class="text-base font-bold text-white mb-1">Workhorse — personal agent + vault</h3>
+        <p class="text-neutral-400 text-sm leading-relaxed">
+          Local-first daily-practice substrate. Browser-side voice recording, raw-stream upload to a Node API, OpenAI Whisper transcription, Anthropic extraction, append-only flat-markdown vault keyed by SHA-256 idempotency. TypeScript + Node 20 + React + Vite + shadcn. Build one of twelve in the Tortoise program; runs daily on my own machine. Repo: <a class="text-neutral-200 underline decoration-neutral-700 hover:decoration-white" href="https://github.com/tortoisehq/workhorse" rel="noopener noreferrer">github.com/tortoisehq/workhorse</a>.
+        </p>
+      </div>
+      <div class="border-l-2 border-neutral-700 pl-5">
+        <h3 class="text-base font-bold text-white mb-1">Forge — the build pipeline that ships the program</h3>
+        <p class="text-neutral-400 text-sm leading-relaxed">
+          Eight-phase typed-token protocol: state-check → intake → ten-expert risk scan → prompt-build → dual-auditor (internal panel plus two external reviewers, every finding source-checked) → code review → ship → closeout. Designed by being used; fifteen-plus sessions of mid-protocol evolution captured in version-controlled phase files. The pipeline is itself one of the artifacts the program ships — the rule that governs how every other artifact ships. Reading list: any post on this site tagged <span class="font-mono text-neutral-300">pipeline</span>.
+        </p>
+      </div>
+      <div class="border-l-2 border-neutral-700 pl-5">
+        <h3 class="text-base font-bold text-white mb-1">Tortoise — public-build site</h3>
+        <p class="text-neutral-400 text-sm leading-relaxed">
+          The site you're reading. Astro static build, dark-first design, daily-completion calendar that auto-syncs from the Forge + Encode session artifacts in two separate repos. The resume reads its own cadence numbers from the same data the calendar does — no manual editing. Designed so the audit-chain ships alongside the artifacts it audits.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- Trajectory — past + present. -->
   <section class="mb-14">
-    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 06 — Trajectory</p>
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 07 — Trajectory</p>
     <ul class="space-y-4">
       <li class="grid grid-cols-[100px_1fr] gap-4">
         <span class="text-xs font-mono uppercase tracking-wider text-neutral-500 pt-1">2026 — now</span>
@@ -212,7 +240,7 @@ const lastUpdated = todayISO;
 
   <!-- Contact. -->
   <section class="mb-6">
-    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 07 — Contact</p>
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 08 — Contact</p>
     <ul class="space-y-2 text-neutral-300">
       <li><a class="text-white underline decoration-neutral-700 hover:decoration-white" href="mailto:lovelearnlift@gmail.com">lovelearnlift@gmail.com</a></li>
       <li><a class="text-white underline decoration-neutral-700 hover:decoration-white" href="https://github.com/tortoisehq" rel="noopener noreferrer">github.com/tortoisehq</a></li>
