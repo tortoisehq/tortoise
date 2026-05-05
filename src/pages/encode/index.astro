@@ -5,6 +5,7 @@ import PostListItem from '../../components/PostListItem.astro';
 import { categories } from '../../lib/categories';
 import memoryLessons from '../../data/memory-lessons.json';
 import definitions from '../../data/definitions.json';
+import methodVersions from '../../data/method-versions.json';
 
 const meta = categories.encode;
 
@@ -41,6 +42,12 @@ const memoryLesson = sortedLessons[0];
 const memoryLessonsTotal = sortedLessons.length;
 
 const stars = '★'.repeat(memoryLesson.rating) + '☆'.repeat(5 - memoryLesson.rating);
+
+// Latest method version (sorted newest first by codifiedAt).
+type MethodVersion = { version: string; codifiedAt: string; codifiedSession: string; nextEvolutionAt: string; summary: string };
+const sortedMethod = (methodVersions as MethodVersion[]).slice()
+  .sort((a, b) => b.codifiedAt.localeCompare(a.codifiedAt));
+const currentMethod = sortedMethod[0];
 ---
 
 <Layout title={meta.name} description={meta.description} palette="encode">
@@ -49,6 +56,25 @@ const stars = '★'.repeat(memoryLesson.rating) + '☆'.repeat(5 - memoryLesson.
     <h1 class="text-5xl font-bold tracking-tight mb-3">Encode</h1>
     <p class="text-lg text-neutral-700 max-w-xl">Learning in public. Sessions where I sit down at zero and try to leave with one thing locked. The misses are part of the data.</p>
   </header>
+
+  <details class="mb-4 border border-neutral-200 group">
+    <summary class="cursor-pointer p-4 flex items-center justify-between hover:bg-neutral-50" style="list-style:none;">
+      <span class="flex flex-col sm:flex-row sm:items-baseline sm:gap-2">
+        <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">Method</span>
+        <span class="text-black font-semibold">v{currentMethod.version} — 60-min sessions, 4 templates, evolves at {currentMethod.nextEvolutionAt}</span>
+      </span>
+      <span class="text-neutral-400 text-xs font-mono ml-3 group-open:rotate-90 transition-transform">▶</span>
+    </summary>
+    <div class="px-4 pb-5 pt-3 border-t border-neutral-200 bg-neutral-50 space-y-3 text-sm">
+      <p class="text-neutral-700 leading-relaxed">{currentMethod.summary}</p>
+      <p class="text-xs font-mono text-neutral-500">
+        Codified {currentMethod.codifiedAt} · session {currentMethod.codifiedSession} · next evolution at <span class="text-black font-semibold">{currentMethod.nextEvolutionAt}</span>
+      </p>
+      <p class="pt-2 text-xs font-mono">
+        <a href="/encode/method" class="underline hover:text-black">Read the full method →</a>
+      </p>
+    </div>
+  </details>
 
   <details class="mb-4 border border-neutral-200 group">
     <summary class="cursor-pointer p-4 flex items-center justify-between hover:bg-neutral-50" style="list-style:none;">

@@ -1,0 +1,23 @@
+[
+  {
+    "version": "1.0",
+    "codifiedAt": "2026-05-04",
+    "codifiedSession": "E12",
+    "nextEvolutionAt": "S20",
+    "summary": "First formal codification. Architecture redesign mid-session after the previous active-loop-per-section pattern produced unsustainable pacing. 4 session-type templates with 60-min cap; physical-techniques layer added; active loop downgraded from default to scalpel.",
+    "changes": [
+      "4 session-type templates introduced: VIDEO_VOCAB, CODE_BUILD, MEMORY_DEEP, MIXED (plus TOOLING legacy)",
+      "60-min cap default for all session types — extend only on explicit request",
+      "Universal rule: code = keyboard only (voice destroys quotes, converts = to 'is', drops parens — E12 evidence)",
+      "Universal rule: paper + pen for definitions, mind maps, Feynman explanations; one bound notebook compounds into hand-built textbook",
+      "Active loop (predict → IDE → break → Feynman) downgraded to SCALPEL — fires only on wrong mental model OR word-label drift OR known gotcha OR foundational concept",
+      "Architectural-pivot rule discovered: when repeated effort fails 3+ reps, change technique not intensity. Failure is signal."
+    ],
+    "evidenceFromPriorSessions": [
+      "S1-S11: active-loop-per-section produced strong concept-locks but burned 2-3× the planned session length",
+      "E11-E12: verbal drill of f-string definition failed 6 reps across two sessions; pivoted to REPL contrast and locked in 1 attempt",
+      "E11: Lesson 1 EPIC encoded ★★★★★ at Day 0; Day-1 cold test at E12 caught drift on I and C pillars (image enrichment hypothesis tentatively NOT supported as Day-1 durability marker)",
+      "E12: voice-to-text destroyed code repeatedly — = became 'is', closing quotes dropped, lower() typo'd to lowe(); Python 3.14 caught all three with tutor-grade error messages"
+    ]
+  }
+]
