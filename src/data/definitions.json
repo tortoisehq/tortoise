@@ -190,5 +190,29 @@
     "category": "learning",
     "definition": "When repeated effort fails to produce results, change the technique — not the intensity. After 3 failed reps, stop and diagnose: is the substrate right (verbal vs concrete vs visual)? The frame? The tool? Pivot before pushing. Repetition strengthens existing traces; if the trace is wrong, repetition strengthens the wrongness.",
     "session": "E12"
+  },
+  {
+    "term": "input()",
+    "category": "python",
+    "definition": "Built-in I/O function that displays an optional prompt, pauses program execution, captures the user's keystrokes until they press Enter, and returns those captured characters as a string. The key word is ALWAYS — even when the user types digits, input() returns text, not numbers. The string-ness doesn't come from quotes; it comes from input()'s design.",
+    "session": "E16"
+  },
+  {
+    "term": "int()",
+    "category": "python",
+    "definition": "Built-in function that converts a value to an integer. Most common use: int(input(...)) — wraps an input() call to turn the user's typed digits from a string into an actual number. Inner function (input) runs first and returns a string; outer function (int) runs second and converts. Nested evaluation: innermost first, like brackets in math.",
+    "session": "E16"
+  },
+  {
+    "term": "concatenation",
+    "category": "python",
+    "definition": "What the + operator does between two strings: glues them end-to-end. \"1\" + \"2\" returns \"12\", not 3. The type of the operands controls what + does — strings concatenate, integers add mathematically. Same symbol, different operation.",
+    "session": "E16"
+  },
+  {
+    "term": "TypeError",
+    "category": "python",
+    "definition": "Python's error when an operator can't combine the types it's given. Example: 5 + \"3\" raises TypeError: unsupported operand type(s) for +: 'int' and 'str'. The error message names the two types it couldn't combine — the rule whispered back at you. Read the types in the error; they tell you what's actually in your variables.",
+    "session": "E16"
   }
 ]

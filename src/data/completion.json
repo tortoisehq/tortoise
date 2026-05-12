@@ -97,6 +97,6 @@
   {
     "date": "2026-05-11",
     "forge": true,
-    "encode": false
+    "encode": true
   }
 ]
