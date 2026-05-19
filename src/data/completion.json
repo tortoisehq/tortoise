@@ -121,7 +121,12 @@
   },
   {
     "date": "2026-05-18",
-    "forge": false,
+    "forge": true,
     "encode": true
+  },
+  {
+    "date": "2026-05-19",
+    "forge": true,
+    "encode": false
   }
 ]
