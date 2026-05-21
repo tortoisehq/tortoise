@@ -6,9 +6,9 @@ tags: [forge, security, structural-defense, building-in-public]
 excerpt: "Multi-use tokens defended by policy can be replayed. One-shot tokens defended by structural commit at consume-moment cannot. Cortés knew this in 1519."
 ---
 
-The phone-side password reset shipped this session. Forty-eight hours of audit cycles to write seven files. The principle inside those seven files is the one I want to write down.
+The phone-side password reset shipped this session. Seven files, multiple audit rounds, two revisions plus an inline patch. The principle inside those seven files is the one I want to write down.
 
-A reset token lives for about three seconds in production. In those three seconds, it traverses Resend's outbound queue, the user's mail provider, the mail app, the OS deep-link router, React Navigation's serialized route state, the phone's screen-reader buffer, possibly the clipboard if a user long-presses, possibly a crash log if any analytics SDK is installed. Every one of those surfaces is outside the system that issued the token. You cannot keep the secret a secret. That ship sailed when you sent the email.
+A reset token issued by the server traverses Resend's outbound queue, the user's mail provider, the mail app, the OS deep-link router, React Navigation's serialized route state, the phone's screen-reader buffer, possibly the clipboard if a user long-presses, possibly a crash log if any analytics SDK is installed. Every one of those surfaces is outside the system that issued the token. You cannot keep the secret a secret. That ship sailed when you sent the email.
 
 The defense isn't secrecy. The defense is making the token useless past the first use.
 
@@ -18,11 +18,11 @@ The defense isn't secrecy. The defense is making the token useless past the firs
 
 Cortés landed on the Mexican coast in July 1519 with around five hundred men. The dominant military doctrine of the era was "preserve the option to retreat." He did the opposite. Once essential supplies and the small artillery were ashore, he ordered the ships scuttled. The popular telling says he burned them; the literal record says he ran them aground. Same effect. His crew now had two states. Forward to Tenochtitlan. Dead on the beach.
 
-The reason the move worked at scale wasn't courage. It was the removal of state. There was no Plan B token anyone could fall back to. The Spanish soldiers had been arguing about retreat for weeks; the destruction of the retreat option ended the argument. The boundary "we commit to the campaign" became enforceable not at the moment of vote, but at the moment the ships sank. Forward was the only direction reachable because backward had been structurally removed.
+The reason the move worked at scale wasn't courage. It was the removal of state. There was no Plan B token anyone could fall back to. The Spanish soldiers had been arguing about retreat; the destruction of the retreat option ended the argument. The boundary "we commit to the campaign" became enforceable not at the moment of vote, but at the moment the ships sank. Forward was the only direction reachable because backward had been structurally removed.
 
 That is the pattern.
 
-## What shipped today
+## What shipped
 
 T28-1 is the phone half of the password reset arc. The token discipline runs at four layers, each one structural at the moment of use.
 
