@@ -250,5 +250,17 @@
     "category": "memory",
     "definition": "Multi-palace strategy where vocabulary or curriculum overflows from one palace to the next in a personal sequence. Example codified E18 for CS50P: Nanaimo Street House → Truck → No Limits Gym, in that order. Solves the 'one palace runs out of loci' problem with chained personal locations the learner walks reliably. Transition between palaces is learner-triggered, not auto-triggered by locus count.",
     "session": "E18"
+  },
+  {
+    "term": ".replace(old, new)",
+    "category": "python",
+    "definition": "String method that returns a NEW string with every occurrence of old swapped for new. Takes two arguments — what to find, what to put in its place — both strings. Example: \"a b c\".replace(\" \", \"...\") returns \"a...b...c\". Like every string method it leaves the original untouched (strings are immutable) and hands back a copy. Used in CS50P Playback to turn spaces into ellipses.",
+    "session": "E22"
+  },
+  {
+    "term": "nesting (order of operations)",
+    "category": "python",
+    "definition": "When one call sits inside another, the INNERMOST runs first and its result flows outward. print(name.replace(\" \", \"...\")) runs .replace on name first, producing the transformed text, THEN print shows it. Cook-before-serve: the transformation has to finish before the outer call can act on the result. Read a nested line from the inside out.",
+    "session": "E22"
   }
 ]

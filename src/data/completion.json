@@ -152,7 +152,7 @@
   {
     "date": "2026-05-29",
     "forge": true,
-    "encode": false
+    "encode": true
   },
   {
     "date": "2026-05-30",
