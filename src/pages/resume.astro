@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import completion from '../data/completion.json';
+import skills from '../data/skills.json';
 
 type Row = { date: string; forge: boolean; encode: boolean };
 
@@ -38,6 +39,15 @@ const topTags = [...tagCounts.entries()]
   .map(([t, n]) => ({ t, n }));
 
 const lastUpdated = todayISO;
+
+// Skills — synced from .forge/metaskills + the forge-learning pillar table.
+type Pillar = { id: string; name: string; level: number | 'GRADUATED'; lastSession: string; arc: string };
+type Metaskill = { id: string; slug: string; title: string; status: string; oneSentence: string };
+const metaskills = skills.metaskills as Metaskill[];
+const allPillars = skills.pillars as Pillar[];
+const lvl = (p: Pillar) => (p.level === 'GRADUATED' ? 6 : p.level);
+const provenPillars = allPillars.filter((p) => lvl(p) >= 3).sort((a, b) => lvl(b) - lvl(a));
+const developingCount = allPillars.filter((p) => lvl(p) >= 1 && lvl(p) < 3).length;
 ---
 
 <Layout title="Resume" description="Living resume — what I'm building, what I'm learning, and what the work suggests about the builder.">
@@ -189,9 +199,52 @@ const lastUpdated = todayISO;
     </div>
   </section>
 
+  <!-- Skills — machine-tracked from the build system; earned, not asserted. -->
+  <section class="mb-14">
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 06 — Skills (tracked, not asserted)</p>
+    <p class="text-sm text-neutral-500 mb-6 italic">
+      Auto-synced from the build system — not a self-reported list. Metaskills are disciplines the pipeline enforces on every session; pillars are capability levels on a 0–5 scale (3 = writes independently, 4 = debugs under pressure, 5 = teaches). New entries appear the moment the work earns them.
+    </p>
+    {metaskills.length > 0 && (
+      <div class="mb-8">
+        <p class="text-[10px] font-mono uppercase tracking-wider text-neutral-500 mb-3">Metaskills · {metaskills.length} codified</p>
+        <div class="space-y-5">
+          {metaskills.map((m) => (
+            <div class="border-l-2 border-neutral-700 pl-5">
+              <h3 class="text-base font-bold text-white mb-1">
+                {m.title}
+                {m.status && <span class="ml-2 align-middle text-[10px] font-mono uppercase tracking-wider text-neutral-600">{m.status}</span>}
+              </h3>
+              <p class="text-neutral-400 text-sm leading-relaxed">{m.oneSentence}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+    {provenPillars.length > 0 && (
+      <div>
+        <p class="text-[10px] font-mono uppercase tracking-wider text-neutral-500 mb-3">Capability pillars at working proficiency · level 3+</p>
+        <ul class="space-y-3">
+          {provenPillars.map((p) => (
+            <li class="grid grid-cols-[1fr_auto] gap-4 items-baseline border-b border-neutral-800 pb-3 last:border-b-0">
+              <div>
+                <span class="text-white font-semibold">{p.name}</span>
+                <span class="text-neutral-500 text-sm"> — {p.arc}</span>
+              </div>
+              <span class="text-xs font-mono text-neutral-400 whitespace-nowrap">{p.level === 'GRADUATED' ? 'GRADUATED' : `L${p.level} / 5`}</span>
+            </li>
+          ))}
+        </ul>
+        {developingCount > 0 && (
+          <p class="mt-5 text-xs font-mono text-neutral-600">+ {developingCount} more pillars in development (level 1–2), tracked until they reach working proficiency.</p>
+        )}
+      </div>
+    )}
+  </section>
+
   <!-- Built independently — what's shipped solo with AI as the team. -->
   <section class="mb-14">
-    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 06 — Built independently (with AI as the team)</p>
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 07 — Built independently (with AI as the team)</p>
     <p class="text-sm text-neutral-500 mb-6 italic">
       Things designed, built, and shipped solo — outside paid work, AI as the only collaborator. The list is conservative; if it's listed, the artifact runs and the source is in a repo you can read.
     </p>
@@ -199,7 +252,7 @@ const lastUpdated = todayISO;
       <div class="border-l-2 border-neutral-700 pl-5">
         <h3 class="text-base font-bold text-white mb-1">Workhorse — personal agent + vault</h3>
         <p class="text-neutral-400 text-sm leading-relaxed">
-          Local-first daily-practice substrate. Browser-side voice recording, raw-stream upload to a Node API, OpenAI Whisper transcription, Anthropic extraction, append-only flat-markdown vault keyed by SHA-256 idempotency. TypeScript + Node 20 + React + Vite + shadcn. Build one of twelve in the Tortoise program; runs daily on my own machine. Repo: <a class="text-neutral-200 underline decoration-neutral-700 hover:decoration-white" href="https://github.com/tortoisehq/workhorse" rel="noopener noreferrer">github.com/tortoisehq/workhorse</a>.
+          Local-first daily-practice substrate. Browser-side voice recording, raw-stream upload to a Node API, OpenAI Whisper transcription, Anthropic extraction, append-only flat-markdown vault keyed by SHA-256 idempotency. TypeScript + Node 20 + React + Vite + shadcn. Build one of twelve in the Love Learn Lift program; runs daily on my own machine. Repo: <a class="text-neutral-200 underline decoration-neutral-700 hover:decoration-white" href="https://github.com/tortoisehq/workhorse" rel="noopener noreferrer">github.com/tortoisehq/workhorse</a>.
         </p>
       </div>
       <div class="border-l-2 border-neutral-700 pl-5">
@@ -209,7 +262,7 @@ const lastUpdated = todayISO;
         </p>
       </div>
       <div class="border-l-2 border-neutral-700 pl-5">
-        <h3 class="text-base font-bold text-white mb-1">Tortoise — public-build site</h3>
+        <h3 class="text-base font-bold text-white mb-1">Love Learn Lift — public-build site</h3>
         <p class="text-neutral-400 text-sm leading-relaxed">
           The site you're reading. Astro static build, dark-first design, daily-completion calendar that auto-syncs from the Forge + Encode session artifacts in two separate repos. The resume reads its own cadence numbers from the same data the calendar does — no manual editing. Designed so the audit-chain ships alongside the artifacts it audits.
         </p>
@@ -219,7 +272,7 @@ const lastUpdated = todayISO;
 
   <!-- Milestones — dated shipped events; the artifacts in section 06 were built via these. -->
   <section class="mb-14">
-    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 07 — Milestones (dated shipped events)</p>
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 08 — Milestones (dated shipped events)</p>
     <p class="text-sm text-neutral-500 mb-6 italic">
       Specific shipped events, most recent first. Every entry corresponds to a public commit in a tracked repo plus a blog post or session handoff documenting what shipped and why.
     </p>
@@ -283,7 +336,7 @@ const lastUpdated = todayISO;
       <li class="grid grid-cols-[100px_1fr] gap-4">
         <span class="text-xs font-mono uppercase tracking-wider text-neutral-500 pt-1">2026-04-09</span>
         <div>
-          <p class="text-white font-semibold">Program start — Tortoise + Forge + Encode</p>
+          <p class="text-white font-semibold">Program start — Love Learn Lift + Forge + Encode</p>
           <p class="text-neutral-400 text-sm leading-relaxed">First public post on tortoisehq.io. Calendar starts logging. The twenty-four-month commitment becomes a publicly auditable surface from day one.</p>
         </div>
       </li>
@@ -292,12 +345,12 @@ const lastUpdated = todayISO;
 
   <!-- Trajectory — past + present. -->
   <section class="mb-14">
-    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 08 — Trajectory</p>
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 09 — Trajectory</p>
     <ul class="space-y-4">
       <li class="grid grid-cols-[100px_1fr] gap-4">
         <span class="text-xs font-mono uppercase tracking-wider text-neutral-500 pt-1">2026 — now</span>
         <div>
-          <p class="text-white font-semibold">Tortoise — 24-month public build program</p>
+          <p class="text-white font-semibold">Love Learn Lift — 24-month public build program</p>
           <p class="text-neutral-400 text-sm leading-relaxed">Forge + Encode, both every day. Twelve products in twenty-four months. Workhorse is build one.</p>
         </div>
       </li>
@@ -305,7 +358,7 @@ const lastUpdated = todayISO;
         <span class="text-xs font-mono uppercase tracking-wider text-neutral-500 pt-1">prior</span>
         <div>
           <p class="text-white font-semibold">Ironridge / NightOwl</p>
-          <p class="text-neutral-400 text-sm leading-relaxed">Product work pre-dating Tortoise. Sessions S33–S47 carried forward the pillar system that Tortoise's pipeline now extends.</p>
+          <p class="text-neutral-400 text-sm leading-relaxed">Product work pre-dating Love Learn Lift. Sessions S33–S47 carried forward the pillar system that Love Learn Lift's pipeline now extends.</p>
         </div>
       </li>
     </ul>
@@ -313,7 +366,7 @@ const lastUpdated = todayISO;
 
   <!-- Contact. -->
   <section class="mb-6">
-    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 09 — Contact</p>
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-4">// 10 — Contact</p>
     <ul class="space-y-2 text-neutral-300">
       <li><a class="text-white underline decoration-neutral-700 hover:decoration-white" href="mailto:lovelearnlift@gmail.com">lovelearnlift@gmail.com</a></li>
       <li><a class="text-white underline decoration-neutral-700 hover:decoration-white" href="https://github.com/tortoisehq" rel="noopener noreferrer">github.com/tortoisehq</a></li>

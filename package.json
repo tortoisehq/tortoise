@@ -4,13 +4,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "predev": "node scripts/build-completion.mjs",
+    "predev": "node scripts/build-completion.mjs && node scripts/build-skills.mjs",
     "dev": "astro dev",
-    "prebuild": "node scripts/build-completion.mjs",
+    "prebuild": "node scripts/build-completion.mjs && node scripts/build-skills.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "sync": "node scripts/build-completion.mjs && echo 'src/data/completion.json synced. Commit + push to deploy.'"
+    "sync": "node scripts/build-completion.mjs && node scripts/build-skills.mjs && echo 'src/data/{completion,skills}.json synced. Commit + push to deploy.'"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.14",

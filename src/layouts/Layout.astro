@@ -12,8 +12,8 @@ interface Props {
   palette?: CategorySlug;
 }
 
-const { title = 'Tortoise', description = 'A 24-month public build program.', palette } = Astro.props;
-const fullTitle = title === 'Tortoise' ? title : `${title} — Tortoise`;
+const { title = 'Love Learn Lift', description = 'A 24-month public build program.', palette } = Astro.props;
+const fullTitle = title === 'Love Learn Lift' ? title : `${title} — Love Learn Lift`;
 const year = new Date().getFullYear();
 
 const p = palette ? categories[palette].palette : null;
@@ -38,7 +38,7 @@ const footerMuted = p ? p.textMuted : 'text-neutral-400';
   <body class={`min-h-screen flex flex-col ${rootBg} ${rootText}`}>
     <header class={`border-b ${borderColor}`}>
       <div class="max-w-3xl mx-auto px-6 py-5 flex items-center justify-between">
-        <a href="/" class="text-lg font-semibold tracking-tight no-underline">Tortoise</a>
+        <a href="/" class="text-lg font-semibold tracking-tight no-underline">Love Learn Lift</a>
         <nav class={`text-sm ${navText}`}>
           <ul class="flex flex-wrap gap-x-5 gap-y-1">
             <li><a class={navHover} href="/">Home</a></li>
@@ -58,7 +58,7 @@ const footerMuted = p ? p.textMuted : 'text-neutral-400';
 
     <footer class={`border-t ${borderColor} mt-16`}>
       <div class={`max-w-3xl mx-auto px-6 py-6 text-sm ${footerMuted} flex items-center justify-between`}>
-        <span>&copy; {year} Tortoise</span>
+        <span>&copy; {year} Love Learn Lift</span>
         <a class={navHover} href="https://github.com/tortoisehq" rel="noopener noreferrer">GitHub</a>
       </div>
     </footer>

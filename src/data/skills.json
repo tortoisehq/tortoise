@@ -1,0 +1,244 @@
+{
+  "metaskills": [
+    {
+      "id": "01",
+      "slug": "source-check",
+      "title": "Source Check (Read Your Own Signal)",
+      "status": "CODIFIED",
+      "oneSentence": "When someone hands you a claim, look at the thing the claim is about — before you act on it."
+    },
+    {
+      "id": "02",
+      "slug": "audit-the-audit",
+      "title": "Audit the Audit (Right-Size Audit Discipline)",
+      "status": "CODIFIED",
+      "oneSentence": "The discipline of asking, at every multi-round audit decision point: did the audit produce more signal than ceremony, and what's the marginal-value-per-round trajectory?"
+    },
+    {
+      "id": "03",
+      "slug": "operator-pushback",
+      "title": "Operator-AI Pushback Discipline (Sycophancy Antidote)",
+      "status": "CODIFIED",
+      "oneSentence": "When the operator calls for speed (\"ship for speed,\" \"skip the ceremony,\" \"operator override,\" \"make all the smartest choices,\" \"just do it\"), dispatch does NOT agree by default — it surfaces 5 specific data points before rendering one of three honest verdicts."
+    },
+    {
+      "id": "04",
+      "slug": "use-proof-gate",
+      "title": "Use-Proof Gate (Built ≠ Shipped ≠ Used)",
+      "status": "CODIFIED",
+      "oneSentence": "Built ≠ deployed ≠ dogfoodable ≠ live; never claim \"live/shipped/dogfoodable/working\" without operator-use OR runtime proof — sycophancy class \"we built it = we shipped it\" is a recurring failure mode that this gate exists to catch."
+    }
+  ],
+  "pillars": [
+    {
+      "id": "P1",
+      "name": "Thinking & Reasoning",
+      "level": 2,
+      "lastSession": "S46",
+      "arc": "From beliefs shaped by what feels true → to reliably finding what is true, even under pressure"
+    },
+    {
+      "id": "P2",
+      "name": "Learning & Cognition",
+      "level": 3,
+      "lastSession": "S46",
+      "arc": "From learning what's in front of you → to learning faster than the world changes"
+    },
+    {
+      "id": "P3",
+      "name": "Body & Biological Systems",
+      "level": 2,
+      "lastSession": "ongoing",
+      "arc": "From managing health reactively → to optimizing biological infrastructure proactively"
+    },
+    {
+      "id": "P4",
+      "name": "Mind & Psychological Architecture",
+      "level": 2,
+      "lastSession": "ongoing",
+      "arc": "From internal state determined by external circumstances → to stable internal architecture"
+    },
+    {
+      "id": "P5",
+      "name": "Energy, Attention & Time",
+      "level": 2,
+      "lastSession": "ongoing",
+      "arc": "From responding to whatever demands attention → to allocating three non-renewable resources with precision"
+    },
+    {
+      "id": "P6",
+      "name": "Systems Thinking & Complexity",
+      "level": 4,
+      "lastSession": "S3",
+      "arc": "From seeing events → to seeing systems, understanding most problems are feedback loops not incidents"
+    },
+    {
+      "id": "P7",
+      "name": "Data, Statistics & Causal Reasoning",
+      "level": 1,
+      "lastSession": "S32",
+      "arc": "From using data to confirm beliefs → to letting data change beliefs, never confusing correlation with causation"
+    },
+    {
+      "id": "P8",
+      "name": "Philosophy, Ethics & First Principles",
+      "level": 1,
+      "lastSession": "—",
+      "arc": "From inherited values → to examined, tested, deliberately chosen ones"
+    },
+    {
+      "id": "P9",
+      "name": "History & Pattern Recognition",
+      "level": 1,
+      "lastSession": "—",
+      "arc": "From experiencing everything as new → to recognizing the pattern when you've seen this before"
+    },
+    {
+      "id": "P10",
+      "name": "Reality Testing & Direct Experience",
+      "level": 4,
+      "lastSession": "S28",
+      "arc": "From reasoning about the world → to consistently testing reasoning against it"
+    },
+    {
+      "id": "P11",
+      "name": "Technical Craft & Software Engineering",
+      "level": 4,
+      "lastSession": "S28",
+      "arc": "From making things work → to making things work reliably, maintainably, and elegantly"
+    },
+    {
+      "id": "P12",
+      "name": "AI & Intelligence Amplification",
+      "level": 3,
+      "lastSession": "S1",
+      "arc": "From using AI tools → to designing systems where human and AI intelligence combine"
+    },
+    {
+      "id": "P13",
+      "name": "Product & Design Thinking",
+      "level": 2,
+      "lastSession": "S7",
+      "arc": "From building what seems useful → to deeply understanding what people actually need"
+    },
+    {
+      "id": "P14",
+      "name": "Creative Thinking & Idea Generation",
+      "level": 2,
+      "lastSession": "ongoing",
+      "arc": "From improving existing things → to generating genuinely new combinations"
+    },
+    {
+      "id": "P15",
+      "name": "Execution & Shipping Discipline",
+      "level": 3,
+      "lastSession": "S28",
+      "arc": "From good intentions → to a track record, the muscle of completion"
+    },
+    {
+      "id": "P16",
+      "name": "Mastery & Craft Philosophy",
+      "level": 1,
+      "lastSession": "—",
+      "arc": "From building to accomplish goals → to building because quality matters intrinsically"
+    },
+    {
+      "id": "P17",
+      "name": "Business Strategy & Market Positioning",
+      "level": 1,
+      "lastSession": "S32",
+      "arc": "From building and hoping → to understanding where value accumulates"
+    },
+    {
+      "id": "P18",
+      "name": "Sales, Persuasion & Conversion",
+      "level": 0,
+      "lastSession": "—",
+      "arc": "From explaining your value → to helping others discover it"
+    },
+    {
+      "id": "P19",
+      "name": "Marketing, Messaging & Distribution",
+      "level": 1,
+      "lastSession": "S32",
+      "arc": "From making things and waiting → to understanding how ideas spread"
+    },
+    {
+      "id": "P20",
+      "name": "Financial Sovereignty & Capital",
+      "level": 1,
+      "lastSession": "S32",
+      "arc": "From earning money → to money earning money, every decision from freedom"
+    },
+    {
+      "id": "P21",
+      "name": "Legal, Risk & Structural Protection",
+      "level": 1,
+      "lastSession": "S34",
+      "arc": "From hoping nothing goes wrong → to designing structures that protect what's built"
+    },
+    {
+      "id": "P22",
+      "name": "Relationships, Trust & Deep Connection",
+      "level": 2,
+      "lastSession": "ongoing",
+      "arc": "From having contacts → to having people who would do almost anything for you"
+    },
+    {
+      "id": "P23",
+      "name": "Leadership, Culture & Direction Setting",
+      "level": 2,
+      "lastSession": "ongoing",
+      "arc": "From doing the work → to creating conditions for others to do their best work"
+    },
+    {
+      "id": "P24",
+      "name": "Teaching, Mentorship & Knowledge Multiplication",
+      "level": 2,
+      "lastSession": "S46",
+      "arc": "From knowledge that dies with you → to understanding that multiplies through others"
+    },
+    {
+      "id": "P25",
+      "name": "Negotiation, Conflict & Adversarial Dynamics",
+      "level": 1,
+      "lastSession": "—",
+      "arc": "From avoiding difficult conversations → to navigating any situation where interests diverge"
+    },
+    {
+      "id": "P26",
+      "name": "Community & Belonging",
+      "level": 2,
+      "lastSession": "ongoing",
+      "arc": "From building alone → to being embedded in communities that make you more capable"
+    },
+    {
+      "id": "P27",
+      "name": "Sovereignty & Freedom Architecture",
+      "level": 1,
+      "lastSession": "S46",
+      "arc": "From choices constrained by dependencies → to deliberately designed life where no single dependency holds you hostage"
+    },
+    {
+      "id": "P28",
+      "name": "Resilience, Antifragility & Recovery",
+      "level": 2,
+      "lastSession": "ongoing",
+      "arc": "From tolerating adversity → to getting stronger from it"
+    },
+    {
+      "id": "P29",
+      "name": "Behavioral Architecture & Environment Design",
+      "level": 3,
+      "lastSession": "S9",
+      "arc": "From relying on willpower → to designing systems that produce desired behavior reliably"
+    },
+    {
+      "id": "P30",
+      "name": "Identity, Values & Self-Knowledge",
+      "level": 2,
+      "lastSession": "ongoing",
+      "arc": "From identity inherited from roles → to knowing who you are independent of any of those things"
+    }
+  ]
+}

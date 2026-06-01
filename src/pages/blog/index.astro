@@ -7,7 +7,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<Layout title="Blog" description="All posts from Tortoise.">
+<Layout title="Blog" description="All posts from Love Learn Lift.">
   <header class="mb-10">
     <h1 class="text-4xl font-bold tracking-tight mb-2">Blog</h1>
     <p class="text-neutral-300">Everything, newest first.</p>
