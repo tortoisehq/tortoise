@@ -1,5 +1,10 @@
 # Cutover checklist — tortoisehq.io → lovelearnlift.com
 
+> **UPDATE — cutover executed:** lovelearnlift.com added to the Vercel `tortoise`
+> project ✓ · DreamHost apex A record `@ → 76.76.21.21` added ✓ · `astro.config`
+> canonical flipped to lovelearnlift.com ✓. Goes live once DNS propagates (~minutes)
+> and Vercel issues the cert. Remaining items below are all OPTIONAL.
+
 The brand **copy** is rebranded to Love Learn Lift and the living-resume Skills
 feature is shipped. The site still **serves at tortoisehq.io** until the steps
 below are done. Domain-coupled changes were deliberately held so the live site
