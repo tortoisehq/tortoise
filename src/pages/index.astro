@@ -9,6 +9,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 
 const forgePosts = posts.filter((p) => p.data.category === 'forge').slice(0, 4);
 const encodePosts = posts.filter((p) => p.data.category === 'encode').slice(0, 4);
+const beaconPosts = posts.filter((p) => p.data.category === 'beacon').slice(0, 4);
 
 const year = new Date().getFullYear();
 ---
@@ -32,7 +33,6 @@ const year = new Date().getFullYear();
             {categoryList.map((c) => (
               <li><a class="hover:text-white" href={`/${c.slug}`}>{c.name}</a></li>
             ))}
-            <li><a class="hover:text-white" href="/findings">Findings</a></li>
             <li><a class="hover:text-white" href="/resume">Resume</a></li>
           </ul>
         </nav>
@@ -49,7 +49,7 @@ const year = new Date().getFullYear();
           <span class="text-neutral-700">Then build again.</span>
         </h1>
         <p class="text-lg md:text-xl text-neutral-300 max-w-2xl leading-relaxed">
-          Two pillars. Every day, both. Forge ships code. Encode locks the lessons. The calendar below is the audit — a day only counts when both are done.
+          Three pillars. Forge ships the code. Encode locks the lessons. Beacon tells the story. The calendar below is the audit — a build day counts when the first two are done.
         </p>
       </div>
     </section>
@@ -57,14 +57,14 @@ const year = new Date().getFullYear();
     <!-- Daily completion calendar — neutral-900 band -->
     <Calendar />
 
-    <!-- The Split — Encode (Pillar I) | Forge (Pillar II) -->
-    <section class="grid grid-cols-1 md:grid-cols-2 border-b border-neutral-800">
-      <!-- ENCODE side — white — Pillar I -->
+    <!-- The Split — Encode (I) | Forge (II) | Beacon (III) -->
+    <section class="grid grid-cols-1 md:grid-cols-3 border-b border-neutral-800">
+      <!-- ENCODE — white — Pillar I -->
       <div class="bg-white text-black border-b md:border-b-0 md:border-r border-neutral-800">
-        <div class="px-6 md:px-10 py-16 md:py-20 max-w-2xl md:ml-auto md:w-full">
+        <div class="px-6 md:px-8 py-16 md:py-20">
           <p class="text-xs font-mono uppercase tracking-[0.3em] text-neutral-500 mb-4">// Pillar I — Learn</p>
-          <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-4">ENCODE</h2>
-          <p class="text-lg text-neutral-700 mb-10 leading-relaxed">Learning in public. Sessions where I sit down at zero and try to leave with one thing locked. The misses are part of the data.</p>
+          <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4">ENCODE</h2>
+          <p class="text-base text-neutral-700 mb-10 leading-relaxed">Learning in public. Sit down at zero, leave with one thing locked. The misses are part of the data.</p>
 
           <div class="space-y-5 mb-10">
             {encodePosts.length === 0 ? (
@@ -74,7 +74,7 @@ const year = new Date().getFullYear();
                 <p class="text-xs font-mono uppercase tracking-wider text-neutral-500 mb-2">
                   {post.data.date.toISOString().slice(0, 10)}
                 </p>
-                <h3 class="text-xl font-bold mb-1 tracking-tight leading-snug">
+                <h3 class="text-lg font-bold mb-1 tracking-tight leading-snug">
                   <a href={`/blog/${post.slug}`} class="no-underline hover:underline">{post.data.title}</a>
                 </h3>
                 <p class="text-neutral-700 text-sm leading-relaxed">{post.data.excerpt}</p>
@@ -83,17 +83,17 @@ const year = new Date().getFullYear();
           </div>
 
           <a href="/encode" class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-neutral-700 hover:text-black no-underline border-b border-neutral-300 hover:border-black pb-1">
-            All Encode sessions →
+            All Encode →
           </a>
         </div>
       </div>
 
-      <!-- FORGE side — black — Pillar II -->
-      <div class="bg-black text-white">
-        <div class="px-6 md:px-10 py-16 md:py-20 max-w-2xl md:mr-auto md:w-full">
+      <!-- FORGE — black — Pillar II -->
+      <div class="bg-black text-white border-b md:border-b-0 md:border-r border-neutral-800">
+        <div class="px-6 md:px-8 py-16 md:py-20">
           <p class="text-xs font-mono uppercase tracking-[0.3em] text-neutral-500 mb-4">// Pillar II — Build</p>
-          <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-4">FORGE</h2>
-          <p class="text-lg text-neutral-300 mb-10 leading-relaxed">Building and shipping. Sessions where code lands in production. The trade-offs that earned it. The rules I write so I don't make the same mistake twice.</p>
+          <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4">FORGE</h2>
+          <p class="text-base text-neutral-300 mb-10 leading-relaxed">Building and shipping. Code lands in production. The trade-offs that earned it. The rules I write so I don't make the same mistake twice.</p>
 
           <div class="space-y-5 mb-10">
             {forgePosts.length === 0 ? (
@@ -103,7 +103,7 @@ const year = new Date().getFullYear();
                 <p class="text-xs font-mono uppercase tracking-wider text-neutral-500 mb-2">
                   {post.data.date.toISOString().slice(0, 10)}
                 </p>
-                <h3 class="text-xl font-bold mb-1 tracking-tight leading-snug">
+                <h3 class="text-lg font-bold mb-1 tracking-tight leading-snug">
                   <a href={`/blog/${post.slug}`} class="no-underline hover:underline">{post.data.title}</a>
                 </h3>
                 <p class="text-neutral-400 text-sm leading-relaxed">{post.data.excerpt}</p>
@@ -112,7 +112,36 @@ const year = new Date().getFullYear();
           </div>
 
           <a href="/forge" class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-neutral-300 hover:text-white no-underline border-b border-neutral-700 hover:border-white pb-1">
-            All Forge sessions →
+            All Forge →
+          </a>
+        </div>
+      </div>
+
+      <!-- BEACON — amber — Pillar III -->
+      <div class="bg-amber-400 text-neutral-950">
+        <div class="px-6 md:px-8 py-16 md:py-20">
+          <p class="text-xs font-mono uppercase tracking-[0.3em] text-amber-900 mb-4">// Pillar III — Signal</p>
+          <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4">BEACON</h2>
+          <p class="text-base text-amber-900 mb-10 leading-relaxed">Building in public. The story behind the build — what I'm making, why, and the part I'm giving away. Honest, not a pitch.</p>
+
+          <div class="space-y-5 mb-10">
+            {beaconPosts.length === 0 ? (
+              <p class="text-amber-800">No signals yet. The first one's coming.</p>
+            ) : beaconPosts.map((post) => (
+              <article class="border-b border-amber-600/40 pb-5 last:border-b-0">
+                <p class="text-xs font-mono uppercase tracking-wider text-amber-900 mb-2">
+                  {post.data.date.toISOString().slice(0, 10)}
+                </p>
+                <h3 class="text-lg font-bold mb-1 tracking-tight leading-snug">
+                  <a href={`/blog/${post.slug}`} class="no-underline hover:underline">{post.data.title}</a>
+                </h3>
+                <p class="text-amber-900 text-sm leading-relaxed">{post.data.excerpt}</p>
+              </article>
+            ))}
+          </div>
+
+          <a href="/beacon" class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-amber-900 hover:text-black no-underline border-b border-amber-700 hover:border-black pb-1">
+            All Beacon →
           </a>
         </div>
       </div>

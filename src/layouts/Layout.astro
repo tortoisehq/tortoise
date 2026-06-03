@@ -28,7 +28,7 @@ const footerMuted = p ? p.textMuted : 'text-neutral-400';
 ---
 
 <!doctype html>
-<html lang="en" class={palette === 'encode' ? '' : 'dark'}>
+<html lang="en" class={palette === 'encode' || palette === 'beacon' ? '' : 'dark'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -45,7 +45,6 @@ const footerMuted = p ? p.textMuted : 'text-neutral-400';
             {categoryList.map((c) => (
               <li><a class={navHover} href={`/${c.slug}`}>{c.name}</a></li>
             ))}
-            <li><a class={navHover} href="/findings">Findings</a></li>
             <li><a class={navHover} href="/resume">Resume</a></li>
           </ul>
         </nav>

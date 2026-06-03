@@ -1,4 +1,4 @@
-export type CategorySlug = 'forge' | 'encode';
+export type CategorySlug = 'forge' | 'encode' | 'beacon';
 
 export interface Category {
   slug: CategorySlug;
@@ -60,7 +60,23 @@ export const categories: Record<CategorySlug, Category> = {
       inverse: 'white',
     },
   },
+  beacon: {
+    slug: 'beacon',
+    name: 'Beacon',
+    description: 'Building in public.',
+    palette: {
+      bg: 'bg-amber-400',
+      text: 'text-neutral-950',
+      textMuted: 'text-amber-900',
+      border: 'border-amber-600',
+      borderHover: 'hover:border-black',
+      chipBg: 'bg-amber-200',
+      chipText: 'text-amber-900',
+      accent: 'black',
+      inverse: 'white',
+    },
+  },
 };
 
-// Pillar order: Encode (I) first, Forge (II) second.
-export const categoryList: Category[] = [categories.encode, categories.forge];
+// Pillar order: Encode (I), Forge (II), Beacon (III).
+export const categoryList: Category[] = [categories.encode, categories.forge, categories.beacon];
