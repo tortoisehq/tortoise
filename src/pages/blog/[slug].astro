@@ -23,9 +23,9 @@ const dateLabel = post.data.date.toISOString().slice(0, 10);
 // Encode posts are white. This is the per-post visual identity.
 const palette = post.data.category;
 
-const dateText = palette === 'encode' ? 'text-neutral-600' : 'text-neutral-400';
-const tagText = palette === 'encode' ? 'text-neutral-500' : 'text-neutral-500';
-const proseText = palette === 'encode' ? 'text-neutral-800' : 'text-neutral-200';
+const dateText = palette === 'beacon' ? 'text-green-800' : palette === 'encode' ? 'text-neutral-600' : 'text-neutral-400';
+const tagText = palette === 'beacon' ? 'text-green-700' : 'text-neutral-500';
+const proseText = palette === 'beacon' ? 'text-green-900' : palette === 'encode' ? 'text-neutral-800' : 'text-neutral-200';
 ---
 
 <Layout title={post.data.title} description={post.data.excerpt} palette={palette}>

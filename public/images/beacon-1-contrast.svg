@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Every other AI knows everything about the world and nothing about you. This one is the opposite.">
-  <rect width="1200" height="600" fill="#000000"/>
-  <rect x="600" y="0" width="600" height="600" fill="#fbbf24"/>
-  <text x="300" y="140" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" letter-spacing="4" fill="#a3a3a3">// EVERY OTHER AI</text>
-  <text x="300" y="300" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="40" font-weight="700" fill="#ffffff">Knows everything.</text>
-  <text x="300" y="372" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="40" font-weight="700" fill="#ffffff">About you: nothing.</text>
-  <text x="900" y="140" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" letter-spacing="4" fill="#92400e">// THIS ONE</text>
-  <text x="900" y="300" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="40" font-weight="700" fill="#1c1917">Knows almost nothing.</text>
-  <text x="900" y="372" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="40" font-weight="700" fill="#1c1917">About you: everything.</text>
-  <text x="900" y="430" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" fill="#92400e">(eventually)</text>
+  <rect width="1200" height="600" fill="#fbbf24"/>
+  <rect x="598" y="90" width="4" height="420" fill="#166534"/>
+  <text x="300" y="140" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" letter-spacing="4" fill="#166534">// EVERY OTHER AI</text>
+  <text x="300" y="300" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="40" font-weight="700" fill="#15803d">Knows everything.</text>
+  <text x="300" y="372" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="40" font-weight="700" fill="#15803d">About you: nothing.</text>
+  <text x="900" y="140" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" letter-spacing="4" fill="#166534">// THIS ONE</text>
+  <text x="900" y="300" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="40" font-weight="700" fill="#14532d">Knows almost nothing.</text>
+  <text x="900" y="372" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="40" font-weight="700" fill="#14532d">About you: everything.</text>
+  <text x="900" y="430" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" fill="#166534">(eventually)</text>
 </svg>

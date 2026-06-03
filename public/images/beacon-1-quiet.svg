@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Built quietly. Every day, even an inch. No name on this yet — when it's worth your time, you'll know who I am.">
-  <rect width="1200" height="600" fill="#000000"/>
-  <text x="600" y="150" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" letter-spacing="6" fill="#fbbf24">// BUILT QUIETLY</text>
-  <text x="600" y="320" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="58" font-weight="700" fill="#fbbf24">Every day. Even an inch.</text>
-  <text x="600" y="420" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" fill="#e5e5e5">No name on this yet.</text>
-  <text x="600" y="462" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" fill="#a3a3a3">When it's worth your time, you'll know who I am.</text>
+  <rect width="1200" height="600" fill="#fbbf24"/>
+  <text x="600" y="150" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" letter-spacing="6" fill="#166534">// BUILT QUIETLY</text>
+  <text x="600" y="320" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="58" font-weight="700" fill="#14532d">Every day. Even an inch.</text>
+  <text x="600" y="420" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" fill="#166534">No name on this yet.</text>
+  <text x="600" y="462" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" fill="#166534">When it's worth your time, you'll know who I am.</text>
 </svg>

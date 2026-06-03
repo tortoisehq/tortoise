@@ -12,13 +12,13 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft && data.cat
 
 <Layout title={meta.name} description={meta.description} palette="beacon">
   <header class="mb-12">
-    <p class="text-xs font-mono uppercase tracking-[0.25em] text-amber-900 mb-3">// Pillar III — Signal</p>
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-green-800 mb-3">// Pillar III — Signal</p>
     <h1 class="text-5xl font-bold tracking-tight mb-3">Beacon</h1>
-    <p class="text-lg text-amber-900 max-w-xl">Building in public. The story behind the build — what I'm making, why, and the part I'm giving away. Honest, not a pitch.</p>
+    <p class="text-lg text-green-800 max-w-xl">Building in public. The story behind the build — what I'm making, why, and the part I'm giving away. Honest, not a pitch.</p>
   </header>
 
   {posts.length === 0 ? (
-    <p class="text-amber-900">No posts here yet. The first signal's coming.</p>
+    <p class="text-green-800">No posts here yet. The first signal's coming.</p>
   ) : (
     <div>
       {posts.map((post) => <PostListItem post={post} palette="beacon" />)}
