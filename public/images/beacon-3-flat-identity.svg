@@ -1,0 +1,27 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Love Learn Lift's new identity: three flat colour panels — Encode black, Forge ember red with gold, Beacon cream with black.">
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+  <text x="64" y="86" fill="#FFC233" font-family="ui-monospace, monospace" font-size="20" letter-spacing="6">// THE NEW IDENTITY — FLAT, ON PURPOSE</text>
+
+  <!-- ENCODE: black -->
+  <rect x="64" y="130" width="340" height="372" fill="#000000" stroke="#262626" stroke-width="2"/>
+  <text x="92" y="248" fill="#9aa0a6" font-family="ui-monospace, monospace" font-size="15" letter-spacing="3">// I — LEARN</text>
+  <text x="90" y="322" fill="#ffffff" font-family="system-ui, sans-serif" font-size="58" font-weight="800" letter-spacing="-2">ENCODE</text>
+  <rect x="92" y="344" width="68" height="8" fill="#ffffff"/>
+  <text x="92" y="396" fill="#c9c9c9" font-family="system-ui, sans-serif" font-size="24">Learn.</text>
+
+  <!-- FORGE: ember red, gold text -->
+  <rect x="430" y="130" width="340" height="372" fill="#A82A1A"/>
+  <text x="458" y="248" fill="#FFC233" font-family="ui-monospace, monospace" font-size="15" letter-spacing="3" opacity="0.85">// II — BUILD</text>
+  <text x="456" y="322" fill="#FFC233" font-family="system-ui, sans-serif" font-size="58" font-weight="800" letter-spacing="-2">FORGE</text>
+  <rect x="458" y="344" width="68" height="8" fill="#000000"/>
+  <text x="458" y="396" fill="#FFC233" font-family="system-ui, sans-serif" font-size="24" opacity="0.9">Build.</text>
+
+  <!-- BEACON: cream, black text -->
+  <rect x="796" y="130" width="340" height="372" fill="#F4ECDD"/>
+  <text x="824" y="248" fill="#7a5a20" font-family="ui-monospace, monospace" font-size="15" letter-spacing="3">// III — SIGNAL</text>
+  <text x="822" y="322" fill="#0a0a0a" font-family="system-ui, sans-serif" font-size="58" font-weight="800" letter-spacing="-2">BEACON</text>
+  <rect x="824" y="344" width="68" height="8" fill="#A82A1A"/>
+  <text x="824" y="396" fill="#333333" font-family="system-ui, sans-serif" font-size="24">Launch.</text>
+
+  <text x="64" y="566" fill="#666666" font-family="ui-monospace, monospace" font-size="18" letter-spacing="2">LOVE LEARN LIFT · lovelearnlift.com</text>
+</svg>
