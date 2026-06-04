@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        flame: '#E0322B',
+        flame: '#A82A1A',
         cream: '#F4ECDD',
       },
       fontFamily: {
