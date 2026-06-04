@@ -2,176 +2,217 @@
   {
     "date": "2026-04-15",
     "forge": true,
-    "encode": false
+    "encode": false,
+    "beacon": false
   },
   {
     "date": "2026-04-16",
     "forge": true,
-    "encode": false
+    "encode": false,
+    "beacon": false
   },
   {
     "date": "2026-04-17",
     "forge": true,
-    "encode": false
+    "encode": false,
+    "beacon": false
   },
   {
     "date": "2026-04-19",
     "forge": true,
-    "encode": false
+    "encode": false,
+    "beacon": false
   },
   {
     "date": "2026-04-20",
     "forge": true,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-04-21",
     "forge": false,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-04-22",
     "forge": false,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-04-23",
     "forge": true,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-04-26",
     "forge": true,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-04-29",
     "forge": true,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-04-30",
     "forge": true,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-05-01",
     "forge": true,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-05-02",
     "forge": true,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-05-03",
     "forge": true,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-05-04",
     "forge": true,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-05-05",
     "forge": true,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-05-06",
     "forge": true,
-    "encode": false
+    "encode": false,
+    "beacon": false
   },
   {
     "date": "2026-05-08",
     "forge": true,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-05-09",
     "forge": true,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-05-11",
     "forge": true,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-05-12",
     "forge": true,
-    "encode": false
+    "encode": false,
+    "beacon": false
   },
   {
     "date": "2026-05-14",
     "forge": true,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-05-15",
     "forge": true,
-    "encode": false
+    "encode": false,
+    "beacon": false
   },
   {
     "date": "2026-05-16",
     "forge": true,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-05-18",
     "forge": true,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-05-19",
     "forge": true,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-05-20",
     "forge": true,
-    "encode": false
+    "encode": false,
+    "beacon": false
   },
   {
     "date": "2026-05-22",
     "forge": true,
-    "encode": false
+    "encode": false,
+    "beacon": false
   },
   {
     "date": "2026-05-23",
     "forge": true,
-    "encode": false
+    "encode": false,
+    "beacon": false
   },
   {
     "date": "2026-05-25",
     "forge": true,
-    "encode": false
+    "encode": false,
+    "beacon": false
   },
   {
     "date": "2026-05-29",
     "forge": true,
-    "encode": true
+    "encode": true,
+    "beacon": false
   },
   {
     "date": "2026-05-30",
     "forge": true,
-    "encode": false
+    "encode": false,
+    "beacon": false
   },
   {
     "date": "2026-05-31",
     "forge": true,
-    "encode": false
+    "encode": false,
+    "beacon": false
   },
   {
     "date": "2026-06-01",
     "forge": true,
-    "encode": false
+    "encode": false,
+    "beacon": false
   },
   {
     "date": "2026-06-02",
     "forge": true,
-    "encode": false
+    "encode": false,
+    "beacon": true
+  },
+  {
+    "date": "2026-06-04",
+    "forge": false,
+    "encode": false,
+    "beacon": true
   }
 ]
