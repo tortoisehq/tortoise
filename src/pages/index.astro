@@ -42,7 +42,7 @@ const year = new Date().getFullYear();
     <!-- Hero — black, full-width, dramatic -->
     <section class="border-b border-neutral-800">
       <div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
-        <p class="text-xs md:text-sm font-mono uppercase tracking-[0.3em] text-neutral-500 mb-6">// 24-month public build program</p>
+        <p class="text-xs md:text-sm font-mono uppercase tracking-[0.3em] text-flame mb-6">// 24-month public build program</p>
         <h1 class="text-6xl md:text-8xl font-black tracking-tight leading-[0.95] mb-6">
           Build.<br/>
           <span class="text-neutral-500">Then learn.</span><br/>
@@ -59,48 +59,19 @@ const year = new Date().getFullYear();
 
     <!-- The Split — Encode (I) | Forge (II) | Beacon (III) -->
     <section class="grid grid-cols-1 md:grid-cols-3 border-b border-neutral-800">
-      <!-- ENCODE — white — Pillar I -->
-      <div class="bg-white text-black border-b md:border-b-0 md:border-r border-neutral-800">
+      <!-- ENCODE — black — Pillar I -->
+      <div class="bg-black text-white border-b md:border-b-0 md:border-r border-neutral-800">
         <div class="px-6 md:px-8 py-16 md:py-20">
-          <p class="text-xs font-mono uppercase tracking-[0.3em] text-neutral-500 mb-4">// Pillar I — Learn</p>
+          <p class="text-xs font-mono uppercase tracking-[0.3em] text-flame mb-4">// Pillar I — Learn</p>
           <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4">ENCODE</h2>
-          <p class="text-base text-neutral-700 mb-10 leading-relaxed">Learning in public. Sit down at zero, leave with one thing locked. The misses are part of the data.</p>
+          <p class="text-base text-neutral-300 mb-10 leading-relaxed">Learning in public. Sit down at zero, leave with one thing locked. The misses are part of the data.</p>
 
           <div class="space-y-5 mb-10">
             {encodePosts.length === 0 ? (
               <p class="text-neutral-500">No Encode posts yet.</p>
             ) : encodePosts.map((post) => (
-              <article class="border-b border-neutral-200 pb-5 last:border-b-0">
-                <p class="text-xs font-mono uppercase tracking-wider text-neutral-500 mb-2">
-                  {post.data.date.toISOString().slice(0, 10)}
-                </p>
-                <h3 class="text-lg font-bold mb-1 tracking-tight leading-snug">
-                  <a href={`/blog/${post.slug}`} class="no-underline hover:underline">{post.data.title}</a>
-                </h3>
-                <p class="text-neutral-700 text-sm leading-relaxed">{post.data.excerpt}</p>
-              </article>
-            ))}
-          </div>
-
-          <a href="/encode" class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-neutral-700 hover:text-black no-underline border-b border-neutral-300 hover:border-black pb-1">
-            All Encode →
-          </a>
-        </div>
-      </div>
-
-      <!-- FORGE — black — Pillar II -->
-      <div class="bg-black text-white border-b md:border-b-0 md:border-r border-neutral-800">
-        <div class="px-6 md:px-8 py-16 md:py-20">
-          <p class="text-xs font-mono uppercase tracking-[0.3em] text-neutral-500 mb-4">// Pillar II — Build</p>
-          <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4">FORGE</h2>
-          <p class="text-base text-neutral-300 mb-10 leading-relaxed">Building and shipping. Code lands in production. The trade-offs that earned it. The rules I write so I don't make the same mistake twice.</p>
-
-          <div class="space-y-5 mb-10">
-            {forgePosts.length === 0 ? (
-              <p class="text-neutral-500">No Forge posts yet.</p>
-            ) : forgePosts.map((post) => (
-              <article class="border-b border-neutral-900 pb-5 last:border-b-0">
-                <p class="text-xs font-mono uppercase tracking-wider text-neutral-500 mb-2">
+              <article class="border-b border-neutral-800 pb-5 last:border-b-0">
+                <p class="text-xs font-mono uppercase tracking-wider text-flame mb-2">
                   {post.data.date.toISOString().slice(0, 10)}
                 </p>
                 <h3 class="text-lg font-bold mb-1 tracking-tight leading-snug">
@@ -111,36 +82,65 @@ const year = new Date().getFullYear();
             ))}
           </div>
 
-          <a href="/forge" class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-neutral-300 hover:text-white no-underline border-b border-neutral-700 hover:border-white pb-1">
-            All Forge →
+          <a href="/encode" class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-flame hover:text-white no-underline border-b border-flame/40 hover:border-flame pb-1">
+            All Encode →
           </a>
         </div>
       </div>
 
-      <!-- BEACON — amber — Pillar III -->
-      <div class="bg-amber-400 text-green-900">
+      <!-- FORGE — red — Pillar II -->
+      <div class="bg-flame text-cream border-b md:border-b-0 md:border-r border-neutral-800">
         <div class="px-6 md:px-8 py-16 md:py-20">
-          <p class="text-xs font-mono uppercase tracking-[0.3em] text-green-800 mb-4">// Pillar III — Signal</p>
-          <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4">BEACON</h2>
-          <p class="text-base text-green-800 mb-10 leading-relaxed">Building in public. The story behind the build — what I'm making, why, and the part I'm giving away. Honest, not a pitch.</p>
+          <p class="text-xs font-mono uppercase tracking-[0.3em] text-cream/80 mb-4">// Pillar II — Build</p>
+          <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4">FORGE</h2>
+          <p class="text-base text-cream/80 mb-10 leading-relaxed">Building and shipping. Code lands in production. The trade-offs that earned it. The rules I write so I don't make the same mistake twice.</p>
 
           <div class="space-y-5 mb-10">
-            {beaconPosts.length === 0 ? (
-              <p class="text-green-800">No signals yet. The first one's coming.</p>
-            ) : beaconPosts.map((post) => (
-              <article class="border-b border-amber-600/40 pb-5 last:border-b-0">
-                <p class="text-xs font-mono uppercase tracking-wider text-green-800 mb-2">
+            {forgePosts.length === 0 ? (
+              <p class="text-cream/70">No Forge posts yet.</p>
+            ) : forgePosts.map((post) => (
+              <article class="border-b border-black/20 pb-5 last:border-b-0">
+                <p class="text-xs font-mono uppercase tracking-wider text-cream/70 mb-2">
                   {post.data.date.toISOString().slice(0, 10)}
                 </p>
                 <h3 class="text-lg font-bold mb-1 tracking-tight leading-snug">
                   <a href={`/blog/${post.slug}`} class="no-underline hover:underline">{post.data.title}</a>
                 </h3>
-                <p class="text-green-800 text-sm leading-relaxed">{post.data.excerpt}</p>
+                <p class="text-cream/70 text-sm leading-relaxed">{post.data.excerpt}</p>
               </article>
             ))}
           </div>
 
-          <a href="/beacon" class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-green-800 hover:text-black no-underline border-b border-amber-700 hover:border-black pb-1">
+          <a href="/forge" class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-cream hover:text-white no-underline border-b border-cream/40 hover:border-cream pb-1">
+            All Forge →
+          </a>
+        </div>
+      </div>
+
+      <!-- BEACON — white — Pillar III -->
+      <div class="bg-white text-black">
+        <div class="px-6 md:px-8 py-16 md:py-20">
+          <p class="text-xs font-mono uppercase tracking-[0.3em] text-flame mb-4">// Pillar III — Signal</p>
+          <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4">BEACON</h2>
+          <p class="text-base text-neutral-700 mb-10 leading-relaxed">Building in public. The story behind the build — what I'm making, why, and the part I'm giving away. Honest, not a pitch.</p>
+
+          <div class="space-y-5 mb-10">
+            {beaconPosts.length === 0 ? (
+              <p class="text-neutral-500">No signals yet. The first one's coming.</p>
+            ) : beaconPosts.map((post) => (
+              <article class="border-b border-neutral-200 pb-5 last:border-b-0">
+                <p class="text-xs font-mono uppercase tracking-wider text-flame mb-2">
+                  {post.data.date.toISOString().slice(0, 10)}
+                </p>
+                <h3 class="text-lg font-bold mb-1 tracking-tight leading-snug">
+                  <a href={`/blog/${post.slug}`} class="no-underline hover:underline">{post.data.title}</a>
+                </h3>
+                <p class="text-neutral-600 text-sm leading-relaxed">{post.data.excerpt}</p>
+              </article>
+            ))}
+          </div>
+
+          <a href="/beacon" class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-flame hover:text-black no-underline border-b border-flame/40 hover:border-flame pb-1">
             All Beacon →
           </a>
         </div>
@@ -150,7 +150,7 @@ const year = new Date().getFullYear();
     <!-- Currently studying — external coursework, listed honestly -->
     <section class="border-t border-neutral-800 bg-black">
       <div class="max-w-6xl mx-auto px-6 py-10">
-        <p class="text-xs font-mono uppercase tracking-[0.3em] text-neutral-500 mb-4">// Currently studying</p>
+        <p class="text-xs font-mono uppercase tracking-[0.3em] text-flame mb-4">// Currently studying</p>
         <p class="text-base md:text-lg text-neutral-300 leading-relaxed max-w-3xl">
           <a href="https://www.youtube.com/watch?v=JP7ITIXGpHk" rel="noopener noreferrer" target="_blank" class="text-white hover:underline">CS50 — Harvard's intro to computer science (Lecture 0)</a>
           <span class="text-neutral-500"> — David Malan. Foundational ground under the daily build: variables, functions, memory model, algorithm complexity. Notes that lock get encoded into the Encode definitions list.</span>

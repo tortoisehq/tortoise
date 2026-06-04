@@ -4,6 +4,10 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      colors: {
+        flame: '#E0322B',
+        cream: '#F4ECDD',
+      },
       fontFamily: {
         sans: ['ui-sans-serif', 'system-ui', 'sans-serif'],
         serif: ['ui-serif', 'Georgia', 'Cambria', 'serif'],
