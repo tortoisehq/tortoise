@@ -3,7 +3,7 @@ title: "Learn the Tool by Turning It on Yourself"
 date: "2026-06-04"
 category: "encode"
 tags: [encode, building-in-public, data-analytics, coursera]
-excerpt: "I paused CS50 Python to start the Google Data Analytics Certificate — the exact skill behind the mirror I'm building. The plan: don't learn it on a textbook's clean dataset. Turn it on my own life."
+excerpt: "I paused CS50 Python for the Google Data Analytics cert — the skill behind the mirror I'm building. Plan: learn it on my own life, not a textbook."
 ---
 
 The last lesson I locked here was that you don't own a line you copied. If I can't rebuild it from a blank file, I don't have it — no matter what the green checkmark says. So naturally, I have honored that hard-won wisdom by pausing Python altogether and wandering off to learn something else. Growth.
