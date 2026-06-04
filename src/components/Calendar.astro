@@ -1,5 +1,5 @@
 ---
-import completion from '../data/completion.json';
+import { getCollection } from 'astro:content';
 
 interface Props {
   /** ISO date "YYYY-MM-DD" — defaults to today. Calendar shows through this month. */
@@ -10,14 +10,21 @@ interface Props {
 
 const { today, start = '2026-04-01' } = Astro.props;
 
-type Row = { date: string; forge: boolean; encode: boolean; beacon: boolean };
-const completionMap = new Map<string, Row>(
-  (completion as Row[]).map((r) => [r.date, r]),
-);
-
 const todayDate = today ?? new Date().toISOString().slice(0, 10);
-const [tY, tM, tD] = todayDate.split('-').map(Number);
+const [tY, tM] = todayDate.split('-').map(Number);
 const [sY, sM] = start.split('-').map(Number);
+
+// A day "counts" when at least one blog post shipped that day (any pillar).
+// Derived straight from the published posts — no external pipeline, always current.
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .map((p) => ({ date: p.data.date.toISOString().slice(0, 10), cat: p.data.category }))
+  .filter((p) => p.date <= todayDate);
+
+const postedDates = new Set(posts.map((p) => p.date));
+const doneDays = postedDates.size;
+const forgeCount = posts.filter((p) => p.cat === 'forge').length;
+const encodeCount = posts.filter((p) => p.cat === 'encode').length;
+const beaconCount = posts.filter((p) => p.cat === 'beacon').length;
 
 const MONTH_NAMES = [
   'January', 'February', 'March', 'April', 'May', 'June',
@@ -38,15 +45,7 @@ function monthsBetween(startY: number, startM: number, endY: number, endM: numbe
 
 const monthsList = monthsBetween(sY, sM, tY, tM);
 
-type Cell = {
-  day: number | null;
-  iso?: string;
-  forge?: boolean;
-  encode?: boolean;
-  beacon?: boolean;
-  isToday?: boolean;
-  isFuture?: boolean;
-};
+type Cell = { day: number | null; iso?: string; done?: boolean; isToday?: boolean; isFuture?: boolean };
 
 function pad2(n: number) { return n < 10 ? `0${n}` : `${n}`; }
 
@@ -59,17 +58,12 @@ function buildMonth(year: number, month: number): Cell[] {
   for (let i = 0; i < offset; i++) cells.push({ day: null });
   for (let d = 1; d <= daysInMonth; d++) {
     const iso = `${year}-${pad2(month)}-${pad2(d)}`;
-    const row = completionMap.get(iso);
-    const isToday = iso === todayDate;
-    const isFuture = iso > todayDate;
     cells.push({
       day: d,
       iso,
-      forge: row?.forge ?? false,
-      encode: row?.encode ?? false,
-      beacon: row?.beacon ?? false,
-      isToday,
-      isFuture,
+      done: postedDates.has(iso),
+      isToday: iso === todayDate,
+      isFuture: iso > todayDate,
     });
   }
   while (cells.length % 7 !== 0) cells.push({ day: null });
@@ -81,23 +75,11 @@ const renderedMonths = monthsList.map(({ year, month }) => ({
   month,
   name: MONTH_NAMES[month - 1],
   cells: buildMonth(year, month),
-  // Stable id used to auto-scroll the current month into view.
   id: `cal-${year}-${pad2(month)}`,
   isCurrent: year === tY && month === tM,
 }));
 
 const DOW = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-
-// Rollup stats — only count days up to and including today (no future).
-// The goal is two of the three pillars.
-const completedRows = (completion as Row[]).filter((r) => r.date <= todayDate);
-const totalDays = completedRows.length;
-const doneCount = (r: Row) => [r.forge, r.encode, r.beacon].filter(Boolean).length;
-const goalDays = completedRows.filter((r) => doneCount(r) >= 2).length;
-const forgeDays = completedRows.filter((r) => r.forge).length;
-const encodeDays = completedRows.filter((r) => r.encode).length;
-const beaconDays = completedRows.filter((r) => r.beacon).length;
-
 const currentMonthId = `cal-${tY}-${pad2(tM)}`;
 ---
 
@@ -106,16 +88,14 @@ const currentMonthId = `cal-${tY}-${pad2(tM)}`;
     <div class="flex items-baseline justify-between mb-8 flex-wrap gap-3">
       <div>
         <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-2">// Daily Completion</p>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white">Two of three, every day.</h2>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white">At least one, every day.</h2>
       </div>
       <div class="flex items-center gap-x-6 gap-y-2 text-sm font-mono text-neutral-400 flex-wrap">
-        <span><span class="text-white font-semibold">{goalDays}</span> / {totalDays} days hit 2 of 3</span>
+        <span><span class="text-white font-semibold">{doneDays}</span> days shipped</span>
         <span class="text-neutral-600 hidden md:inline">|</span>
-        <span><span class="text-white">F</span> {forgeDays} · <span class="text-white">E</span> {encodeDays} · <span class="text-white">B</span> {beaconDays}</span>
-        <span class="text-neutral-600 hidden lg:inline">|</span>
-        <span class="hidden lg:flex items-center gap-2"><span class="inline-block w-3 h-3 bg-white"></span> Encode</span>
-        <span class="hidden lg:flex items-center gap-2"><span class="inline-block w-3 h-3 bg-flame"></span> Forge</span>
-        <span class="hidden lg:flex items-center gap-2"><span class="inline-block w-3 h-3 bg-gold"></span> Beacon</span>
+        <span><span class="text-white">F</span> {forgeCount} · <span class="text-white">E</span> {encodeCount} · <span class="text-white">B</span> {beaconCount}</span>
+        <span class="text-neutral-600 hidden md:inline">|</span>
+        <span class="flex items-center gap-2"><span class="inline-block w-3 h-3 bg-gold"></span> a post shipped</span>
       </div>
     </div>
 
@@ -146,21 +126,15 @@ const currentMonthId = `cal-${tY}-${pad2(tM)}`;
               if (cell.day === null) {
                 return <div class="aspect-square"></div>;
               }
-              const done = [cell.forge, cell.encode, cell.beacon].filter(Boolean).length;
               return (
                 <div class={`aspect-square relative ${cell.isToday ? 'ring-2 ring-gold' : ''}`}>
                   {cell.isFuture ? (
                     <div class="absolute inset-0 border border-neutral-800"></div>
                   ) : (
-                    <div class="absolute inset-0 flex gap-px">
-                      <div class={cell.encode ? 'flex-1 bg-white' : 'flex-1 bg-neutral-800'}></div>
-                      <div class={cell.forge ? 'flex-1 bg-flame' : 'flex-1 bg-neutral-800'}></div>
-                      <div class={cell.beacon ? 'flex-1 bg-gold' : 'flex-1 bg-neutral-800'}></div>
-                    </div>
+                    <div class={`absolute inset-0 ${cell.done ? 'bg-gold' : 'bg-neutral-800'}`}></div>
                   )}
                   <span class={`relative z-10 flex items-center justify-center w-full h-full text-[11px] font-mono ${
-                    cell.isFuture ? 'text-neutral-600' :
-                    done > 0 ? 'text-neutral-200 mix-blend-difference' : 'text-neutral-500'
+                    cell.done ? 'text-black font-semibold' : cell.isFuture ? 'text-neutral-600' : 'text-neutral-500'
                   }`}>{cell.day}</span>
                 </div>
               );
@@ -181,7 +155,6 @@ const currentMonthId = `cal-${tY}-${pad2(tM)}`;
   const track = document.getElementById('calendar-track');
   const current = document.getElementById(currentMonthId);
   if (track && current) {
-    // Use scrollLeft directly to avoid hijacking page scroll.
     track.scrollLeft = current.offsetLeft - track.offsetLeft - 16;
   }
 </script>
