@@ -5,7 +5,7 @@ import Calendar from '../components/Calendar.astro';
 import { categoryList } from '../lib/categories';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  .sort((a, b) => (b.data.date.getTime() - a.data.date.getTime()) || b.slug.localeCompare(a.slug, undefined, { numeric: true }));
 
 const forgePosts = posts.filter((p) => p.data.category === 'forge').slice(0, 4);
 const encodePosts = posts.filter((p) => p.data.category === 'encode').slice(0, 4);

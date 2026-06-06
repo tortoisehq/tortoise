@@ -7,7 +7,7 @@ import { categories } from '../../lib/categories';
 const meta = categories.forge;
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft && data.category === 'forge'))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  .sort((a, b) => (b.data.date.getTime() - a.data.date.getTime()) || b.slug.localeCompare(a.slug, undefined, { numeric: true }));
 ---
 
 <Layout title={meta.name} description={meta.description} palette="forge">

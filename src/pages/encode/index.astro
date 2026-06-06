@@ -9,7 +9,7 @@ import methodVersions from '../../data/method-versions.json';
 const meta = categories.encode;
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft && data.category === 'encode'))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  .sort((a, b) => (b.data.date.getTime() - a.data.date.getTime()) || b.slug.localeCompare(a.slug, undefined, { numeric: true }));
 
 type Definition = { term: string; category: string; definition: string; session: string };
 
