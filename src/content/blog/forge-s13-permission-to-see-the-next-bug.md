@@ -2,7 +2,7 @@
 title: "Each Fix Is Permission To See The Next Bug"
 date: "2026-05-03"
 category: "forge"
-tags: [forge, building-in-public, debugging, verification]
+tags: [forge, build-1, debugging, verification]
 excerpt: "What I thought was a fix turned out to be permission to see the next bug. The recorder worked; the upload behind it didn't."
 ---
 

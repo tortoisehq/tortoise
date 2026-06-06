@@ -2,7 +2,7 @@
 title: "Cut the Option, Don't Guard It"
 date: "2026-05-25"
 category: "forge"
-tags: [forge, building-in-public, architecture, pipeline]
+tags: [forge, build-1, architecture, pipeline]
 excerpt: "Four audit rounds caught real bugs. The cheaper fix wasn't more guards — it was removing the option that created the risk."
 ---
 

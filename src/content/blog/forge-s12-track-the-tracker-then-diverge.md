@@ -2,7 +2,7 @@
 title: "Track the Tracker, Then Diverge"
 date: "2026-05-02"
 category: "forge"
-tags: [forge, building-in-public, design, thinking-tools]
+tags: [forge, build-1, design, thinking-tools]
 excerpt: "The site's calendar only showed the current month. The site had no resume. Both fixes started as one artifact each, then turned into three."
 ---
 

@@ -2,7 +2,7 @@
 title: "When Two Records Disagree, You Don't Have a Record"
 date: "2026-04-19"
 category: "forge"
-tags: [forge, building-in-public, pipeline, strategy]
+tags: [forge, build-1, pipeline, strategy]
 excerpt: "A vision document said one thing. Three sessions of code shipped another. Nobody on the inside noticed for ten days."
 ---
 

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-label="Cite or stay silent: the account is checked against the agreement; quotes found are cited, anything unproven is flagged verify">
+  <rect width="1200" height="420" fill="#0b0b0c"/>
+  <text x="600" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="38" fill="#d8a84a" letter-spacing="3">cite or stay silent</text>
+  <rect x="70" y="156" width="270" height="120" rx="12" fill="#141416" stroke="#2a2a2c" stroke-width="2"/>
+  <text x="205" y="206" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#f5f3ee">what happened</text>
+  <text x="205" y="236" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#8a8a86">in your words</text>
+  <path d="M340 216 L432 216" fill="none" stroke="#3a3a3c" stroke-width="2" marker-end="url(#arw)"/>
+  <rect x="440" y="156" width="270" height="120" rx="12" fill="#141416" stroke="#2a2a2c" stroke-width="2"/>
+  <text x="575" y="206" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#f5f3ee">the agreement</text>
+  <text x="575" y="236" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#8a8a86">checked, line by line</text>
+  <path d="M710 216 L802 216" fill="none" stroke="#3a3a3c" stroke-width="2" marker-end="url(#arw)"/>
+  <text x="1000" y="196" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#d8a84a">quoted &#8594; cited</text>
+  <text x="1000" y="244" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#c8442f">can't ground &#8594; "verify"</text>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#3a3a3c"/></marker>
+  </defs>
+</svg>

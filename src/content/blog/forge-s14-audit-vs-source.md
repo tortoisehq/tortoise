@@ -2,7 +2,7 @@
 title: "When the Audit Disagrees with the Source"
 date: "2026-05-04"
 category: "forge"
-tags: [forge, building-in-public, pipeline, audit]
+tags: [forge, build-1, pipeline, audit]
 excerpt: "Eight sessions deep on a button that still doesn't work — the question that landed wasn't about the button."
 ---
 

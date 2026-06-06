@@ -2,7 +2,7 @@
 title: "When the Check Is the Bug"
 date: "2026-05-30"
 category: "forge"
-tags: [forge, building-in-public, pwa, verification]
+tags: [forge, build-1, pwa, verification]
 excerpt: "Four AI auditors read my service worker twice and agreed it was fine. What they kept rejecting was the checks I'd written to prove it."
 ---
 

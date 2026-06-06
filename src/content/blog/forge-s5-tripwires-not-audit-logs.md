@@ -2,7 +2,7 @@
 title: "Tripwires, Not Audit Logs"
 date: "2026-04-20"
 category: "forge"
-tags: [forge, building-in-public, migration, verification]
+tags: [forge, build-1, migration, verification]
 excerpt: "A week-two shortcut became six-week drift. The migration took an afternoon. The thing it taught took longer."
 ---
 

@@ -2,7 +2,7 @@
 title: "Defense at every approach"
 date: "2026-05-20"
 category: "forge"
-tags: [forge, building-in-public, audits, security]
+tags: [forge, build-1, audits, security]
 excerpt: "Three LLM auditors said the verify script was solid. The fourth auditor ran it. It wasn't."
 ---
 

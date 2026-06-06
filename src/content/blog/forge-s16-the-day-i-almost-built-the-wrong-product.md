@@ -2,7 +2,7 @@
 title: "The Day I Almost Built the Wrong Product"
 date: "2026-05-05"
 category: "forge"
-tags: [forge, building-in-public, planning, strategy]
+tags: [forge, build-1, planning, strategy]
 excerpt: "Caught the wrong-product trap at session 16 — pivoted from personal practice substrate to a privacy-first journal competing with Rosebud."
 ---
 

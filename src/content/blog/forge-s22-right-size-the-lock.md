@@ -2,7 +2,7 @@
 title: "Right-Size the Lock"
 date: "2026-05-14"
 category: "forge"
-tags: [forge, building-in-public, architecture, discipline]
+tags: [forge, build-1, architecture, discipline]
 excerpt: "The truck phone substrate went live end-to-end this morning. Then the actual question landed: how much lock does it need yet?"
 ---
 

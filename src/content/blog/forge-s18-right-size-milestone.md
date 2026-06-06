@@ -2,7 +2,7 @@
 title: "Right-Size the Milestone, Not Just the Task"
 date: "2026-05-08"
 category: "forge"
-tags: [forge, building-in-public, milestone, scope]
+tags: [forge, build-1, milestone, scope]
 excerpt: "Yesterday's session shipped the platform. Today's session asked what I was actually trying to use it for, and the answer reshaped the whole roadmap."
 ---
 

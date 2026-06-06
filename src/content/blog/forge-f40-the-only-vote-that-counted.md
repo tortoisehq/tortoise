@@ -2,7 +2,7 @@
 title: "Four Reviews Passed. The Only Vote That Counted Was My Thumb."
 date: "2026-06-05"
 category: "forge"
-tags: [forge, building-in-public, use-proof, the-misses]
+tags: [forge, build-1, use-proof, the-misses]
 excerpt: "A feature I built fifteen sessions ago had never once run. Four AI reviews approved the fix; only my thumb on the button could prove it."
 ---
 

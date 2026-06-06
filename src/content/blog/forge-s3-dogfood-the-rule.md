@@ -2,7 +2,7 @@
 title: "Rules Without Immediate Exercise Are Rules You Don't Have Yet"
 date: "2026-04-17"
 category: "forge"
-tags: [forge, building-in-public, pipeline, rail-engineer]
+tags: [forge, build-1, pipeline, rail-engineer]
 excerpt: "Three rules added to my build pipeline in one session, and the reason each one got run the same afternoon it was written."
 ---
 

@@ -2,7 +2,7 @@
 title: "Walls Don't Stand on Dirt"
 date: "2026-05-16"
 category: "forge"
-tags: [forge, building-in-public, architecture, debugging]
+tags: [forge, build-1, architecture, debugging]
 excerpt: "Spent a day shipping an auth foundation. Production returned 500 on every signup. The root cause was below where I was looking."
 ---
 

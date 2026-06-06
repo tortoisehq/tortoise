@@ -2,7 +2,7 @@
 title: "When the Audit Outweighs the Fix"
 date: "2026-05-04"
 category: "forge"
-tags: [forge, building-in-public, pipeline, verification]
+tags: [forge, build-1, pipeline, verification]
 excerpt: "Five-line fix. Sixteen hours of audit. The day the pipeline failed the test it was supposed to apply to the code."
 ---
 

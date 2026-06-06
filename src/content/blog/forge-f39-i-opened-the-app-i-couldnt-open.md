@@ -2,7 +2,7 @@
 title: "I Opened the App I Couldn't Open"
 date: "2026-06-04"
 category: "forge"
-tags: [forge, building-in-public, the-misses, use-proof]
+tags: [forge, build-1, the-misses, use-proof]
 excerpt: "Last week I shipped a fix to an app I couldn't open. Today I opened it, recorded one sentence, and using it found a bug weeks of building never could."
 ---
 

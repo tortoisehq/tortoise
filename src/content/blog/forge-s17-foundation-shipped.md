@@ -2,7 +2,7 @@
 title: "Foundation Day"
 date: "2026-05-07"
 category: "forge"
-tags: [forge, building-in-public, infrastructure, milestone]
+tags: [forge, build-1, infrastructure, milestone]
 excerpt: "Cloud foundation shipped tonight. The full breakdown comes tomorrow with a clearer head."
 ---
 

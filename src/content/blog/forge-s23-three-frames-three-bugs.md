@@ -2,7 +2,7 @@
 title: "Three Frames, Three Bugs I Couldn't See"
 date: "2026-05-15"
 category: "forge"
-tags: ["forge", "building-in-public", "ai", "audit"]
+tags: ["forge", "build-1", "ai", "audit"]
 excerpt: "A one-day foundation build where three external AI auditors caught three production-blockers I would have shipped without them."
 ---
 

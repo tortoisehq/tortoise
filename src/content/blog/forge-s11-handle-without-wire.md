@@ -2,7 +2,7 @@
 title: "When the Brake Handle Isn't Connected to the Brakes"
 date: "2026-05-01"
 category: "forge"
-tags: [forge, building-in-public, testing, architecture]
+tags: [forge, build-1, testing, architecture]
 excerpt: "The dashboard record button shipped yesterday. Today's verification ran into a sixty-second timeout that wasn't actually connected to anything."
 ---
 

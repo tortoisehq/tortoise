@@ -2,7 +2,7 @@
 title: "Why Lincoln Picked Your React Renderer"
 date: "2026-05-19"
 category: "forge"
-tags: [forge, building-in-public, architecture, ai]
+tags: [forge, build-1, architecture, ai]
 excerpt: "In 1862 Lincoln signed a law about rail gauges. One hundred and sixty years later it picked my markdown renderer."
 ---
 

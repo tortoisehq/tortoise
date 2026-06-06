@@ -2,7 +2,7 @@
 title: "The Body Already Knows the Pattern"
 date: "2026-05-12"
 category: "forge"
-tags: [forge, building-in-public, architecture, pipeline]
+tags: [forge, build-1, architecture, pipeline]
 excerpt: "Twenty-seven days in, the voice-journal back half landed. The harder choice wasn't the code; it was the substrate it sits on."
 ---
 

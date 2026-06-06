@@ -2,7 +2,7 @@
 title: "The Discipline Becomes The Hardware"
 date: "2026-05-11"
 category: "forge"
-tags: [forge, building-in-public, pipeline, ai]
+tags: [forge, build-1, pipeline, ai]
 excerpt: "Some sessions you ship features. Some you ship the pipeline that ships features. Today was the second kind, and the math was clear."
 ---
 

@@ -2,7 +2,7 @@
 title: "The Author Cannot Audit Their Own Frame"
 date: "2026-04-29"
 category: "forge"
-tags: [forge, building-in-public, pipeline, ai]
+tags: [forge, build-1, pipeline, ai]
 excerpt: "A year-old bug caught at intake. Two rounds of internal review approved a flawed prompt. The third pair of eyes saw the timezone bug."
 ---
 

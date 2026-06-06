@@ -2,7 +2,7 @@
 title: "The Coach Doesn't Hit the Ball Better Than You"
 date: "2026-04-23"
 category: "forge"
-tags: [forge, building-in-public, ai, mentorship]
+tags: [forge, build-1, ai, mentorship]
 excerpt: "I shipped an AI mirror today that reads my journals. The part that matters isn't what it knows. It's what it sees."
 ---
 

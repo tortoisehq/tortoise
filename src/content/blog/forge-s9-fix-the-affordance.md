@@ -2,7 +2,7 @@
 title: "Fix the Affordance, Not the Human"
 date: "2026-04-29"
 category: "forge"
-tags: [forge, building-in-public, dev-environment, rail-engineer]
+tags: [forge, build-1, dev-environment, rail-engineer]
 excerpt: "Opened my own dashboard and got a 500. The fix wasn't a bug fix. It was admitting the system was lying to me about what it needed to run."
 ---
 

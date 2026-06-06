@@ -2,7 +2,7 @@
 title: "The Recovery Doorway Comes First"
 date: "2026-05-22"
 category: "forge"
-tags: ["forge", "building-in-public", "architecture", "rail-engineer"]
+tags: ["forge", "build-1", "architecture", "rail-engineer"]
 excerpt: "I thought I had not used my own product for twenty-eight sessions. The database told a different story."
 ---
 

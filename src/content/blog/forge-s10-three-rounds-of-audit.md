@@ -2,7 +2,7 @@
 title: "The Audit Chain Pays Off Three Times Then Stops"
 date: "2026-04-30"
 category: "forge"
-tags: [forge, building-in-public, external-audit, voice-product]
+tags: [forge, build-1, external-audit, voice-product]
 excerpt: "Spent four prompt revisions and five external audits shipping a record button. Caught one real bug, eleven small ones, and a hard rule about when to stop."
 ---
 

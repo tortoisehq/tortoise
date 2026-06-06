@@ -2,7 +2,7 @@
 title: "One token, one use, no boats"
 date: "2026-05-21"
 category: "forge"
-tags: [forge, security, structural-defense, building-in-public]
+tags: [forge, security, structural-defense, build-1]
 excerpt: "Multi-use tokens defended by policy can be replayed. One-shot tokens defended by structural commit at consume-moment cannot. Cortés knew this in 1519."
 ---
 
