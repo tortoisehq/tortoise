@@ -8,7 +8,7 @@ excerpt: "Workhorse was the machine that builds. Steward is the first real tool 
 
 A conductor comes off a nineteen-hour shift. Somewhere in the night he helped re-rail a train beside a canyon, in the rain. He booked his rest and never got it. He asked for a bunkhouse, and there wasn't one. By the time he tied up he'd been on the clock for nineteen hours straight, and now he's owed a grievance with nothing left to write it. That member is who Build Two is for.
 
-Steward is a pocket shop steward. You talk through what happened — tired, rambling, out of order — and it reads your account against the actual collective agreement, finds every violation the facts support, and drafts the grievance with the exact article quoted. It's built for my Kamloops crew on our TCRC 4.3 agreement, and built first for me, because I'm a conductor too.
+Steward is a pocket shop steward. You talk through what happened — tired, rambling, out of order — and it reads your account against the actual collective agreement, finds every violation the facts support, and drafts the grievance with the exact article quoted. It's built for my crew, and built first for me, because I'm a railroader too.
 
 Build One was Workhorse: the machine that builds. Steward is the first real tool that machine helped me make — not dev tooling for me, but a field tool for people doing hard, dangerous work in bad conditions. This week it learned to interview back. Instead of a dumb form with ten questions, it reads what you already said and asks only the gaps the contract actually needs — one short question at a time, because you're exhausted. In testing it caught a violation I never thought to raise, and named the company's strongest defense before I could overreach.
 
