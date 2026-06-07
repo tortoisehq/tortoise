@@ -262,5 +262,17 @@
     "category": "python",
     "definition": "When one call sits inside another, the INNERMOST runs first and its result flows outward. print(name.replace(\" \", \"...\")) runs .replace on name first, producing the transformed text, THEN print shows it. Cook-before-serve: the transformation has to finish before the outer call can act on the result. Read a nested line from the inside out.",
     "session": "E22"
+  },
+  {
+    "term": "data",
+    "category": "data-analytics",
+    "definition": "A collection of facts.",
+    "session": "E25"
+  },
+  {
+    "term": "data analysis",
+    "category": "data-analytics",
+    "definition": "The collection, transformation, and organization of data in order to draw conclusions, make predictions, and drive informed decision-making.",
+    "session": "E25"
   }
 ]
