@@ -30,4 +30,4 @@ Watching is not learning. Producing is.
 
 Session 25. Rated 6. Two definitions locked. One still owed.
 
-I am learning this in the open. tortoisehq.io.
+I am learning this in the open. lovelearnlift.com.
