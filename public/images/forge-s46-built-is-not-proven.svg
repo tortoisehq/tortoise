@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Built, reviewed, and use-proven are three different states. The vault backup finally ran on the real vault: sixteen files, backup then verify then decrypt.">
+  <rect width="1200" height="600" fill="#0b0b0c"/>
+  <text x="120" y="118" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" letter-spacing="5" fill="#f59e0b">// S46 — BUILT IS NOT PROVEN</text>
+
+  <text x="120" y="244" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="44" font-weight="700" fill="#57534e">BUILT</text>
+  <text x="1000" y="244" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="40" fill="#57534e">done</text>
+
+  <text x="120" y="330" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="44" font-weight="700" fill="#a8a29e">REVIEWED</text>
+  <text x="1000" y="330" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="40" fill="#a8a29e">done</text>
+
+  <rect x="96" y="378" width="4" height="62" fill="#f59e0b"/>
+  <text x="120" y="426" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="54" font-weight="700" fill="#fafaf9">USE-PROVEN</text>
+  <text x="1000" y="426" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="44" font-weight="700" fill="#f59e0b">today</text>
+
+  <text x="120" y="524" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" fill="#78716c">16 files / backup, verify, decrypt / on the real vault</text>
+</svg>
