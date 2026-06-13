@@ -1,27 +1,54 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import PostListItem from '../../components/PostListItem.astro';
 import { categories } from '../../lib/categories';
 
 const meta = categories.forge;
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft && data.category === 'forge'))
-  .sort((a, b) => (b.data.date.getTime() - a.data.date.getTime()) || b.slug.localeCompare(a.slug, undefined, { numeric: true }));
+// Forge has two builds (Build One = Workhorse, Build Two = Steward). A post
+// belongs to Steward when build === 'steward'; everything else is Workhorse
+// (the original build — absent `build` defaults to it).
+const forgePosts = await getCollection('blog', ({ data }) => !data.draft && data.category === 'forge');
+const stewardCount = forgePosts.filter((p) => p.data.build === 'steward').length;
+const workhorseCount = forgePosts.length - stewardCount;
+
+const builds = [
+  {
+    href: '/forge/workhorse',
+    order: 'Build One',
+    stage: 'alpha',
+    name: 'Workhorse',
+    blurb: 'The machine that builds — the Forge pipeline itself, and the dev tooling behind every other build.',
+    count: workhorseCount,
+  },
+  {
+    href: '/forge/steward',
+    order: 'Build Two',
+    stage: 'beta',
+    name: 'Steward',
+    blurb: 'A pocket shop steward for a railway crew — the first field tool Workhorse helped me make.',
+    count: stewardCount,
+  },
+];
 ---
 
 <Layout title={meta.name} description={meta.description} palette="forge">
   <header class="mb-12">
     <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-3">// Pillar II — Build</p>
     <h1 class="text-5xl font-bold tracking-tight mb-3">Forge</h1>
-    <p class="text-lg text-neutral-300 max-w-xl">Building and shipping. Sessions where code lands in production, the trade-offs that earned it, and the rules I write so I don't make the same mistake twice.</p>
+    <p class="text-lg text-neutral-300 max-w-xl">Building and shipping. Forge has two builds — the machine that builds, and the tools it helps me make. Pick a build to read its sessions: the code that landed, the trade-offs that earned it, and the rules I write so I don't make the same mistake twice.</p>
   </header>
 
-  {posts.length === 0 ? (
-    <p class="text-neutral-400">No posts in this category yet.</p>
-  ) : (
-    <div>
-      {posts.map((post) => <PostListItem post={post} palette="forge" />)}
-    </div>
-  )}
+  <div class="grid gap-5 sm:grid-cols-2">
+    {builds.map((b) => (
+      <a href={b.href} class="group block border border-neutral-800 hover:border-white transition-colors p-6 no-underline">
+        <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-3">// {b.order} · {b.stage}</p>
+        <h2 class="text-3xl font-bold tracking-tight mb-3 text-white">{b.name}</h2>
+        <p class="text-neutral-400 mb-6 leading-relaxed">{b.blurb}</p>
+        <span class="text-sm font-mono text-neutral-300 group-hover:text-white">
+          {b.count === 0 ? 'No sessions yet' : `${b.count} ${b.count === 1 ? 'session' : 'sessions'}`} →
+        </span>
+      </a>
+    ))}
+  </div>
 </Layout>

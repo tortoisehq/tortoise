@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import PostListItem from '../../components/PostListItem.astro';
+
+// Build Two — Steward: forge posts tagged build === 'steward'.
+const posts = (await getCollection('blog', ({ data }) =>
+  !data.draft && data.category === 'forge' && data.build === 'steward'))
+  .sort((a, b) => (b.data.date.getTime() - a.data.date.getTime()) || b.slug.localeCompare(a.slug, undefined, { numeric: true }));
+---
+
+<Layout title="Steward — Forge" description="Build Two: a pocket shop steward for a railway crew. The first field tool Workhorse helped me make." palette="forge">
+  <header class="mb-12">
+    <a href="/forge" class="text-xs font-mono uppercase tracking-[0.2em] text-neutral-500 hover:text-white no-underline">← Forge</a>
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mt-4 mb-3">// Build Two · beta</p>
+    <h1 class="text-5xl font-bold tracking-tight mb-3">Steward</h1>
+    <p class="text-lg text-neutral-300 max-w-xl">A pocket shop steward for a railway crew. You talk through a bad shift — tired, out of order — and it reads your account against the collective agreement, finds every violation the facts support, and drafts the grievance with the article quoted. The first field tool Workhorse helped me make.</p>
+  </header>
+
+  {posts.length === 0 ? (
+    <p class="text-neutral-400">No Steward sessions yet.</p>
+  ) : (
+    <div>
+      {posts.map((post) => <PostListItem post={post} palette="forge" />)}
+    </div>
+  )}
+</Layout>

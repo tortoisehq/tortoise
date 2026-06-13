@@ -2,6 +2,7 @@
 title: "Build Two: A Pocket Shop Steward"
 date: "2026-06-05"
 category: "forge"
+build: "steward"
 tags: ["steward", "build-2", "rail", "ai"]
 excerpt: "Workhorse was the machine that builds. Steward is the first real tool it helped me make — a pocket shop steward for a railway crew."
 ---
