@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Arc 1: the build pipeline got smaller. The teaching layer and nine backlog docs were removed; the net change was negative lines of code.">
+  <rect width="1200" height="600" fill="#0b0b0c"/>
+  <text x="100" y="90" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" letter-spacing="5" fill="#f59e0b">// ARC 1 — THE PIPELINE GOT SMALLER</text>
+
+  <!-- BEFORE -->
+  <text x="100" y="180" font-family="ui-monospace, monospace" font-size="20" letter-spacing="3" fill="#78716c">BEFORE</text>
+  <rect x="100" y="200" width="380" height="80" fill="#44403c"/>
+  <text x="120" y="248" font-family="ui-monospace, monospace" font-size="22" fill="#a8a29e">build pipeline</text>
+  <rect x="100" y="290" width="380" height="120" fill="#57534e"/>
+  <text x="120" y="338" font-family="ui-monospace, monospace" font-size="22" fill="#d6d3d1">teaching curriculum</text>
+  <text x="120" y="372" font-family="ui-monospace, monospace" font-size="17" fill="#a8a29e">MBL · mentor/concept/code</text>
+  <text x="120" y="396" font-family="ui-monospace, monospace" font-size="17" fill="#a8a29e">pillars · 8-block narrative</text>
+
+  <!-- arrow -->
+  <text x="560" y="320" font-family="ui-monospace, monospace" font-size="40" fill="#f59e0b">&#8594;</text>
+
+  <!-- AFTER -->
+  <text x="720" y="180" font-family="ui-monospace, monospace" font-size="20" letter-spacing="3" fill="#78716c">AFTER</text>
+  <rect x="720" y="200" width="380" height="80" fill="#fafaf9"/>
+  <text x="740" y="248" font-family="ui-monospace, monospace" font-size="22" fill="#0b0b0c">build pipeline</text>
+  <rect x="720" y="290" width="380" height="120" fill="none" stroke="#57534e" stroke-width="2" stroke-dasharray="8 8"/>
+  <text x="740" y="356" font-family="ui-monospace, monospace" font-size="22" fill="#57534e">— removed —</text>
+
+  <!-- caption -->
+  <text x="100" y="500" font-family="ui-monospace, monospace" font-size="26" fill="#fafaf9">−1 whole layer  ·  −9 backlog docs  ·  net −129 lines</text>
+  <text x="100" y="540" font-family="ui-monospace, monospace" font-size="20" fill="#78716c">forge 4.0 &#8594; 4.2 — the upgrade was subtraction</text>
+</svg>

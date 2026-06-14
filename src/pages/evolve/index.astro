@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import PostListItem from '../../components/PostListItem.astro';
+import { categories } from '../../lib/categories';
+
+const meta = categories.evolve;
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft && data.category === 'evolve'))
+  .sort((a, b) => (b.data.date.getTime() - a.data.date.getTime()) || b.slug.localeCompare(a.slug, undefined, { numeric: true }));
+---
+
+<Layout title={meta.name} description={meta.description} palette="evolve">
+  <header class="mb-12">
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-3">// Forge — Meta</p>
+    <h1 class="text-5xl font-bold tracking-tight mb-3">Evolve</h1>
+    <p class="text-lg text-neutral-300 max-w-xl">How the pipeline evolves. Every ten sessions or so, one retrospective on the machine that builds the machine — what it added, what it cut, and why getting smaller was the upgrade.</p>
+  </header>
+
+  {posts.length === 0 ? (
+    <p class="text-neutral-400">No retrospectives yet. The first arc is coming.</p>
+  ) : (
+    <div>
+      {posts.map((post) => <PostListItem post={post} palette="evolve" />)}
+    </div>
+  )}
+</Layout>

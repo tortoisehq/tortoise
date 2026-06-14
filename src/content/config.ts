@@ -5,7 +5,7 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),
-    category: z.enum(['forge', 'encode', 'beacon']),
+    category: z.enum(['forge', 'encode', 'beacon', 'evolve']),
     // Which Forge build a post belongs to. Only meaningful for category 'forge'
     // (Build One = Workhorse, Build Two = Steward). Absent => Workhorse (the
     // default/original build), so the ~37 existing Workhorse posts need no edit.

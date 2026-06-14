@@ -1,4 +1,4 @@
-export type CategorySlug = 'forge' | 'encode' | 'beacon';
+export type CategorySlug = 'forge' | 'encode' | 'beacon' | 'evolve';
 
 export interface Category {
   slug: CategorySlug;
@@ -74,6 +74,22 @@ export const categories: Record<CategorySlug, Category> = {
       chipText: 'text-green-800',
       accent: 'black',
       inverse: 'white',
+    },
+  },
+  evolve: {
+    slug: 'evolve',
+    name: 'Evolve',
+    description: 'How the pipeline evolves.',
+    palette: {
+      bg: 'bg-black',
+      text: 'text-white',
+      textMuted: 'text-neutral-400',
+      border: 'border-neutral-800',
+      borderHover: 'hover:border-white',
+      chipBg: 'bg-neutral-900',
+      chipText: 'text-neutral-200',
+      accent: 'white',
+      inverse: 'black',
     },
   },
 };
