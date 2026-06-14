@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Built, deployed, and live are three rehearsals. Only 'in your hands' counts — the WHOOP screen finally rendering real recovery data on the phone.">
+  <rect width="1200" height="600" fill="#0b0b0c"/>
+  <text x="120" y="110" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="26" letter-spacing="5" fill="#f59e0b">// S50 — SHIPPED IS NOT IN YOUR HANDS</text>
+
+  <text x="120" y="212" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="42" font-weight="700" fill="#44403c">BUILT</text>
+  <text x="1000" y="212" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="38" fill="#44403c">done</text>
+
+  <text x="120" y="292" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="42" font-weight="700" fill="#57534e">DEPLOYED</text>
+  <text x="1000" y="292" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="38" fill="#57534e">done</text>
+
+  <text x="120" y="372" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="42" font-weight="700" fill="#a8a29e">LIVE</text>
+  <text x="1000" y="372" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="38" fill="#a8a29e">done</text>
+
+  <rect x="96" y="430" width="4" height="62" fill="#f59e0b"/>
+  <text x="120" y="478" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="54" font-weight="700" fill="#fafaf9">IN YOUR HANDS</text>
+  <text x="1000" y="478" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="44" font-weight="700" fill="#f59e0b">what counts</text>
+
+  <text x="120" y="556" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" fill="#78716c">clean code / live deploy / data in the API — none of them is the one that counts</text>
+</svg>
