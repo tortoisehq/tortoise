@@ -1,0 +1,64 @@
+---
+// On-the-spot read-aloud for a blog post, using the browser's built-in voice
+// (Web Speech API — free, no account, no network). The Speechify hookup proper is
+// the RSS feed (add it to the Speechify app); this button is for listening right here
+// on the page. Hidden automatically if the browser has no speech synthesis.
+---
+<div class="not-prose mb-8">
+  <button
+    id="listen-btn"
+    type="button"
+    aria-label="Listen to this post"
+    class="inline-flex items-center gap-2 border border-current opacity-70 hover:opacity-100 px-4 py-2 text-sm font-mono uppercase tracking-wider transition-opacity"
+  >
+    <span id="listen-icon" aria-hidden="true">▶</span>
+    <span id="listen-label">Listen</span>
+  </button>
+</div>
+
+<script is:inline>
+  (function () {
+    const btn = document.getElementById('listen-btn');
+    const icon = document.getElementById('listen-icon');
+    const label = document.getElementById('listen-label');
+    const synth = window.speechSynthesis;
+    if (!btn || !synth) {
+      if (btn) btn.style.display = 'none';
+      return;
+    }
+    let speaking = false;
+    function reset() {
+      speaking = false;
+      icon.textContent = '▶';
+      label.textContent = 'Listen';
+    }
+    function postText() {
+      const h1 = document.querySelector('article h1');
+      const body = document.querySelector('.prose-content');
+      const parts = [];
+      if (h1) parts.push(h1.textContent.trim());
+      if (body) parts.push(body.innerText.trim());
+      return parts.join('. ');
+    }
+    btn.addEventListener('click', function () {
+      if (speaking) {
+        synth.cancel();
+        reset();
+        return;
+      }
+      const u = new SpeechSynthesisUtterance(postText());
+      u.rate = 1.0;
+      u.onend = reset;
+      u.onerror = reset;
+      synth.cancel();
+      synth.speak(u);
+      speaking = true;
+      icon.textContent = '⏸';
+      label.textContent = 'Stop';
+    });
+    // Stop reading if the reader navigates away.
+    window.addEventListener('pagehide', function () {
+      synth.cancel();
+    });
+  })();
+</script>

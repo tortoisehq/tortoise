@@ -2,6 +2,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import CategoryBadge from '../../components/CategoryBadge.astro';
+import ListenButton from '../../components/ListenButton.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -47,6 +48,8 @@ const proseText = palette === 'beacon' ? 'text-green-900' : palette === 'encode'
         </ul>
       )}
     </header>
+
+    <ListenButton />
 
     <div class={`prose-content space-y-5 text-lg leading-relaxed ${proseText}`}>
       <Content />
