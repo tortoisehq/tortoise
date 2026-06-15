@@ -7,7 +7,13 @@ import { categoryList } from '../lib/categories';
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => (b.data.date.getTime() - a.data.date.getTime()) || b.slug.localeCompare(a.slug, undefined, { numeric: true }));
 
-const forgePosts = posts.filter((p) => p.data.category === 'forge').slice(0, 4);
+// Forge has two builds (Build One = Workhorse, Build Two = Steward; absent `build`
+// defaults to Workhorse). Show each build as its own labeled stack so they don't jumble.
+const forgeAll = posts.filter((p) => p.data.category === 'forge');
+const forgeBuilds = [
+  { name: 'Workhorse', order: 'Build One', stage: 'Alpha Arc', href: '/forge/workhorse', posts: forgeAll.filter((p) => p.data.build !== 'steward').slice(0, 3) },
+  { name: 'Steward', order: 'Build Two', stage: 'Alpha Arc', href: '/forge/steward', posts: forgeAll.filter((p) => p.data.build === 'steward').slice(0, 3) },
+];
 const encodePosts = posts.filter((p) => p.data.category === 'encode').slice(0, 4);
 const beaconPosts = posts.filter((p) => p.data.category === 'beacon').slice(0, 4);
 
@@ -112,25 +118,33 @@ const year = new Date().getFullYear();
           <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4">FORGE</h2>
           <p class="text-base text-gold/80 mb-10 leading-relaxed">Building and shipping. Code lands in production. The trade-offs that earned it. The rules I write so I don't make the same mistake twice.</p>
 
-          <div class="space-y-5 mb-10">
-            {forgePosts.length === 0 ? (
-              <p class="text-gold/70">No Forge posts yet.</p>
-            ) : forgePosts.map((post) => (
-              <article class="border-b border-black/20 pb-5 last:border-b-0">
-                <p class="text-xs font-mono uppercase tracking-wider text-gold/70 mb-2">
-                  {post.data.date.toISOString().slice(0, 10)}
-                </p>
-                <h3 class="text-lg font-bold mb-1 tracking-tight leading-snug">
-                  <a href={`/blog/${post.slug}`} class="no-underline hover:underline">{post.data.title}</a>
-                </h3>
-                <p class="text-gold/70 text-sm leading-relaxed">{post.data.excerpt}</p>
-              </article>
+          <div class="space-y-8 mb-10">
+            {forgeBuilds.map((b) => (
+              <div>
+                <div class="flex items-baseline justify-between mb-3 pb-2 border-b border-black/20">
+                  <p class="text-sm font-mono uppercase tracking-[0.2em] text-gold font-bold">{b.name}</p>
+                  <p class="text-[10px] font-mono uppercase tracking-wider text-gold/60">{b.order} · {b.stage}</p>
+                </div>
+                <div class="space-y-4 mb-4">
+                  {b.posts.length === 0 ? (
+                    <p class="text-gold/70 text-sm">No sessions yet.</p>
+                  ) : b.posts.map((post) => (
+                    <article>
+                      <p class="text-xs font-mono uppercase tracking-wider text-gold/70 mb-1">
+                        {post.data.date.toISOString().slice(0, 10)}
+                      </p>
+                      <h3 class="text-base font-bold tracking-tight leading-snug">
+                        <a href={`/blog/${post.slug}`} class="no-underline hover:underline">{post.data.title}</a>
+                      </h3>
+                    </article>
+                  ))}
+                </div>
+                <a href={b.href} class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-gold hover:text-white no-underline border-b border-gold/40 hover:border-gold pb-1">
+                  All {b.name} →
+                </a>
+              </div>
             ))}
           </div>
-
-          <a href="/forge" class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-gold hover:text-white no-underline border-b border-gold/40 hover:border-gold pb-1">
-            All Forge →
-          </a>
         </div>
       </div>
 
