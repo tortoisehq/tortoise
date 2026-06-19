@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" font-family="ui-sans-serif, system-ui, sans-serif">
+  <rect width="640" height="400" fill="#0f1115"/>
+  <text x="40" y="56" fill="#f4f4f5" font-size="26" font-weight="700">Working Is Not Safe</text>
+  <text x="40" y="84" fill="#9ca3af" font-size="15">The same code, graded by two different questions</text>
+
+  <!-- baseline -->
+  <line x1="40" y1="330" x2="600" y2="330" stroke="#374151" stroke-width="2"/>
+
+  <!-- green bar: It ran -->
+  <rect x="120" y="120" width="140" height="210" rx="6" fill="#22c55e"/>
+  <text x="190" y="110" fill="#22c55e" font-size="18" font-weight="700" text-anchor="middle">100%</text>
+  <text x="190" y="354" fill="#d1d5db" font-size="14" text-anchor="middle">It ran on my phone</text>
+
+  <!-- amber bar: actually safe -->
+  <rect x="380" y="225" width="140" height="105" rx="6" fill="#f59e0b"/>
+  <text x="450" y="215" fill="#f59e0b" font-size="18" font-weight="700" text-anchor="middle">B&#8722;</text>
+  <text x="450" y="354" fill="#d1d5db" font-size="14" text-anchor="middle">Actually safe to trust</text>
+
+  <text x="40" y="388" fill="#6b7280" font-size="12">Shipping answers the first question. A second pair of eyes answers the one that was hard.</text>
+</svg>
