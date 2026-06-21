@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Idempotency on the grievance write path. Without it, three taps on bad signal file two identical grievances and bill the AI twice. With it, the same three taps file one grievance and bill once.">
+  <rect width="1200" height="600" fill="#0b0b0c"/>
+  <text x="100" y="80" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" letter-spacing="4" fill="#f59e0b">// DO IT TWICE, FILE IT ONCE</text>
+
+  <!-- the taps (shared input) -->
+  <text x="100" y="150" font-family="ui-monospace, monospace" font-size="20" fill="#78716c">bad signal in the yard:</text>
+  <text x="430" y="150" font-family="ui-monospace, monospace" font-size="20" fill="#d6d3d1">tap  ·  tap  ·  tap</text>
+
+  <!-- WITHOUT IT (the bug) -->
+  <text x="100" y="225" font-family="ui-monospace, monospace" font-size="20" letter-spacing="3" fill="#78716c">WITHOUT IT</text>
+  <rect x="100" y="245" width="420" height="64" fill="none" stroke="#f87171" stroke-width="2"/>
+  <text x="122" y="284" font-family="ui-monospace, monospace" font-size="21" fill="#f87171">grievance #1</text>
+  <rect x="120" y="278" width="420" height="64" fill="none" stroke="#f87171" stroke-width="2"/>
+  <text x="142" y="317" font-family="ui-monospace, monospace" font-size="21" fill="#f87171">grievance #1 (again)</text>
+  <text x="100" y="400" font-family="ui-monospace, monospace" font-size="22" fill="#f87171">2 grievances filed  ·  AI billed &#215;2</text>
+
+  <!-- WITH IT (the fix) -->
+  <text x="700" y="225" font-family="ui-monospace, monospace" font-size="20" letter-spacing="3" fill="#78716c">WITH IT</text>
+  <rect x="700" y="245" width="420" height="74" fill="#fafaf9"/>
+  <text x="722" y="290" font-family="ui-monospace, monospace" font-size="21" fill="#0b0b0c">grievance #1</text>
+  <text x="700" y="400" font-family="ui-monospace, monospace" font-size="22" fill="#4ade80">1 grievance  ·  billed &#215;1  &#10003;</text>
+
+  <!-- caption -->
+  <line x1="100" y1="470" x2="1120" y2="470" stroke="#27272a" stroke-width="1"/>
+  <text x="100" y="525" font-family="ui-monospace, monospace" font-size="28" fill="#fafaf9">a retry should change nothing.</text>
+  <text x="100" y="562" font-family="ui-monospace, monospace" font-size="19" fill="#78716c">one stable key per submit &#8594; the second try is a no-op</text>
+</svg>
