@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" role="img" aria-label="A rail line: solid laid track on the left where it is finished, dashed unfinished track ahead, and a train waiting at the edge because it cannot run past where the track is laid.">
+  <rect width="760" height="360" fill="#0f1115"/>
+  <text x="40" y="58" fill="#e8e8e8" font-family="Georgia, serif" font-size="27" font-weight="bold">Lay the track before you run the train.</text>
+  <text x="40" y="86" fill="#8a8f98" font-family="Georgia, serif" font-size="16">I almost ran the flywheel on a foundation that wasn&#39;t built yet.</text>
+
+  <text x="230" y="150" fill="#7fae6b" font-family="Georgia, serif" font-size="14" text-anchor="middle">laid</text>
+  <text x="565" y="150" fill="#5a5f68" font-family="Georgia, serif" font-size="14" text-anchor="middle">not yet built</text>
+
+  <!-- ties under the laid section -->
+  <g stroke="#4a5560" stroke-width="3">
+    <line x1="80" y1="262" x2="80" y2="286"/><line x1="120" y1="262" x2="120" y2="286"/>
+    <line x1="160" y1="262" x2="160" y2="286"/><line x1="200" y1="262" x2="200" y2="286"/>
+    <line x1="240" y1="262" x2="240" y2="286"/><line x1="280" y1="262" x2="280" y2="286"/>
+    <line x1="320" y1="262" x2="320" y2="286"/><line x1="360" y1="262" x2="360" y2="286"/>
+    <line x1="400" y1="262" x2="400" y2="286"/>
+  </g>
+
+  <!-- laid rails (solid green) -->
+  <line x1="60" y1="256" x2="420" y2="256" stroke="#7fae6b" stroke-width="3"/>
+  <line x1="60" y1="270" x2="420" y2="270" stroke="#7fae6b" stroke-width="3"/>
+  <!-- unlaid rails (dashed, faint) -->
+  <line x1="420" y1="256" x2="720" y2="256" stroke="#3a3f48" stroke-width="3" stroke-dasharray="9 9"/>
+  <line x1="420" y1="270" x2="720" y2="270" stroke="#3a3f48" stroke-width="3" stroke-dasharray="9 9"/>
+
+  <!-- the train, waiting at the edge of the laid track -->
+  <g>
+    <rect x="318" y="222" width="80" height="32" rx="3" fill="#0f1115" stroke="#e8e8e8" stroke-width="2.5"/>
+    <rect x="384" y="228" width="14" height="20" rx="2" fill="#d6a93b"/>
+    <circle cx="338" cy="256" r="6" fill="#0f1115" stroke="#e8e8e8" stroke-width="2.5"/>
+    <circle cx="378" cy="256" r="6" fill="#0f1115" stroke="#e8e8e8" stroke-width="2.5"/>
+  </g>
+
+  <!-- boundary: end of laid track -->
+  <line x1="420" y1="212" x2="420" y2="280" stroke="#d6a93b" stroke-width="1.5" stroke-dasharray="3 4"/>
+
+  <text x="40" y="334" fill="#8a8f98" font-family="Georgia, serif" font-size="13" font-style="italic">Platinum foundation first. The clever layer waits its turn.</text>
+</svg>
