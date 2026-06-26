@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-label="Speak it once, Steward files it right">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#15151c"/>
+      <stop offset="1" stop-color="#0e0e14"/>
+    </linearGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3ad1c4"/>
+      <stop offset="1" stop-color="#2b9be6"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="300" rx="18" fill="url(#bg)"/>
+  <!-- rail track running underneath -->
+  <g stroke="#2a2a36" stroke-width="4">
+    <line x1="30" y1="250" x2="450" y2="250"/>
+    <line x1="30" y1="266" x2="450" y2="266"/>
+  </g>
+  <g stroke="#2a2a36" stroke-width="6">
+    <line x1="70" y1="244" x2="70" y2="272"/>
+    <line x1="150" y1="244" x2="150" y2="272"/>
+    <line x1="230" y1="244" x2="230" y2="272"/>
+    <line x1="310" y1="244" x2="310" y2="272"/>
+    <line x1="390" y1="244" x2="390" y2="272"/>
+  </g>
+  <!-- phone -->
+  <rect x="60" y="70" width="120" height="150" rx="16" fill="#1f1f29" stroke="#3a3a48" stroke-width="2"/>
+  <rect x="74" y="92" width="92" height="86" rx="8" fill="#12121a"/>
+  <!-- sound wave (speak) -->
+  <g stroke="url(#acc)" stroke-width="6" stroke-linecap="round">
+    <line x1="92" y1="135" x2="92" y2="135"/>
+    <line x1="104" y1="122" x2="104" y2="148"/>
+    <line x1="116" y1="110" x2="116" y2="160"/>
+    <line x1="128" y1="124" x2="128" y2="146"/>
+    <line x1="140" y1="116" x2="140" y2="154"/>
+    <line x1="152" y1="128" x2="152" y2="142"/>
+  </g>
+  <circle cx="120" cy="200" r="9" fill="url(#acc)"/>
+  <!-- arrow -->
+  <path d="M198 145 H262" stroke="#6b6b75" stroke-width="5" stroke-linecap="round"/>
+  <path d="M256 135 L270 145 L256 155 Z" fill="#6b6b75"/>
+  <!-- filed document with citation -->
+  <rect x="290" y="64" width="130" height="162" rx="10" fill="#1f1f29" stroke="#3a3a48" stroke-width="2"/>
+  <rect x="290" y="64" width="130" height="34" rx="10" fill="url(#acc)" opacity="0.18"/>
+  <text x="306" y="86" fill="#3ad1c4" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700">GRIEVANCE</text>
+  <g fill="#5a5a66">
+    <rect x="306" y="110" width="98" height="6" rx="3"/>
+    <rect x="306" y="124" width="80" height="6" rx="3"/>
+  </g>
+  <!-- the cited article block -->
+  <rect x="306" y="142" width="98" height="40" rx="6" fill="#12121a" stroke="#3ad1c4" stroke-width="1.5"/>
+  <text x="314" y="160" fill="#e4c14a" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700">Art 121.1(a)</text>
+  <text x="314" y="174" fill="#9999a3" font-family="Segoe UI, Arial, sans-serif" font-size="9">verified · quoted</text>
+  <g fill="#5a5a66">
+    <rect x="306" y="194" width="90" height="6" rx="3"/>
+    <rect x="306" y="206" width="70" height="6" rx="3"/>
+  </g>
+  <text x="240" y="40" text-anchor="middle" fill="#e8e8ee" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">Speak it once. Filed right.</text>
+</svg>
