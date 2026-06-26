@@ -1,0 +1,156 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Quiz from '../../../components/Quiz.astro';
+import homework from '../../../data/homework.json';
+
+export async function getStaticPaths() {
+  const mods = import.meta.glob('../../../data/learn/*.json', { eager: true });
+  return Object.values(mods).map((m: any) => {
+    const data = m.default ?? m;
+    return { params: { id: data.id }, props: { data } };
+  });
+}
+
+const { data } = Astro.props as { data: any };
+const quiz = (homework as any[]).find((q) => q.id === data.quizId);
+const passPct = quiz?.passPct ?? 80;
+---
+
+<Layout title={`${data.title} — Learn`} description={data.promise} palette="encode">
+  <!-- breadcrumb -->
+  <header class="mb-8">
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-3">
+      <a href="/encode" class="hover:text-white">// Encode</a> /
+      <a href="/encode/learn" class="hover:text-white">Learn</a> / {data.title}
+    </p>
+    <p class="text-sm font-mono text-neutral-500 mb-4">{data.course}</p>
+    <h1 class="text-4xl font-bold tracking-tight mb-3">{data.title}</h1>
+    <p class="text-lg text-neutral-300 max-w-2xl leading-relaxed">{data.promise}</p>
+  </header>
+
+  <!-- framework spine: the loop -->
+  <section class="mb-8 border border-neutral-700 bg-neutral-900">
+    <p class="px-5 pt-4 text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">// How every module here works</p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-px bg-neutral-800 border-t border-neutral-800 mt-3">
+      {data.loop.map((l: any, i: number) => (
+        <div class="bg-neutral-900 p-4">
+          <p class="text-sm font-bold tracking-tight">{i + 1}. {l.step}</p>
+          <p class="text-xs text-neutral-400 mt-1 leading-relaxed">{l.blurb}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- the map -->
+  <section class="mb-12">
+    <p class="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 mb-3">// The Meet Claude map</p>
+    <ol class="space-y-2">
+      {data.map.map((stop: any, i: number) => (
+        <li class="flex gap-3 border-l-2 border-neutral-700 pl-4 py-1">
+          <span class="font-mono text-xs text-neutral-500 mt-0.5">{i + 1}</span>
+          <span><span class="font-semibold text-white">{stop.stop}</span><span class="text-neutral-400"> — {stop.blurb}</span></span>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- intro -->
+  <section class="mb-12 space-y-4 text-neutral-200 leading-relaxed">
+    {data.intro.map((p: string) => <p>{p}</p>)}
+  </section>
+
+  <!-- study sections -->
+  <section class="mb-14">
+    <h2 class="text-2xl font-bold tracking-tight mb-6 border-b border-neutral-700 pb-2">Study — 13 objectives, one at a time</h2>
+    <div class="space-y-8">
+      {data.sections.map((s: any) => (
+        <article class="border-l-2 border-neutral-800 pl-5">
+          <div class="flex items-baseline gap-3 mb-2">
+            <span class="text-[10px] font-mono uppercase tracking-[0.15em] text-neutral-500 border border-neutral-700 px-1.5 py-0.5">{s.lesson} · {s.n}</span>
+            <h3 class="text-xl font-bold tracking-tight">{s.heading}</h3>
+          </div>
+          <p class="text-neutral-300 mb-3"><span class="text-[10px] font-mono uppercase tracking-[0.15em] text-amber-600 mr-2">Try first</span>{s.challenge}</p>
+          <details class="group mb-2">
+            <summary class="cursor-pointer text-sm font-mono text-neutral-400 hover:text-white">Show the idea →</summary>
+            <div class="mt-3 space-y-3 text-neutral-200 leading-relaxed">
+              {s.body.map((p: string) => <p>{p}</p>)}
+              <p class="text-neutral-400 border-l-2 border-neutral-700 pl-3 italic">In plain terms: {s.plain}</p>
+            </div>
+          </details>
+          <details class="group">
+            <summary class="cursor-pointer text-sm font-mono text-neutral-400 hover:text-white">Lock it — can you say this back? →</summary>
+            <p class="mt-3 text-neutral-200 leading-relaxed border-l-2 border-green-700 pl-3">{s.lockIt}</p>
+          </details>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- golden nugget -->
+  <section class="mb-14">
+    <h2 class="text-2xl font-bold tracking-tight mb-2 border-b border-neutral-700 pb-2">The golden nugget</h2>
+    <article class="mt-5 border border-amber-900/50 bg-neutral-900 p-5">
+      <h3 class="text-xl font-bold tracking-tight mb-2">{data.nugget.title}</h3>
+      <p class="text-neutral-300 mb-3"><span class="text-[10px] font-mono uppercase tracking-[0.15em] text-amber-600 mr-2">Try first</span>{data.nugget.challenge}</p>
+      <details class="group mb-2">
+        <summary class="cursor-pointer text-sm font-mono text-neutral-400 hover:text-white">Show the idea →</summary>
+        <div class="mt-3 space-y-3 text-neutral-200 leading-relaxed">
+          {data.nugget.body.map((p: string) => <p>{p}</p>)}
+          <p class="text-neutral-400 border-l-2 border-neutral-700 pl-3">{data.nugget.whyItMatters}</p>
+        </div>
+      </details>
+      <details class="group">
+        <summary class="cursor-pointer text-sm font-mono text-neutral-400 hover:text-white">Lock it — can you say this back? →</summary>
+        <p class="mt-3 text-neutral-200 leading-relaxed border-l-2 border-green-700 pl-3">{data.nugget.lockIt}</p>
+      </details>
+    </article>
+  </section>
+
+  <!-- prove: the quiz -->
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold tracking-tight mb-2 border-b border-neutral-700 pb-2">Prove it</h2>
+    <p class="text-neutral-300 text-sm leading-relaxed mb-5 mt-3">
+      Reading is not knowing. Pick a difficulty and take the quiz — <strong>Easy</strong> recognizes, <strong>Medium</strong> is the full mix, <strong>Hard</strong> makes you type every answer from memory. Missed questions and trap-spots come back first.
+    </p>
+    {quiz ? <Quiz quiz={quiz} /> : <p class="text-neutral-500 text-sm">Quiz coming soon.</p>}
+  </section>
+
+  <!-- progress strip -->
+  <section id="hub-progress" class="mb-10 hidden border border-neutral-700 bg-neutral-900 p-5">
+    <p class="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 mb-3">// Your progress (saved in this browser)</p>
+    <div class="grid grid-cols-3 gap-px bg-neutral-800 border border-neutral-800 text-center">
+      <div class="bg-neutral-900 py-3"><div id="hp-best" class="text-xl font-bold tabular-nums">—</div><div class="text-[10px] font-mono uppercase tracking-[0.15em] text-neutral-500">Best</div></div>
+      <div class="bg-neutral-900 py-3"><div id="hp-streak" class="text-xl font-bold tabular-nums">—</div><div class="text-[10px] font-mono uppercase tracking-[0.15em] text-neutral-500">Streak</div></div>
+      <div class="bg-neutral-900 py-3"><div id="hp-attempts" class="text-xl font-bold tabular-nums">—</div><div class="text-[10px] font-mono uppercase tracking-[0.15em] text-neutral-500">Attempts</div></div>
+    </div>
+    <p id="hp-badge" class="mt-3 text-sm font-mono"></p>
+  </section>
+
+  <!-- outro -->
+  <section class="mb-10 space-y-4 text-neutral-200 leading-relaxed border-t border-neutral-800 pt-8">
+    {data.outro.map((p: string) => <p>{p}</p>)}
+  </section>
+
+  <p class="text-xs font-mono">
+    <a href="/encode/learn" class="underline hover:text-white">← All modules</a>
+  </p>
+</Layout>
+
+<script define:vars={{ quizId: data.quizId, total: quiz?.questions?.length ?? 0, passPct }}>
+  try {
+    const raw = localStorage.getItem(`lll-hw-${quizId}`);
+    if (raw) {
+      const s = JSON.parse(raw);
+      if (s && s.attempts) {
+        document.getElementById('hub-progress').classList.remove('hidden');
+        document.getElementById('hp-best').textContent = `${s.bestScore ?? 0}/${total}`;
+        document.getElementById('hp-streak').textContent = String(s.streak ?? 0);
+        document.getElementById('hp-attempts').textContent = String(s.attempts ?? 0);
+        const badge = document.getElementById('hp-badge');
+        if ((s.bestPct ?? 0) >= 100) { badge.textContent = '🔒 Module sealed — 100%'; badge.className = 'mt-3 text-sm font-mono text-green-600'; }
+        else if ((s.bestPct ?? 0) >= passPct) { badge.textContent = '✓ Module locked — keep returning to seal it'; badge.className = 'mt-3 text-sm font-mono text-green-700'; }
+        else { badge.textContent = 'In progress — get to ' + passPct + '% to lock it'; badge.className = 'mt-3 text-sm font-mono text-amber-600'; }
+      }
+    }
+  } catch {}
+</script>

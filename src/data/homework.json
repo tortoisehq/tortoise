@@ -153,7 +153,11 @@
         "concept": "What analysis does",
         "prompt": "In your own words: what does data analysis do to data, and what's the difference between an insight and an artifact?",
         "answer": "Data analysis turns data (a collection of facts) into INSIGHTS — the understanding itself, e.g. \"long, complicated hiring makes new hires quit.\" An ARTIFACT (a chart, a report) is just a thing that carries the insight; the insight is the point, the artifact is the delivery.",
-        "keywords": ["insight", "artifact", "fact"],
+        "keywords": [
+          "insight",
+          "artifact",
+          "fact"
+        ],
         "explanation": "The key distinction you sharpened in E27: analysis produces understanding (insight), not just objects (artifacts). Artifacts only carry insights.",
         "hint": "One is the understanding itself; the other just carries it."
       },
@@ -163,7 +167,14 @@
         "concept": "The six-step process",
         "prompt": "From memory, name the six steps of the data analysis process — in order.",
         "answer": "Ask → Prepare → Process → Analyze → Share → Act",
-        "keywords": ["ask", "prepare", "process", "analyze", "share", "act"],
+        "keywords": [
+          "ask",
+          "prepare",
+          "process",
+          "analyze",
+          "share",
+          "act"
+        ],
         "explanation": "The spine of the whole certificate. Prepare before Process (plan before clean); Analyze before Share before Act.",
         "hint": "All Puppies Pick Another Short Ally."
       },
@@ -173,7 +184,12 @@
         "concept": "Cassie's map — the splitter",
         "prompt": "Explain what separates statistics, machine learning, and analytics in Cassie's map.",
         "answer": "How many decisions you know you want to make before you begin. Statistics = a FEW important decisions under uncertainty (rigor). Machine learning = MANY decisions, automated, under uncertainty (performance). Analytics = you DON'T know how many yet — you're exploring for inspiration (speed). All three sit under the data-science umbrella.",
-        "keywords": ["decision", "few", "many", "explor"],
+        "keywords": [
+          "decision",
+          "few",
+          "many",
+          "explor"
+        ],
         "explanation": "The dividing axis is the number of decisions known up front — the framing that finally untied the analytics-vs-science knot.",
         "hint": "It's about how many decisions you know about up front."
       }
@@ -210,7 +226,9 @@
         "trap": true,
         "prompt": "Fill the blank: a data ecosystem's elements interact to produce, manage, store, ___, analyze, and share data.",
         "answer": "organize",
-        "accept": ["organise"],
+        "accept": [
+          "organise"
+        ],
         "explanation": "Produce · Manage · Store · ORGANIZE · Analyze · Share. Your mnemonic: Penguins Make Soggy Omelettes And Sugar (P-M-S-O-A-S). 'Organize' is the O.",
         "hint": "Penguins Make Soggy Omelettes And Sugar — what's the O?"
       },
@@ -220,8 +238,25 @@
         "concept": "The six purpose verbs",
         "trap": true,
         "prompt": "Select ALL six things a data ecosystem's elements interact to do with data.",
-        "options": ["Produce", "Manage", "Store", "Organize", "Analyze", "Share", "Delete", "Sell", "Encrypt"],
-        "answers": [0, 1, 2, 3, 4, 5],
+        "options": [
+          "Produce",
+          "Manage",
+          "Store",
+          "Organize",
+          "Analyze",
+          "Share",
+          "Delete",
+          "Sell",
+          "Encrypt"
+        ],
+        "answers": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
         "explanation": "The six: Produce, Manage, Store, Organize, Analyze, Share (P-M-S-O-A-S). Delete, Sell, and Encrypt are not on the list — watch the plausible distractors.",
         "hint": "Penguins Make Soggy Omelettes And Sugar — six words, six verbs."
       },
@@ -240,7 +275,11 @@
         "concept": "The cloud",
         "prompt": "Fill the blank: the cloud is a place to keep data ___, rather than on a computer hard drive.",
         "answer": "online",
-        "accept": ["on the internet", "over the internet", "virtually"],
+        "accept": [
+          "on the internet",
+          "over the internet",
+          "virtually"
+        ],
         "explanation": "The cloud keeps data ONLINE — accessed over the internet instead of stored locally. It's just a term for the virtual location.",
         "hint": "The opposite of 'on a hard drive' — where data is reached over the internet."
       },
@@ -250,7 +289,12 @@
         "concept": "Analysis vs. analytics",
         "trap": true,
         "prompt": "Which term does this course define as 'the science of data' — the broad umbrella over data, data analysis, and the ecosystem?",
-        "options": ["Data analytics", "Data analysis", "Data science", "Data engineering"],
+        "options": [
+          "Data analytics",
+          "Data analysis",
+          "Data science",
+          "Data engineering"
+        ],
         "answer": 0,
         "explanation": "Data ANALYTICS = 'the science of data' — the broad umbrella (in this course's framing) over data, data analysis, and the ecosystem. Data analysis is the hands-on activity inside it. (Cassie's video made data SCIENCE the umbrella — different author; for THIS course, analytics is the umbrella.)",
         "hint": "The '-ics' word — the big tent, the science of data."
@@ -288,7 +332,9 @@
         "trap": true,
         "prompt": "Fill the blank: data scientists create new ___ using data, while analysts find answers to existing ones.",
         "answer": "questions",
-        "accept": ["question"],
+        "accept": [
+          "question"
+        ],
         "explanation": "QUESTIONS — the same word fills both sides. Scientists make new questions; analysts answer existing questions. (Not 'artifacts' — that's the word we killed at E27. Analysis makes insights, not artifacts.)",
         "hint": "Same word both sides — and it is NOT 'artifacts.'"
       },
@@ -297,7 +343,14 @@
         "type": "order",
         "concept": "The six-step process",
         "prompt": "Arrange the six steps of the data analysis process in the correct order.",
-        "items": ["Ask", "Prepare", "Process", "Analyze", "Share", "Act"],
+        "items": [
+          "Ask",
+          "Prepare",
+          "Process",
+          "Analyze",
+          "Share",
+          "Act"
+        ],
         "explanation": "Ask → Prepare → Process → Analyze → Share → Act. Mnemonic: All Puppies Pick Another Short Ally. Prepare BEFORE Process — you plan/collect before you clean.",
         "hint": "All Puppies Pick Another Short Ally."
       },
@@ -306,7 +359,12 @@
         "type": "mcq",
         "concept": "Data-driven decision-making",
         "prompt": "Data-driven decision-making is defined as using ___ to guide business strategy.",
-        "options": ["Facts", "Intuition", "Past experience", "Expert opinions"],
+        "options": [
+          "Facts",
+          "Intuition",
+          "Past experience",
+          "Expert opinions"
+        ],
         "answer": 0,
         "explanation": "DDDM = using FACTS to guide business strategy. The other options matter (experience and intuition help) — but the definition itself is fact-led.",
         "hint": "The definition's exact word — the thing data is made of."
@@ -322,7 +380,11 @@
           "They can review the results and spot inconsistencies or make sense of gray areas",
           "They are the ones responsible for finding and analyzing the data"
         ],
-        "answers": [0, 1, 2],
+        "answers": [
+          0,
+          1,
+          2
+        ],
         "explanation": "SMEs bring human experience/intuition, know the business problem, and validate results / catch inconsistencies / make sense of gray areas. The last option is the ANALYST'S job, not the SME's — that's the trap.",
         "hint": "Three are about business judgment; one is actually the analyst's job."
       },
@@ -341,7 +403,9 @@
         "concept": "Gut instinct",
         "prompt": "Fill the blank: gut instinct is an intuitive understanding of something with little or no ___.",
         "answer": "explanation",
-        "accept": ["explanations"],
+        "accept": [
+          "explanations"
+        ],
         "explanation": "Gut instinct = an intuitive understanding with little or no EXPLANATION — you 'just know,' often picking up signals without realizing it.",
         "hint": "You can't ___ why you know it — you just do."
       },
@@ -367,124 +431,284 @@
     "title": "Meet Claude",
     "session": "E31",
     "course": "Anthropic Academy — Claude 101, Module 1",
-    "excerpt": "Module 1 of Anthropic's own course: what Claude is, how to talk to it, and the three desktop modes. Constitutional AI, the Stage→Task→Rules prompt recipe, the 4D framework, and the Cowork-vs-Chat trap I fell into myself.",
+    "excerpt": "The whole first module, testable: what Claude is, how to talk to it, and which of the three modes fits the job. 18 questions across Easy, Medium, and Hard — every objective covered, with the Cowork-vs-Chat trap I fell into built in on purpose.",
     "passPct": 80,
     "questions": [
       {
-        "id": "q-hhh",
+        "id": "mc-01-three-hs",
         "type": "mcq",
-        "concept": "Claude's design principles",
-        "prompt": "Claude is built on three guiding principles. What are they?",
+        "concept": "HHH principles",
+        "prompt": "Claude's design is guided by three principles, often called the three H's. Which set names them?",
         "options": [
           "Helpful, harmless, honest",
-          "Fast, cheap, accurate",
-          "Helpful, harmless, humble",
-          "Honest, harmless, hardworking"
+          "Helpful, humble, human",
+          "Honest, harmless, hardworking",
+          "Helpful, harmless, humorous"
         ],
         "answer": 0,
-        "explanation": "The three H's: helpful, harmless, honest. They're trained in via Constitutional AI — Claude follows a written set of principles rather than just imitating its training data.",
-        "hint": "Three H's — and 'humble' and 'hardworking' aren't two of them."
+        "explanation": "Claude is trained to be helpful, harmless, and honest — avoiding toxic/discriminatory outputs, refusing to aid illegal or unethical activity, and behaving truthfully. This is the backbone of its alignment.",
+        "hint": "Three H's: be useful, do no harm, tell the truth."
       },
       {
-        "id": "q-constitutional",
+        "id": "fb-02-constitutional-ai",
         "type": "fillblank",
         "concept": "Constitutional AI",
-        "prompt": "Fill the blank: the training approach that aligns Claude to a written set of principles is called ___ AI.",
-        "answer": "Constitutional",
-        "accept": ["constitutional"],
-        "explanation": "Constitutional AI: Claude is trained to follow a 'constitution' — a written set of principles — so it aligns with human values and behaves transparently, instead of just mimicking whatever was in its training data.",
-        "hint": "Like a country's founding document — a written set of rules to live by."
+        "prompt": "The training approach that aligns Claude with human values and makes it operate transparently is called Constitutional ___.",
+        "answer": "AI",
+        "accept": [
+          "AI",
+          "A.I.",
+          "ai",
+          "a.i."
+        ],
+        "explanation": "Constitutional AI is Anthropic's method for baking the helpful/harmless/honest values into Claude's training so it self-aligns to a set of principles.",
+        "hint": "A 'constitution' is a set of governing principles — for an artificial what?"
       },
       {
-        "id": "q-generate-retrieve",
+        "id": "tf-03-generate-not-retrieve",
         "type": "truefalse",
-        "concept": "How Claude produces answers",
-        "trap": true,
-        "prompt": "True or False: Claude answers by looking up stored answers from a database.",
+        "concept": "Generate vs. retrieve",
+        "prompt": "Claude answers by looking up pre-written answers from a database.",
         "answer": false,
-        "explanation": "False. Claude GENERATES answers word-by-word from patterns it learned — it doesn't RETRIEVE them from a database. That's why it can write and reason freely, but can also be confidently wrong. Generate, not retrieve.",
-        "hint": "It's not a search engine. It makes the answer; it doesn't fetch it."
+        "explanation": "Claude is a thought partner that GENERATES responses from learned patterns — it does not RETRIEVE canned answers from a lookup table. That generative, collaborative ability is what makes it more than a simple chatbot.",
+        "hint": "Composer, not librarian — it writes the answer, it doesn't fetch it.",
+        "trap": true
       },
       {
-        "id": "q-context-window",
-        "type": "written",
-        "concept": "The context window",
-        "prompt": "In your own words: what is the context window, and why does a big one matter?",
-        "answer": "The context window is how much Claude can hold in mind at once — like short-term memory for AI (~200K tokens by default, up to 1M on paid plans). A bigger window means more information held at once, so Claude can synthesize, analyze, and reason over more in a single conversation — like a whole document or project.",
-        "keywords": ["memory", "hold", "at once", "token"],
-        "explanation": "Context window = the AI's short-term memory. The more it holds at once, the more it can synthesize and use. ~200K default / 1M on paid plans.",
-        "hint": "Think short-term memory — and what you can do with more of it at once."
-      },
-      {
-        "id": "q-prompt-framework",
-        "type": "written",
-        "concept": "The prompt framework",
-        "prompt": "Name the three parts of a strong prompt (the Lesson 2 recipe).",
-        "answer": "Set the stage (your role, objective, context), define the task (the specific action you want — write/analyze/build), and specify the rules (style, tone, format, examples).",
-        "keywords": ["stage", "task", "rules"],
-        "explanation": "Stage → Task → Rules. Each layer removes a guess: who/why, what action, and how you want it. Talk to Claude like a coworker — naturally and specifically.",
-        "hint": "Three steps — the first is something a theatre crew does before a show."
-      },
-      {
-        "id": "q-description-competency",
-        "type": "mcq",
-        "concept": "The 4D framework",
-        "trap": true,
-        "prompt": "The Stage/Task/Rules prompt framework is an expression of which AI Fluency competency?",
-        "options": ["Description", "Delegation", "Discernment", "Diligence"],
-        "answer": 0,
-        "explanation": "Description = communicating clearly with AI (defining outputs, guiding the process). Stage/Task/Rules lives here. Delegation = deciding who does what; Discernment = judging the output; Diligence = using it responsibly.",
-        "hint": "It's the D about how you DESCRIBE what you want."
-      },
-      {
-        "id": "q-4d-multi",
+        "id": "mu-04-access-surfaces",
         "type": "multi",
-        "concept": "The 4D framework",
-        "prompt": "Select ALL four competencies of the AI Fluency 4D framework.",
-        "options": ["Delegation", "Description", "Discernment", "Diligence", "Deployment", "Debugging"],
-        "answers": [0, 1, 2, 3],
-        "explanation": "The four D's: Delegation (who does what), Description (communicate clearly), Discernment (judge the output), Diligence (use responsibly). Deployment and Debugging are plausible-sounding distractors — not part of the framework.",
-        "hint": "Four D's — and neither shipping code nor fixing it is one of them."
+        "concept": "Ways to access Claude",
+        "prompt": "Select every surface through which Lesson 1 says you can access Claude.",
+        "options": [
+          "Web (claude.ai)",
+          "Desktop app",
+          "Mobile app",
+          "Claude in Slack",
+          "Claude for Excel",
+          "Claude for PowerPoint"
+        ],
+        "answers": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "explanation": "One Claude, many surfaces: web, desktop, and mobile apps, plus Claude Code, Claude in Slack, and Claude for Excel. Excel is the named Office surface — there is no 'Claude for PowerPoint' in the lesson.",
+        "hint": "Spreadsheets yes, slide decks no.",
+        "trap": true
       },
       {
-        "id": "q-cowork-trap",
+        "id": "mc-05-new-chat",
         "type": "mcq",
-        "concept": "Chat vs Cowork vs Code",
-        "trap": true,
-        "prompt": "\"Read this folder of 50 contracts and write me a summary memo.\" Which desktop mode fits best?",
-        "options": ["Cowork", "Chat", "Code", "Quick entry"],
+        "concept": "Interface — new chat",
+        "prompt": "In the Claude.ai interface, what does starting a 'new chat' from the sidebar do?",
+        "options": [
+          "Begins a fresh conversation with no prior context",
+          "Permanently deletes your old conversations",
+          "Loads your most recent conversation in full",
+          "Switches Claude into Cowork mode"
+        ],
         "answer": 0,
-        "explanation": "Cowork — sustained, multi-source work that produces a finished deliverable ('review fifty like you'd review five'). The trap is that a big job FEELS like 'just chatting.' The signal is the SIZE of the job, not the topic: lots of sources + a deliverable + runs on its own = Cowork. Quick back-and-forth = Chat.",
-        "hint": "It's not coding, so not Code. But 50 docs into a memo is too big for a quick chat…"
+        "explanation": "The sidebar lets you start new chats or jump back into old ones; a new chat is a fresh context. Projects add persistent context, and Artifacts turn outputs into shareable apps/tools.",
+        "hint": "New chat = blank slate, no memory of the last thread."
       },
       {
-        "id": "q-cowork-code-engine",
+        "id": "or-06-stage-task-rules",
+        "type": "order",
+        "concept": "Prompt framework — Stage/Task/Rules",
+        "prompt": "Put the three parts of a strong prompt in the order the course presents them.",
+        "items": [
+          "Setting the stage (your role, objective, context)",
+          "Defining the task (the action you want Claude to take)",
+          "Specifying rules (style, tone, examples)"
+        ],
+        "explanation": "Stage → Task → Rules: first set the scene, then say what to do, then constrain how. The indie-streaming investor-deck prompt models all three.",
+        "hint": "Set the scene, give the order, lay down the rules."
+      },
+      {
+        "id": "mc-07-upload-context",
+        "type": "mcq",
+        "concept": "Uploads as context",
+        "prompt": "Per Lesson 2, uploading a relevant document or image to Claude is best described as…",
+        "options": [
+          "A shortcut that gives Claude context to consider in its response",
+          "A way to permanently train Claude on your data",
+          "Something required before Claude will answer any question",
+          "A trick to make Claude respond faster"
+        ],
+        "answer": 0,
+        "explanation": "Uploads (PDF, DOCX, CSV, TXT, PNG, JPEG) are a context shortcut — Claude parses the file so it understands your needs, but it does not permanently train on your data.",
+        "hint": "A file is a shortcut to context, not a training session."
+      },
+      {
+        "id": "mc-08-pencil-edit",
+        "type": "mcq",
+        "concept": "Iterating — edit & resubmit",
+        "prompt": "You want to refine one of your earlier messages rather than pile a new one on top. What does the course tell you to click?",
+        "options": [
+          "The pencil (edit) icon on your message",
+          "The trash icon",
+          "The model selector",
+          "The artifacts panel"
+        ],
+        "answer": 0,
+        "explanation": "Click the pencil icon on any of your messages to edit and resubmit — refining the original prompt instead of stacking corrections on a derailed thread.",
+        "hint": "Pencil = rewrite the message, don't bolt on a new one."
+      },
+      {
+        "id": "mc-09-too-generic-fix",
+        "type": "mcq",
+        "concept": "Troubleshooting — too generic",
+        "prompt": "Claude's output came back too generic. According to the troubleshooting table, what's the first fix?",
+        "options": [
+          "Add context — audience, role, and constraints",
+          "Just tell it to be shorter",
+          "Switch to a bigger model",
+          "Start a brand-new chat"
+        ],
+        "answer": 0,
+        "explanation": "Generic output means Claude lacks context about YOUR situation. The fix is to add audience, role, and constraints — not change models or restart.",
+        "hint": "Bland output is starved for context — feed it the who and why.",
+        "trap": true
+      },
+      {
+        "id": "mu-10-4d-competencies",
+        "type": "multi",
+        "concept": "AI Fluency — the 4Ds",
+        "prompt": "Select all four competencies of the 4D Framework for AI Fluency.",
+        "options": [
+          "Delegation",
+          "Description",
+          "Discernment",
+          "Diligence",
+          "Determination",
+          "Deployment"
+        ],
+        "answers": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "explanation": "The 4Ds are Delegation (what to hand off), Description (how to communicate the work), Discernment (judging the output), and Diligence (using AI responsibly). 'Determination' and 'Deployment' are decoys.",
+        "hint": "Hand it off, describe it, judge it, own it.",
+        "trap": true
+      },
+      {
+        "id": "mc-11-stagetaskrules-description",
+        "type": "mcq",
+        "concept": "Stage/Task/Rules → which D",
+        "prompt": "The Stage / Task / Rules prompt framework lives inside which of the 4D competencies?",
+        "options": [
+          "Description",
+          "Delegation",
+          "Discernment",
+          "Diligence"
+        ],
+        "answer": 0,
+        "explanation": "Stage/Task/Rules is about communicating clearly with Claude — defining outputs and guiding the process — which is the Description competency. Discernment is evaluating the result; don't swap them.",
+        "hint": "Describing what you want = Description.",
+        "trap": true
+      },
+      {
+        "id": "or-12-eval-steps",
+        "type": "order",
+        "concept": "Evals — simple approach",
+        "prompt": "Put the four steps of the simple (no-infrastructure) eval approach in the order the course gives them.",
+        "items": [
+          "Gather 5-10 examples of a task you do regularly",
+          "Create test prompts that would generate similar outputs",
+          "Compare Claude's outputs against your known-good results",
+          "Refine the prompts (or flag where human review is essential)"
+        ],
+        "explanation": "Evals = systematically testing Claude on tasks that matter to you: gather known examples, write test prompts, compare to known-good, then refine. It's rooted in Discernment.",
+        "hint": "Gather, prompt, compare, refine."
+      },
+      {
+        "id": "mc-13-chat-mode",
+        "type": "mcq",
+        "concept": "Three modes — Chat",
+        "prompt": "In the desktop app, which mode is built for a quick back-and-forth exchange, brainstorm, or draft?",
+        "options": [
+          "Chat",
+          "Cowork",
+          "Code",
+          "Research"
+        ],
+        "answer": 0,
+        "explanation": "Chat is the same Claude as claude.ai plus native extras (quick entry, dictation, screenshots) — optimized for quick exchanges and learning via dialogue. Cowork is for sustained deliverables; Code is for building software.",
+        "hint": "Quick chat = Chat. Big job = Cowork. Software = Code."
+      },
+      {
+        "id": "mc-14-50-contracts-cowork",
+        "type": "mcq",
+        "concept": "Choose the mode — size signal",
+        "prompt": "You need Claude to read 50 signed contracts and produce a summary memo of every obligation — a big, autonomous deliverable. Which mode fits best?",
+        "options": [
+          "Cowork",
+          "Chat",
+          "Code",
+          "Research mode"
+        ],
+        "answer": 0,
+        "explanation": "Cowork is agentic: give it a goal, connect resources, let it work through a large multi-source deliverable. The signal is the SIZE of the job, not the topic — it isn't coding, so Code is wrong; it's too big for a quick Chat.",
+        "hint": "Big autonomous deliverable → Cowork. Size of the job, not the topic.",
+        "trap": true
+      },
+      {
+        "id": "tf-15-claude-code-engine",
         "type": "truefalse",
-        "concept": "Chat vs Cowork vs Code",
-        "prompt": "True or False: Cowork and Code both run on Claude Code underneath.",
+        "concept": "Cowork & Code share an engine",
+        "prompt": "Cowork and Code run on the same engine — both are Claude Code underneath.",
         "answer": true,
-        "explanation": "True. Cowork and Code share the same engine — both are Claude Code under the hood (local, capable of independent work, can spin up subagents and sustain long tasks). Chat is the quick-exchange mode.",
-        "hint": "Two of the three modes share one engine — the one with 'Code' in its name."
+        "explanation": "Cowork and Code share the Claude Code engine: local, independent work, spinning up sub-agents and sustaining long tasks. Chat is the lighter, conversational surface.",
+        "hint": "Cowork + Code = one engine (Claude Code). Chat sits apart."
       },
       {
-        "id": "q-delegation-diligence",
-        "type": "written",
-        "concept": "Evals / the delegation–diligence loop",
-        "prompt": "Why should you test Claude on a task where you already know the right answer?",
-        "answer": "Because you need a concrete, objective target to compare against. Testing on known-good data lets you validate whether Claude reproduces your result — if it matches, you can trust it for similar future tasks; if it can't after several refinements, you've learned not to delegate that task. It builds trust through evidence instead of guesswork.",
-        "keywords": ["known", "trust", "compare", "validate", "answer"],
-        "explanation": "The delegation–diligence loop (and 'evals'): test on data you've already analyzed, compare, refine. Calibrates trust against a real target. Validation builds confidence — but never removes your responsibility to check.",
-        "hint": "You can't grade an answer if you don't already know what 'correct' looks like."
+        "id": "mc-16-code-unique-features",
+        "type": "mcq",
+        "concept": "Features unique to Code",
+        "prompt": "Which feature set is unique to Code mode?",
+        "options": [
+          "Visual diffs, built-in terminal, git versioning, and local vs. remote dev",
+          "Quick entry and dictation",
+          "Scheduled tasks and subagents",
+          "The double-tap Option overlay"
+        ],
+        "answer": 0,
+        "explanation": "Code adds a full dev environment: Ask/Code/Plan, visual diffs, terminal, git, and local-vs-remote work. Quick entry/dictation/overlay belong to Chat; scheduled tasks and subagents belong to Cowork.",
+        "hint": "Diffs, terminal, git, local-or-remote = the builder's bench, Code.",
+        "trap": true
       },
       {
-        "id": "q-responsibility",
+        "id": "tf-17-validation-responsibility",
         "type": "truefalse",
-        "concept": "Diligence",
-        "trap": true,
-        "prompt": "True or False: once you've validated Claude on a task, you're no longer responsible for checking its results.",
+        "concept": "Golden nugget — diligence",
+        "prompt": "Once you've validated Claude against data you already understand, you've eliminated your responsibility to check its work.",
         "answer": false,
-        "explanation": "False. 'Validation builds confidence, but it doesn't eliminate responsibility.' You still own checking that the numbers make sense and being transparent about AI's role. That's the Diligence competency.",
-        "hint": "Confidence ≠ a free pass. Who still owns the final result?"
+        "explanation": "Validation builds confidence but never removes responsibility. You're still accountable for checking the numbers make sense and being transparent about AI's role — the non-negotiable of the Delegation-Diligence Loop.",
+        "hint": "Trust is earned, but the buck still stops with you.",
+        "trap": true
+      },
+      {
+        "id": "wr-18-delegation-diligence-loop",
+        "type": "written",
+        "concept": "Golden nugget — the loop",
+        "prompt": "Explain the Delegation-Diligence Loop: why would you test Claude on a task where you ALREADY know the right answer?",
+        "answer": "Because you have a known-good result to measure Claude against. You pick a task you do regularly, reproduce a past analysis you already completed, and check Claude's output against the answer you already know. If it matches your known result you can trust it for similar future work; if you can't get there after several refinements you've learned this is a task you should not delegate. Validation builds confidence but never removes your responsibility to check the work.",
+        "keywords": [
+          "known answer",
+          "known-good",
+          "match",
+          "trust",
+          "refine",
+          "do not delegate",
+          "responsibility",
+          "validation"
+        ],
+        "explanation": "Testing against a known answer is the only way to measure trust objectively: match = delegate, repeated misses = don't. Rio's veterans-services attendance analysis anchors the idea — you need a concrete, scoped target you can grade against.",
+        "hint": "Grade Claude on an answer key you already hold — match it to trust it."
       }
     ]
   }

@@ -1,0 +1,73 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const mods = import.meta.glob('../../../data/learn/*.json', { eager: true });
+type Module = { id: string; title: string; session: string; course: string; promise: string; quizId: string; sections: unknown[] };
+const modules = Object.values(mods)
+  .map((m: any) => (m.default ?? m) as Module)
+  .sort((a, b) => b.session.localeCompare(a.session, undefined, { numeric: true }));
+---
+
+<Layout title="Encode Learn" description="Masterclass-style study guides — study the material, prove it with a quiz, watch your mastery build, all in one place." palette="encode">
+  <header class="mb-10">
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-3">
+      <a href="/encode" class="hover:text-white">// Encode</a> / Learn
+    </p>
+    <h1 class="text-4xl font-bold tracking-tight mb-3">Learn</h1>
+    <p class="text-lg text-neutral-300 max-w-xl leading-relaxed">
+      One page per module: study the material with a question before every answer, prove it on a self-scoring quiz, and watch your mastery build. Study, retrieve, prove, return — the part a video course can't give you.
+    </p>
+  </header>
+
+  {modules.length === 0 ? (
+    <p class="text-neutral-400">No modules yet — check back after the next session.</p>
+  ) : (
+    <ul class="space-y-px bg-neutral-800 border border-neutral-800">
+      {modules.map((m) => (
+        <li class="bg-neutral-900">
+          <a
+            href={`/encode/learn/${m.id}`}
+            data-quiz-id={m.quizId}
+            class="learn-card group block p-5 hover:bg-neutral-900 transition-colors"
+          >
+            <div class="flex items-baseline justify-between gap-4 mb-1">
+              <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">{m.session} · {m.sections.length} objectives + quiz</span>
+              <span class="learn-badge hidden text-[10px] font-mono px-2 py-0.5 border"></span>
+            </div>
+            <h2 class="text-xl font-semibold tracking-tight group-hover:underline">{m.title}</h2>
+            <p class="text-sm text-neutral-500 font-mono mb-1.5">{m.course}</p>
+            <p class="text-sm text-neutral-300 leading-relaxed">{m.promise}</p>
+            <p class="learn-stats hidden mt-3 text-[11px] font-mono text-neutral-500"></p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+
+  <p class="mt-6 text-xs font-mono text-neutral-400">
+    Progress is saved in this browser only — no account, no tracking.
+  </p>
+</Layout>
+
+<script>
+  const todayStr = () => new Date().toISOString().slice(0, 10);
+  document.querySelectorAll<HTMLAnchorElement>('.learn-card').forEach((card) => {
+    const id = card.dataset.quizId;
+    if (!id) return;
+    let s: any = null;
+    try { const raw = localStorage.getItem(`lll-hw-${id}`); if (raw) s = JSON.parse(raw); } catch {}
+    if (!s || !s.attempts) return;
+
+    const badge = card.querySelector<HTMLElement>('.learn-badge')!;
+    const stats = card.querySelector<HTMLElement>('.learn-stats')!;
+    const due = s.lastDate !== todayStr();
+
+    badge.classList.remove('hidden');
+    if (s.bestPct === 100) { badge.textContent = 'Sealed 🔒'; badge.classList.add('border-green-600', 'text-green-700'); }
+    else if (due) { badge.textContent = 'Review due'; badge.classList.add('border-amber-500', 'text-amber-700'); }
+    else { badge.textContent = 'Locked ✓'; badge.classList.add('border-neutral-400', 'text-neutral-400'); }
+
+    stats.classList.remove('hidden');
+    stats.textContent = `Best ${s.bestPct ?? 0}% · streak ${s.streak} · ${s.attempts} attempt${s.attempts === 1 ? '' : 's'}`;
+  });
+</script>
