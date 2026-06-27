@@ -113,6 +113,8 @@ export const categories: Record<CategorySlug, Category> = {
   },
 };
 
-// Pillar order: Encode (I), Forge (II), Dispatch (III).
-// Beacon archived from nav + homepage S61 (kept at /beacon for later) — Dispatch took its slot.
-export const categoryList: Category[] = [categories.encode, categories.forge, categories.dispatch];
+// Pillar order: Encode (I), Forge (II).
+// Beacon archived from nav + homepage S61 (kept at /beacon for later).
+// Dispatch archived from nav + homepage E32 2026-06-27 — kept at /dispatch + posts on disk;
+// being spun out into its own standalone creative/design website.
+export const categoryList: Category[] = [categories.encode, categories.forge];

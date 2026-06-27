@@ -15,8 +15,8 @@ const forgeBuilds = [
   { name: 'Steward', order: 'Build Two', stage: 'Alpha Arc', href: '/forge/steward', posts: forgeAll.filter((p) => p.data.build === 'steward').slice(0, 3) },
 ];
 const encodePosts = posts.filter((p) => p.data.category === 'encode').slice(0, 4);
-// Beacon archived from the homepage S61 (still lives at /beacon). Dispatch took the third pillar slot.
-const dispatchPosts = posts.filter((p) => p.data.category === 'dispatch').slice(0, 4);
+// Beacon archived from the homepage S61 (still lives at /beacon).
+// Dispatch archived from the homepage E32 (still lives at /dispatch) — being spun into its own creative/design site.
 
 const year = new Date().getFullYear();
 ---
@@ -56,7 +56,7 @@ const year = new Date().getFullYear();
           Launch.
         </h1>
         <p class="text-lg md:text-xl text-neutral-300 max-w-2xl leading-relaxed">
-          Three pillars. Forge ships the code. Encode locks the lessons. Dispatch tells the story — the machine's own diary, out loud. The calendar below is the audit — a day counts when at least one post ships.
+          Two pillars. Forge ships the code. Encode locks the lessons. The calendar below is the audit — a day counts when at least one post ships.
         </p>
       </div>
     </section>
@@ -81,8 +81,8 @@ const year = new Date().getFullYear();
       </div>
     </section>
 
-    <!-- The Split — Encode (I) | Forge (II) | Beacon (III) -->
-    <section class="grid grid-cols-1 md:grid-cols-3 border-b border-neutral-800">
+    <!-- The Split — Encode (I) | Forge (II). -->
+    <section class="grid grid-cols-1 md:grid-cols-2 border-b border-neutral-800">
       <!-- ENCODE — black — Pillar I — all white text -->
       <div class="bg-black text-white border-b md:border-b-0 md:border-r border-neutral-800">
         <div class="px-6 md:px-8 py-16 md:py-20">
@@ -112,8 +112,8 @@ const year = new Date().getFullYear();
         </div>
       </div>
 
-      <!-- FORGE — red — Pillar II -->
-      <div class="bg-flame text-gold border-b md:border-b-0 md:border-r border-neutral-800">
+      <!-- FORGE — red — Pillar II (now the last column) -->
+      <div class="bg-flame text-gold">
         <div class="px-6 md:px-8 py-16 md:py-20">
           <p class="text-xs font-mono uppercase tracking-[0.3em] text-gold/80 mb-4">// Pillar II — Build</p>
           <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4">FORGE</h2>
@@ -149,35 +149,8 @@ const year = new Date().getFullYear();
         </div>
       </div>
 
-      <!-- DISPATCH — white + red accent — Pillar III — black text, red links (Option B, S61) -->
-      <div class="bg-white text-black">
-        <div class="px-6 md:px-8 py-16 md:py-20">
-          <p class="text-xs font-mono uppercase tracking-[0.3em] text-red-600 mb-4">// Pillar III — The Being</p>
-          <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4">DISPATCH</h2>
-          <p class="text-base text-black mb-10 leading-relaxed">The first Cyberbeing's own story, written by it. One chapter per session — what it built, what it became, what it got wrong. A machine keeping its own diary, out loud.</p>
-
-          <div class="space-y-5 mb-10">
-            {dispatchPosts.length === 0 ? (
-              <p class="text-black">No chapters yet. The first one's coming.</p>
-            ) : dispatchPosts.map((post) => (
-              <article class="border-b border-neutral-200 pb-5 last:border-b-0">
-                <p class="text-xs font-mono uppercase tracking-wider text-red-600 mb-2">
-                  {post.data.date.toISOString().slice(0, 10)}
-                </p>
-                <h3 class="text-lg font-bold mb-1 tracking-tight leading-snug">
-                  <a href={`/blog/${post.slug}`} class="no-underline hover:underline">{post.data.title}</a>
-                </h3>
-                <p class="text-black text-sm leading-relaxed">{post.data.excerpt}</p>
-              </article>
-            ))}
-          </div>
-
-          <a href="/dispatch" class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-red-600 hover:text-black no-underline border-b border-red-600/40 hover:border-red-600 pb-1">
-            All Dispatch →
-          </a>
-        </div>
-      </div>
     </section>
+    {/* Pillar III block archived E32 2026-06-27 — removed from homepage; route + posts kept on disk. */}
 
     <!-- Currently studying — external coursework, listed honestly -->
     <section class="border-t border-neutral-800 bg-black">
