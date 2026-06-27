@@ -44,6 +44,17 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft && data.cat
     </div>
   </a>
 
+  <a href="/encode/resources/project-instructions-generator" class="block mb-4 border border-neutral-700 p-5 hover:bg-neutral-900 transition-colors group">
+    <div class="flex items-center justify-between gap-4">
+      <div>
+        <p class="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 mb-1">Free resource</p>
+        <p class="text-white font-semibold">Project Instructions Generator — a copy-paste prompt →</p>
+        <p class="text-sm text-neutral-400 mt-1">Hand Claude this prompt and it interviews you, then writes a strong set of Project instructions built on the four ingredients pros use. Free — grab it or get it emailed.</p>
+      </div>
+      <span class="text-neutral-500 text-lg font-mono group-hover:translate-x-1 transition-transform">→</span>
+    </div>
+  </a>
+
   {/* ARCHIVED S61 — Homework/Quiz CTA pulled from the live page (page still lives at /encode/homework).
   <a href="/encode/homework" class="block mb-4 border border-black p-5 hover:bg-neutral-50 transition-colors group">
     <div class="flex items-center justify-between gap-4">

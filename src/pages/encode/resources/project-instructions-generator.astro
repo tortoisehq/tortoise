@@ -1,0 +1,113 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const title = 'Project Instructions Generator';
+const promise =
+  'A copy-paste prompt that interviews you and writes a strong set of Claude Project instructions — built on the four ingredients pros use.';
+
+// The lead magnet itself. Shown on-page (free) AND emailed to subscribers via Kit.
+const promptText = `I'm setting up a Claude Project for: [describe your work / goal].
+
+Interview me one question at a time, then write the project instructions.
+Make sure they cover all four:
+  1. CONTEXT — what this project is for
+  2. PROCESS — how you should approach tasks in it
+  3. TONE & STYLE — how you should sound
+  4. SPECIFIC REQUIREMENTS — the non-negotiable rules
+
+When you have enough, output the final instructions as one clean block
+I can paste straight into the project's Instructions panel.`;
+
+const ingredients = [
+  { n: 'Context', blurb: 'what the project is for' },
+  { n: 'Process', blurb: 'how Claude should approach tasks' },
+  { n: 'Tone & style', blurb: 'how it should sound' },
+  { n: 'Requirements', blurb: 'the non-negotiable rules' },
+];
+---
+
+<Layout title={`${title} — Encode`} description={promise} palette="encode">
+  <!-- breadcrumb -->
+  <header class="mb-8">
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-3">
+      <a href="/encode" class="hover:text-white">// Encode</a> /
+      <span>Resources</span> / {title}
+    </p>
+    <p class="text-sm font-mono text-neutral-500 mb-4">Free resource · from Claude 101, Module 2 — Projects</p>
+    <h1 class="text-4xl font-bold tracking-tight mb-3">{title}</h1>
+    <p class="text-lg text-neutral-300 max-w-2xl leading-relaxed">{promise}</p>
+  </header>
+
+  <!-- why it works: the four ingredients -->
+  <section class="mb-10 border border-neutral-700 bg-neutral-900">
+    <p class="px-5 pt-4 text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">// Great project instructions have four ingredients</p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-px bg-neutral-800 border-t border-neutral-800 mt-3">
+      {ingredients.map((l, i) => (
+        <div class="bg-neutral-900 p-4">
+          <p class="text-sm font-bold tracking-tight">{i + 1}. {l.n}</p>
+          <p class="text-xs text-neutral-400 mt-1 leading-relaxed">{l.blurb}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- email capture -->
+  <section class="mb-12 border border-neutral-700 bg-neutral-900 p-6">
+    <p class="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 mb-2">// Get it emailed — plus the next ones</p>
+    <h2 class="text-xl font-bold tracking-tight mb-2">Want a copy in your inbox?</h2>
+    <p class="text-sm text-neutral-300 leading-relaxed mb-5 max-w-2xl">
+      Drop your email and I'll send this prompt straight to you — and you'll get every new Claude resource and study guide as I build them, learning in public. The full prompt is right below either way.
+    </p>
+    <!-- Kit (ConvertKit) inline form embed. is:inline keeps Astro from bundling the third-party script. -->
+    <script async is:inline data-uid="2f803f4956" src="https://lovelearnlift.kit.com/2f803f4956/index.js"></script>
+  </section>
+
+  <!-- the resource itself, on-page + copyable -->
+  <section class="mb-12">
+    <div class="flex items-baseline justify-between mb-3 border-b border-neutral-700 pb-2">
+      <h2 class="text-2xl font-bold tracking-tight">The prompt</h2>
+      <button id="copy-btn" data-copy={promptText}
+        class="text-xs font-mono uppercase tracking-[0.15em] border border-neutral-700 px-3 py-1.5 hover:bg-neutral-800 hover:text-white text-neutral-300 transition-colors">
+        Copy
+      </button>
+    </div>
+    <pre class="bg-neutral-950 border border-neutral-800 p-5 overflow-x-auto text-sm text-neutral-200 leading-relaxed whitespace-pre-wrap font-mono">{promptText}</pre>
+  </section>
+
+  <!-- how to use -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold tracking-tight mb-5 border-b border-neutral-700 pb-2">How to use it</h2>
+    <ol class="space-y-3">
+      <li class="flex gap-3 border-l-2 border-neutral-700 pl-4 py-1">
+        <span class="font-mono text-xs text-neutral-500 mt-0.5">1</span>
+        <span class="text-neutral-300">Open a fresh Claude chat and paste the prompt. Replace <span class="text-white font-mono text-sm">[describe your work / goal]</span> with what your project is actually for.</span>
+      </li>
+      <li class="flex gap-3 border-l-2 border-neutral-700 pl-4 py-1">
+        <span class="font-mono text-xs text-neutral-500 mt-0.5">2</span>
+        <span class="text-neutral-300">Answer Claude's questions one at a time. It interviews you so the instructions fit <em>your</em> workflow, not a generic template.</span>
+      </li>
+      <li class="flex gap-3 border-l-2 border-neutral-700 pl-4 py-1">
+        <span class="font-mono text-xs text-neutral-500 mt-0.5">3</span>
+        <span class="text-neutral-300">Copy the block it outputs into your Project's <span class="text-white">Instructions</span> panel. Now every chat in that project follows it.</span>
+      </li>
+    </ol>
+  </section>
+
+  <p class="text-xs font-mono">
+    <a href="/encode/learn" class="underline hover:text-white">← Encode learn hub</a>
+  </p>
+</Layout>
+
+<script>
+  const btn = document.getElementById('copy-btn') as HTMLButtonElement | null;
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const text = btn.dataset.copy ?? '';
+      navigator.clipboard.writeText(text).then(() => {
+        const prev = btn.textContent;
+        btn.textContent = 'Copied ✓';
+        setTimeout(() => { btn.textContent = prev; }, 1500);
+      }).catch(() => {});
+    });
+  }
+</script>
