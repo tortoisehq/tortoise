@@ -51,13 +51,13 @@ const rootBg = p ? p.bg : 'bg-neutral-950';
 const rootText = p ? p.text : 'text-neutral-100';
 const navText = p ? p.textMuted : 'text-neutral-400';
 // S61 repaint: encode + forge are dark/flame (hover to white); dispatch + beacon are light (hover to black).
-const navHover = p ? ((palette === 'encode' || palette === 'forge') ? 'hover:text-white' : 'hover:text-black') : 'hover:text-neutral-100';
+const navHover = p ? (palette === 'encode' ? 'hover:text-white' : 'hover:text-black') : 'hover:text-neutral-100';
 const borderColor = p ? p.border : 'border-neutral-800';
 const footerMuted = p ? p.textMuted : 'text-neutral-400';
 ---
 
 <!doctype html>
-<html lang="en" class={palette === 'dispatch' || palette === 'beacon' ? '' : 'dark'}>
+<html lang="en" class={palette === 'dispatch' || palette === 'beacon' || palette === 'forge' ? '' : 'dark'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

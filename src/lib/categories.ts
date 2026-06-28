@@ -30,19 +30,20 @@ export interface Category {
 export const categories: Record<CategorySlug, Category> = {
   forge: {
     slug: 'forge',
-    // S61 repaint — Forge page palette now matches the homepage Forge block (flame bg, gold text).
+    // E33 rebrand — Forge flipped to the inverse of Encode: classic black text on white,
+    // with a flame accent kept for Forge identity.
     name: 'Forge',
     description: 'Building and shipping.',
     palette: {
-      bg: 'bg-flame',
-      text: 'text-gold',
-      textMuted: 'text-gold/70',
-      border: 'border-gold/30',
-      borderHover: 'hover:border-gold',
-      chipBg: 'bg-black/20',
-      chipText: 'text-gold',
-      accent: 'gold',
-      inverse: 'black',
+      bg: 'bg-white',
+      text: 'text-black',
+      textMuted: 'text-neutral-600',
+      border: 'border-neutral-200',
+      borderHover: 'hover:border-black',
+      chipBg: 'bg-neutral-100',
+      chipText: 'text-neutral-700',
+      accent: 'flame',
+      inverse: 'white',
     },
   },
   encode: {

@@ -34,18 +34,18 @@ const builds = [
 
 <Layout title={meta.name} description={meta.description} palette="forge">
   <header class="mb-12">
-    <p class="text-xs font-mono uppercase tracking-[0.25em] text-gold/60 mb-3">// Pillar II — Build</p>
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-3">// Pillar II — Build</p>
     <h1 class="text-5xl font-bold tracking-tight mb-3">Forge</h1>
-    <p class="text-lg text-gold/80 max-w-xl">Building and shipping. Forge has two builds — the machine that builds, and the tools it helps me make. Pick a build to read its sessions: the code that landed, the trade-offs that earned it, and the rules I write so I don't make the same mistake twice.</p>
+    <p class="text-lg text-neutral-600 max-w-xl">Building and shipping. Forge has two builds — the machine that builds, and the tools it helps me make. Pick a build to read its sessions: the code that landed, the trade-offs that earned it, and the rules I write so I don't make the same mistake twice.</p>
   </header>
 
   <div class="grid gap-5 sm:grid-cols-2">
     {builds.map((b) => (
-      <a href={b.href} class="group block border border-gold/30 hover:border-gold transition-colors p-6 no-underline">
-        <p class="text-xs font-mono uppercase tracking-[0.25em] text-gold/60 mb-3">// {b.order} · {b.stage}</p>
-        <h2 class="text-3xl font-bold tracking-tight mb-3 text-gold">{b.name}</h2>
-        <p class="text-gold/70 mb-6 leading-relaxed">{b.blurb}</p>
-        <span class="text-sm font-mono text-gold/80 group-hover:text-white">
+      <a href={b.href} class="group block border border-neutral-300 hover:border-black transition-colors p-6 no-underline">
+        <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-3">// {b.order} · {b.stage}</p>
+        <h2 class="text-3xl font-bold tracking-tight mb-3 text-black">{b.name}</h2>
+        <p class="text-neutral-600 mb-6 leading-relaxed">{b.blurb}</p>
+        <span class="text-sm font-mono text-neutral-600 group-hover:text-black">
           {b.count === 0 ? 'No sessions yet' : `${b.count} ${b.count === 1 ? 'session' : 'sessions'}`} →
         </span>
       </a>
