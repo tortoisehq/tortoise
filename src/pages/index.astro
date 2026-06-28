@@ -40,7 +40,7 @@ const year = new Date().getFullYear();
             {categoryList.map((c) => (
               <li><a class="hover:text-white" href={`/${c.slug}`}>{c.name}</a></li>
             ))}
-            <li><a class="text-gold hover:text-white" href="/encode/homework">Homework</a></li>
+            <li><a class="text-gold hover:text-white" href="/encode/learn">Learn</a></li>
           </ul>
         </nav>
       </div>
@@ -64,19 +64,19 @@ const year = new Date().getFullYear();
     <!-- Daily completion calendar — neutral-900 band -->
     <Calendar />
 
-    <!-- Homework CTA — gold band, marketable, high on the page -->
+    <!-- Masterclass CTA — gold band, marketable, high on the page (repointed from Homework E33) -->
     <section class="border-b border-neutral-800 bg-gold text-black">
       <div class="max-w-6xl mx-auto px-6 py-12 md:py-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
         <div class="max-w-2xl">
-          <p class="text-xs font-mono uppercase tracking-[0.3em] mb-3">// New — Test yourself</p>
+          <p class="text-xs font-mono uppercase tracking-[0.3em] mb-3">// New — The masterclass</p>
           <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-4 leading-[0.95]">Don't just read it.<br/>Lock it in.</h2>
           <p class="text-base md:text-lg leading-relaxed">
-            Quiz yourself on what I'm learning — scoreable, with instant feedback and three difficulty levels,
-            from multiple choice to type-it-from-memory. Free, no signup, your scores stay in your browser.
+            Work the Claude 101 masterclass — every module with a question before every answer, a self-scoring
+            quiz, and a clear path from Module 1 to the final. Free, no signup, your progress stays in your browser.
           </p>
         </div>
-        <a href="/encode/homework" class="shrink-0 inline-flex items-center gap-2 bg-black text-gold font-mono uppercase tracking-wider text-sm px-7 py-4 no-underline hover:bg-neutral-900 transition-colors">
-          Start a quiz →
+        <a href="/encode/learn" class="shrink-0 inline-flex items-center gap-2 bg-black text-gold font-mono uppercase tracking-wider text-sm px-7 py-4 no-underline hover:bg-neutral-900 transition-colors">
+          Start the masterclass →
         </a>
       </div>
     </section>
