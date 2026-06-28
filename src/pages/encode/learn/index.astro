@@ -35,63 +35,63 @@ const courses = [...courseMap.values()].map((c) => ({
 }));
 ---
 
-<Layout title="Encode Learn" description="Masterclass-style study guides — study the material, prove it with a quiz, watch your mastery build, all in one place." palette="encode">
+<Layout title="Encode Learn" description="Masterclass-style study guides — study the material, prove it with a quiz, watch your mastery build, all in one place." palette="masterclass">
   <header class="mb-10">
-    <p class="text-xs font-mono uppercase tracking-[0.25em] text-stone-500 mb-3">
-      <a href="/encode" class="hover:text-stone-100">// Encode</a> / Learn
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-3">
+      <a href="/encode" class="hover:text-black">// Encode</a> / Learn
     </p>
     <h1 class="text-4xl font-bold tracking-tight mb-3">Learn</h1>
-    <p class="text-lg text-stone-300 max-w-xl leading-relaxed">
+    <p class="text-lg text-neutral-700 max-w-xl leading-relaxed">
       A masterclass you prove, not just watch. Study each module with a question before every answer, prove it on a self-scoring quiz, and watch your mastery build — module by module, in order.
     </p>
   </header>
 
   {courses.length === 0 ? (
-    <p class="text-stone-400">No modules yet — check back after the next session.</p>
+    <p class="text-neutral-600">No modules yet — check back after the next session.</p>
   ) : (
     courses.map((c) => (
       <section class="course mb-12" data-course-id={c.id}>
         {/* course header band */}
-        <div class="border border-stone-800 bg-stone-900 mb-px">
+        <div class="border border-neutral-200 bg-white mb-px">
           <div class="p-5">
             <div class="flex items-baseline justify-between gap-4 flex-wrap">
               <div>
                 <h2 class="text-2xl font-bold tracking-tight">{c.title}</h2>
-                <p class="text-xs font-mono uppercase tracking-[0.2em] text-stone-500 mt-1">{c.subtitle} · {c.modules.length} modules · self-scoring</p>
+                <p class="text-xs font-mono uppercase tracking-[0.2em] text-neutral-500 mt-1">{c.subtitle} · {c.modules.length} modules · self-scoring</p>
               </div>
-              <p class="course-summary text-xs font-mono text-stone-400" data-total={c.modules.length}>Start with Module 1 →</p>
+              <p class="course-summary text-xs font-mono text-neutral-600" data-total={c.modules.length}>Start with Module 1 →</p>
             </div>
             {/* progress bar */}
-            <div class="mt-4 h-1.5 bg-stone-800 overflow-hidden">
+            <div class="mt-4 h-1.5 bg-neutral-200 overflow-hidden">
               <div class="course-bar h-full bg-emerald-500 transition-all" style="width:0%"></div>
             </div>
             {/* continue CTA (hydrated) */}
-            <a class="course-continue mt-4 hidden items-center gap-2 bg-white text-black font-semibold text-sm px-4 py-2.5 hover:bg-stone-200 transition-colors" href="#">
+            <a class="course-continue mt-4 hidden items-center gap-2 bg-black text-white font-semibold text-sm px-4 py-2.5 hover:bg-neutral-800 transition-colors" href="#">
               <span class="course-continue-label">Continue</span>
             </a>
           </div>
         </div>
 
         {/* ordered module list */}
-        <ol class="space-y-px bg-stone-800 border border-stone-800">
+        <ol class="space-y-px bg-neutral-200 border border-neutral-200">
           {c.modules.map((m) => (
-            <li class="bg-stone-900">
+            <li class="bg-white">
               <a
                 href={`/encode/learn/${m.id}`}
                 data-quiz-id={m.quizId}
                 data-module={m.module ?? 0}
                 data-pass-pct={passByQuiz[m.quizId] ?? 80}
-                class="module-row group flex gap-4 p-5 hover:bg-stone-900/60 transition-colors border-l-2 border-transparent"
+                class="module-row group flex gap-4 p-5 hover:bg-neutral-100 transition-colors border-l-2 border-transparent"
               >
-                <span class="module-num font-mono text-sm text-stone-500 pt-0.5 tabular-nums">{String(m.module ?? 0).padStart(2, '0')}</span>
+                <span class="module-num font-mono text-sm text-neutral-500 pt-0.5 tabular-nums">{String(m.module ?? 0).padStart(2, '0')}</span>
                 <div class="min-w-0 flex-1">
                   <div class="flex items-baseline justify-between gap-3 mb-1">
-                    <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-500">Module {m.module} · {m.sections.length} objectives + quiz</span>
+                    <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">Module {m.module} · {m.sections.length} objectives + quiz</span>
                     <span class="module-chip hidden text-[10px] font-mono px-2 py-0.5 border whitespace-nowrap"></span>
                   </div>
                   <h3 class="text-xl font-semibold tracking-tight group-hover:underline">{m.title}</h3>
-                  <p class="text-sm text-stone-400 leading-relaxed mt-1">{m.promise}</p>
-                  <p class="module-stats hidden mt-2 text-[11px] font-mono text-stone-500"></p>
+                  <p class="text-sm text-neutral-600 leading-relaxed mt-1">{m.promise}</p>
+                  <p class="module-stats hidden mt-2 text-[11px] font-mono text-neutral-500"></p>
                 </div>
               </a>
             </li>
@@ -101,7 +101,7 @@ const courses = [...courseMap.values()].map((c) => ({
     ))
   )}
 
-  <p class="mt-6 text-xs font-mono text-stone-500">
+  <p class="mt-6 text-xs font-mono text-neutral-500">
     Progress is saved in this browser only — no account, no tracking.
   </p>
 </Layout>
@@ -131,21 +131,21 @@ const courses = [...courseMap.values()].map((c) => ({
       chip.classList.remove('hidden');
       if (attempts === 0) {
         chip.textContent = 'Not started';
-        chip.classList.add('border-stone-700', 'text-stone-500');
+        chip.classList.add('border-neutral-300', 'text-neutral-500');
         if (!continueEl) continueEl = row;
       } else if (bestPct < passPct) {
         chip.textContent = 'In progress';
-        chip.classList.add('border-amber-400', 'text-amber-400');
+        chip.classList.add('border-amber-500', 'text-amber-600');
         if (!continueEl) continueEl = row;
       } else if (bestPct === 100) {
         sealed++;
         chip.textContent = due ? 'Sealed 🔒 · review due' : 'Sealed 🔒';
-        chip.classList.add(due ? 'border-amber-500' : 'border-emerald-500', due ? 'text-amber-400' : 'text-emerald-400');
+        chip.classList.add(due ? 'border-amber-500' : 'border-emerald-500', due ? 'text-amber-600' : 'text-emerald-600');
         if (due && !firstDueEl) firstDueEl = row;
       } else {
         locked++;
         chip.textContent = due ? 'Locked ✓ · review due' : 'Locked ✓';
-        chip.classList.add(due ? 'border-amber-500' : 'border-green-600', due ? 'text-amber-400' : 'text-green-500');
+        chip.classList.add(due ? 'border-amber-500' : 'border-green-600', due ? 'text-amber-600' : 'text-green-600');
         if (due && !firstDueEl) firstDueEl = row;
       }
 
@@ -171,8 +171,8 @@ const courses = [...courseMap.values()].map((c) => ({
     const cta = section.querySelector<HTMLAnchorElement>('.course-continue')!;
     const ctaLabel = cta.querySelector<HTMLElement>('.course-continue-label')!;
     if (target) {
-      target.classList.add('border-amber-400', 'bg-amber-400/[0.04]');
-      target.querySelector('.module-num')!.classList.add('!text-amber-400');
+      target.classList.add('border-amber-500', 'bg-amber-50');
+      target.querySelector('.module-num')!.classList.add('!text-amber-600');
       const num = target.dataset.module;
       const title = target.querySelector('h3')!.textContent;
       cta.href = target.getAttribute('href') || '#';

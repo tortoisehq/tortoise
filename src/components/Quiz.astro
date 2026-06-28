@@ -45,7 +45,7 @@ const total = quiz.questions.length;
   id="quiz-root"
   data-quiz-id={quiz.id}
   data-pass-pct={quiz.passPct}
-  class="border border-neutral-700"
+  class="border border-neutral-300"
 >
   <!-- Quiz data, embedded for the client engine -->
   <script type="application/json" id="quiz-data" set:html={JSON.stringify(quiz)} />
@@ -56,39 +56,39 @@ const total = quiz.questions.length;
       {quiz.session} · <span id="start-count">{total} questions</span> · pass at {quiz.passPct}%
     </p>
     <h2 class="text-2xl font-bold tracking-tight mb-2">{quiz.title}</h2>
-    <p class="text-neutral-300 text-sm leading-relaxed mb-5">{quiz.excerpt}</p>
+    <p class="text-neutral-700 text-sm leading-relaxed mb-5">{quiz.excerpt}</p>
 
     <!-- difficulty picker -->
     <div class="mb-5">
       <p class="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 mb-2">Difficulty</p>
-      <div class="grid grid-cols-3 gap-px bg-neutral-800 border border-neutral-800">
-        <button type="button" data-diff="easy" class="diff-btn bg-neutral-900 px-3 py-2.5 text-center hover:bg-neutral-900">
+      <div class="grid grid-cols-3 gap-px bg-neutral-200 border border-neutral-200">
+        <button type="button" data-diff="easy" class="diff-btn bg-white px-3 py-2.5 text-center hover:bg-neutral-100">
           <span class="block text-sm font-semibold">Easy</span>
           <span class="block text-[10px] font-mono text-neutral-500">Recognize</span>
         </button>
-        <button type="button" data-diff="medium" class="diff-btn bg-neutral-900 px-3 py-2.5 text-center hover:bg-neutral-900">
+        <button type="button" data-diff="medium" class="diff-btn bg-white px-3 py-2.5 text-center hover:bg-neutral-100">
           <span class="block text-sm font-semibold">Medium</span>
           <span class="block text-[10px] font-mono text-neutral-500">Recall</span>
         </button>
-        <button type="button" data-diff="hard" class="diff-btn bg-neutral-900 px-3 py-2.5 text-center hover:bg-neutral-900">
+        <button type="button" data-diff="hard" class="diff-btn bg-white px-3 py-2.5 text-center hover:bg-neutral-100">
           <span class="block text-sm font-semibold">Hard</span>
           <span class="block text-[10px] font-mono text-neutral-500">Reproduce</span>
         </button>
       </div>
-      <p id="diff-desc" class="mt-2 text-xs text-neutral-400"></p>
+      <p id="diff-desc" class="mt-2 text-xs text-neutral-600"></p>
     </div>
 
     <!-- localStorage-hydrated stat row -->
-    <div id="start-stats" class="hidden grid grid-cols-3 gap-px bg-neutral-800 border border-neutral-800 mb-5 text-center">
-      <div class="bg-neutral-900 py-3">
+    <div id="start-stats" class="hidden grid grid-cols-3 gap-px bg-neutral-200 border border-neutral-200 mb-5 text-center">
+      <div class="bg-white py-3">
         <div id="stat-best" class="text-xl font-bold tabular-nums">—</div>
         <div class="text-[10px] font-mono uppercase tracking-[0.15em] text-neutral-500">Best</div>
       </div>
-      <div class="bg-neutral-900 py-3">
+      <div class="bg-white py-3">
         <div id="stat-streak" class="text-xl font-bold tabular-nums">—</div>
         <div class="text-[10px] font-mono uppercase tracking-[0.15em] text-neutral-500">Streak</div>
       </div>
-      <div class="bg-neutral-900 py-3">
+      <div class="bg-white py-3">
         <div id="stat-attempts" class="text-xl font-bold tabular-nums">—</div>
         <div class="text-[10px] font-mono uppercase tracking-[0.15em] text-neutral-500">Attempts</div>
       </div>
@@ -101,12 +101,12 @@ const total = quiz.questions.length;
       </span>
     </div>
 
-    <button id="btn-start" class="w-full sm:w-auto px-6 py-3 bg-white text-black font-semibold text-sm hover:bg-neutral-200 transition-colors">
+    <button id="btn-start" class="w-full sm:w-auto px-6 py-3 bg-black text-white font-semibold text-sm hover:bg-neutral-800 transition-colors">
       Start →
     </button>
-    <p class="mt-3 text-[11px] font-mono text-neutral-400">
-      Tip: press <kbd class="border border-neutral-700 px-1">1</kbd>–<kbd class="border border-neutral-700 px-1">4</kbd> to answer,
-      <kbd class="border border-neutral-700 px-1">Enter</kbd> to continue.
+    <p class="mt-3 text-[11px] font-mono text-neutral-600">
+      Tip: press <kbd class="border border-neutral-300 px-1">1</kbd>–<kbd class="border border-neutral-300 px-1">4</kbd> to answer,
+      <kbd class="border border-neutral-300 px-1">Enter</kbd> to continue.
     </p>
   </div>
 
@@ -118,30 +118,30 @@ const total = quiz.questions.length;
         <span id="q-counter">Question 1 / {total}</span>
         <span id="q-score">Score 0</span>
       </div>
-      <div class="h-1.5 bg-neutral-800 overflow-hidden">
-        <div id="q-progress" class="h-full bg-white transition-all duration-300" style="width:0%"></div>
+      <div class="h-1.5 bg-neutral-200 overflow-hidden">
+        <div id="q-progress" class="h-full bg-black transition-all duration-300" style="width:0%"></div>
       </div>
     </div>
 
     <div class="p-6 sm:p-8">
-      <p id="q-concept" class="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-400 mb-2"></p>
+      <p id="q-concept" class="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-600 mb-2"></p>
       <h3 id="q-prompt" class="text-lg font-semibold leading-snug mb-5"></h3>
 
       <div id="q-options" class="space-y-2.5"></div>
 
       <div class="mt-4 flex items-center gap-4">
-        <button id="btn-hint" class="text-xs font-mono text-neutral-500 underline hover:text-white">Reveal hint</button>
+        <button id="btn-hint" class="text-xs font-mono text-neutral-500 underline hover:text-black">Reveal hint</button>
       </div>
-      <p id="q-hint" class="hidden mt-2 text-sm text-neutral-400 italic border-l-2 border-neutral-700 pl-3"></p>
+      <p id="q-hint" class="hidden mt-2 text-sm text-neutral-600 italic border-l-2 border-neutral-300 pl-3"></p>
 
       <!-- feedback -->
       <div id="q-feedback" class="hidden mt-5 p-4 border-l-2">
         <p id="q-verdict" class="font-semibold text-sm mb-1"></p>
-        <p id="q-explanation" class="text-sm text-neutral-300 leading-relaxed"></p>
+        <p id="q-explanation" class="text-sm text-neutral-700 leading-relaxed"></p>
       </div>
 
       <div class="mt-6 flex justify-end">
-        <button id="btn-next" class="hidden px-6 py-2.5 bg-white text-black font-semibold text-sm hover:bg-neutral-200 transition-colors">Next →</button>
+        <button id="btn-next" class="hidden px-6 py-2.5 bg-black text-white font-semibold text-sm hover:bg-neutral-800 transition-colors">Next →</button>
       </div>
     </div>
   </div>
@@ -163,9 +163,9 @@ const total = quiz.questions.length;
     <p id="result-meta" class="text-xs font-mono text-neutral-500 mb-6"></p>
 
     <div class="flex flex-col sm:flex-row gap-2.5 justify-center">
-      <button id="btn-retry" class="px-6 py-2.5 bg-white text-black font-semibold text-sm hover:bg-neutral-200 transition-colors">Retake</button>
-      <button id="btn-review" class="px-6 py-2.5 border border-neutral-700 font-semibold text-sm hover:border-white transition-colors">Retry missed only</button>
-      <button id="btn-share" class="px-6 py-2.5 border border-neutral-700 font-semibold text-sm hover:border-white transition-colors">Copy score card</button>
+      <button id="btn-retry" class="px-6 py-2.5 bg-black text-white font-semibold text-sm hover:bg-neutral-800 transition-colors">Retake</button>
+      <button id="btn-review" class="px-6 py-2.5 border border-neutral-300 font-semibold text-sm hover:border-black transition-colors">Retry missed only</button>
+      <button id="btn-share" class="px-6 py-2.5 border border-neutral-300 font-semibold text-sm hover:border-black transition-colors">Copy score card</button>
     </div>
     <p id="share-status" class="hidden mt-3 text-xs font-mono text-green-700">Copied to clipboard ✓</p>
   </div>
@@ -309,11 +309,11 @@ const total = quiz.questions.length;
     // Shared verdict box (credit-aware: green / amber / red) + explanation HTML.
     const verdictBox = (credit: number, q: Q, extraTop = '') => {
       const fb = $('q-feedback'), verdict = $('q-verdict');
-      fb.classList.remove('hidden', 'border-green-600', 'border-red-500', 'border-amber-400', 'bg-green-50', 'bg-red-50', 'bg-amber-50', 'border-neutral-400', 'bg-neutral-900');
+      fb.classList.remove('hidden', 'border-green-600', 'border-red-500', 'border-amber-400', 'bg-green-50', 'bg-red-50', 'bg-amber-50', 'border-neutral-400', 'bg-white');
       if (credit >= 1) { fb.classList.add('border-green-600', 'bg-green-50'); verdict.textContent = '✓ Correct'; verdict.className = 'font-semibold text-sm mb-1 text-green-800'; }
       else if (credit > 0) { fb.classList.add('border-amber-400', 'bg-amber-50'); verdict.textContent = '◐ Partly right'; verdict.className = 'font-semibold text-sm mb-1 text-amber-800'; }
       else { fb.classList.add('border-red-500', 'bg-red-50'); verdict.textContent = '✗ Not quite'; verdict.className = 'font-semibold text-sm mb-1 text-red-800'; }
-      $('q-explanation').innerHTML = extraTop + `<span class="block text-neutral-300">${esc(q.explanation)}</span>`;
+      $('q-explanation').innerHTML = extraTop + `<span class="block text-neutral-700">${esc(q.explanation)}</span>`;
     };
 
     // ---- render a question ---------------------------------------------------
@@ -353,9 +353,9 @@ const total = quiz.questions.length;
       const wrap = $('q-options');
       optionOrder.forEach((origIdx, displayIdx) => {
         const btn = document.createElement('button');
-        btn.className = 'q-opt w-full text-left px-4 py-3 border border-neutral-700 text-sm hover:border-white hover:bg-neutral-900 transition-colors flex items-start gap-3';
+        btn.className = 'q-opt w-full text-left px-4 py-3 border border-neutral-300 text-sm hover:border-black hover:bg-neutral-100 transition-colors flex items-start gap-3';
         btn.dataset.orig = String(origIdx);
-        btn.innerHTML = `<span class="font-mono text-xs text-neutral-400 mt-0.5">${displayIdx + 1}</span><span>${esc((q.options || [])[origIdx])}</span>`;
+        btn.innerHTML = `<span class="font-mono text-xs text-neutral-600 mt-0.5">${displayIdx + 1}</span><span>${esc((q.options || [])[origIdx])}</span>`;
         btn.addEventListener('click', () => choose(origIdx, btn));
         wrap.appendChild(btn);
       });
@@ -368,7 +368,7 @@ const total = quiz.questions.length;
 
       document.querySelectorAll<HTMLButtonElement>('.q-opt').forEach((b) => {
         const oi = Number(b.dataset.orig);
-        b.classList.remove('hover:border-white', 'hover:bg-neutral-900');
+        b.classList.remove('hover:border-black', 'hover:bg-neutral-100');
         b.disabled = true;
         if (oi === (q.answer as number)) b.classList.add('border-green-600', 'bg-green-50', 'text-green-900');
         else if (oi === origIdx) b.classList.add('border-red-500', 'bg-red-50', 'text-red-900');
@@ -384,14 +384,14 @@ const total = quiz.questions.length;
       const wrap = $('q-options');
       ([['True', true], ['False', false]] as Array<[string, boolean]>).forEach(([label, val], displayIdx) => {
         const btn = document.createElement('button');
-        btn.className = 'q-opt w-full text-left px-4 py-3 border border-neutral-700 text-sm hover:border-white hover:bg-neutral-900 transition-colors flex items-start gap-3';
+        btn.className = 'q-opt w-full text-left px-4 py-3 border border-neutral-300 text-sm hover:border-black hover:bg-neutral-100 transition-colors flex items-start gap-3';
         btn.dataset.val = String(val);
-        btn.innerHTML = `<span class="font-mono text-xs text-neutral-400 mt-0.5">${displayIdx + 1}</span><span>${label}</span>`;
+        btn.innerHTML = `<span class="font-mono text-xs text-neutral-600 mt-0.5">${displayIdx + 1}</span><span>${label}</span>`;
         btn.addEventListener('click', () => {
           if (answered) return;
           const correct = val === Boolean(q.answer);
           document.querySelectorAll<HTMLButtonElement>('.q-opt').forEach((b) => {
-            b.classList.remove('hover:border-white', 'hover:bg-neutral-900');
+            b.classList.remove('hover:border-black', 'hover:bg-neutral-100');
             b.disabled = true;
             const bv = b.dataset.val === 'true';
             if (bv === Boolean(q.answer)) b.classList.add('border-green-600', 'bg-green-50', 'text-green-900');
@@ -411,8 +411,8 @@ const total = quiz.questions.length;
       wrap.innerHTML = `
         <input id="q-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false"
           placeholder="Type the missing word(s)…"
-          class="w-full p-3 border border-neutral-700 text-sm focus:border-white focus:outline-none" />
-        <button id="btn-check" class="mt-3 px-5 py-2.5 bg-white text-black font-semibold text-sm hover:bg-neutral-200 transition-colors">Check →</button>`;
+          class="w-full p-3 border border-neutral-300 text-sm focus:border-white focus:outline-none" />
+        <button id="btn-check" class="mt-3 px-5 py-2.5 bg-black text-white font-semibold text-sm hover:bg-neutral-800 transition-colors">Check →</button>`;
       const input = document.getElementById('q-input') as HTMLInputElement | null;
       input?.focus();
       const check = () => {
@@ -441,7 +441,7 @@ const total = quiz.questions.length;
       list.className = 'space-y-2.5';
       optionOrder.forEach((origIdx) => {
         const btn = document.createElement('button');
-        btn.className = 'q-multi w-full text-left px-4 py-3 border border-neutral-700 text-sm hover:border-white transition-colors flex items-start gap-3';
+        btn.className = 'q-multi w-full text-left px-4 py-3 border border-neutral-300 text-sm hover:border-black transition-colors flex items-start gap-3';
         btn.dataset.orig = String(origIdx);
         btn.dataset.sel = '0';
         btn.innerHTML = `<span class="q-box mt-0.5 inline-flex h-4 w-4 items-center justify-center border border-neutral-400 text-[10px]"></span><span>${esc((q.options || [])[origIdx])}</span>`;
@@ -450,7 +450,7 @@ const total = quiz.questions.length;
           const on = btn.dataset.sel === '1';
           btn.dataset.sel = on ? '0' : '1';
           btn.classList.toggle('border-white', !on);
-          btn.classList.toggle('bg-neutral-900', !on);
+          btn.classList.toggle('bg-white', !on);
           const box = btn.querySelector('.q-box')!;
           box.textContent = on ? '' : '✓';
           box.classList.toggle('bg-white', !on);
@@ -462,7 +462,7 @@ const total = quiz.questions.length;
       wrap.appendChild(list);
       const submit = document.createElement('button');
       submit.id = 'btn-multi';
-      submit.className = 'mt-3 px-5 py-2.5 bg-white text-black font-semibold text-sm hover:bg-neutral-200 transition-colors';
+      submit.className = 'mt-3 px-5 py-2.5 bg-black text-white font-semibold text-sm hover:bg-neutral-800 transition-colors';
       submit.textContent = 'Submit selection →';
       submit.addEventListener('click', () => gradeMulti(q));
       wrap.appendChild(submit);
@@ -483,7 +483,7 @@ const total = quiz.questions.length;
       document.querySelectorAll<HTMLButtonElement>('.q-multi').forEach((b) => {
         const oi = Number(b.dataset.orig);
         b.disabled = true;
-        b.classList.remove('hover:border-white');
+        b.classList.remove('hover:border-black');
         if (correctSet.has(oi)) b.classList.add('border-green-600', 'bg-green-50', 'text-green-900');
         else if (pickedSet.has(oi)) b.classList.add('border-red-500', 'bg-red-50', 'text-red-900');
         else b.classList.add('opacity-50');
@@ -499,7 +499,7 @@ const total = quiz.questions.length;
       orderState = shuffle((q.items || []).map((_, i) => i));
       const wrap = $('q-options');
       wrap.innerHTML = `<div id="order-list" class="space-y-2"></div>
-        <button id="btn-order" class="mt-3 px-5 py-2.5 bg-white text-black font-semibold text-sm hover:bg-neutral-200 transition-colors">Check order →</button>`;
+        <button id="btn-order" class="mt-3 px-5 py-2.5 bg-black text-white font-semibold text-sm hover:bg-neutral-800 transition-colors">Check order →</button>`;
       drawOrder(q);
       document.getElementById('btn-order')?.addEventListener('click', () => gradeOrder(q));
     };
@@ -509,13 +509,13 @@ const total = quiz.questions.length;
       list.innerHTML = '';
       orderState.forEach((itemIdx, pos) => {
         const row = document.createElement('div');
-        row.className = 'flex items-center gap-2 border border-neutral-700 px-3 py-2 text-sm bg-neutral-900';
-        row.innerHTML = `<span class="font-mono text-xs text-neutral-400 w-5">${pos + 1}</span><span class="flex-1">${esc((q.items || [])[itemIdx])}</span>`;
+        row.className = 'flex items-center gap-2 border border-neutral-300 px-3 py-2 text-sm bg-white';
+        row.innerHTML = `<span class="font-mono text-xs text-neutral-600 w-5">${pos + 1}</span><span class="flex-1">${esc((q.items || [])[itemIdx])}</span>`;
         const up = document.createElement('button');
-        up.textContent = '▲'; up.className = 'px-2 text-neutral-500 hover:text-white disabled:opacity-20'; up.disabled = pos === 0;
+        up.textContent = '▲'; up.className = 'px-2 text-neutral-500 hover:text-black disabled:opacity-20'; up.disabled = pos === 0;
         up.addEventListener('click', () => { if (answered) return; [orderState[pos - 1], orderState[pos]] = [orderState[pos], orderState[pos - 1]]; drawOrder(q); });
         const dn = document.createElement('button');
-        dn.textContent = '▼'; dn.className = 'px-2 text-neutral-500 hover:text-white disabled:opacity-20'; dn.disabled = pos === orderState.length - 1;
+        dn.textContent = '▼'; dn.className = 'px-2 text-neutral-500 hover:text-black disabled:opacity-20'; dn.disabled = pos === orderState.length - 1;
         dn.addEventListener('click', () => { if (answered) return; [orderState[pos + 1], orderState[pos]] = [orderState[pos], orderState[pos + 1]]; drawOrder(q); });
         row.appendChild(up); row.appendChild(dn);
         list.appendChild(row);
@@ -542,8 +542,8 @@ const total = quiz.questions.length;
       const wrap = $('q-options');
       wrap.innerHTML = `
         <textarea id="q-input" rows="4" placeholder="Type your answer from memory…"
-          class="w-full p-3 border border-neutral-700 text-sm focus:border-white focus:outline-none resize-y"></textarea>
-        <button id="btn-reveal" class="mt-3 px-5 py-2.5 bg-white text-black font-semibold text-sm hover:bg-neutral-200 transition-colors">Reveal answer →</button>`;
+          class="w-full p-3 border border-neutral-300 text-sm focus:border-white focus:outline-none resize-y"></textarea>
+        <button id="btn-reveal" class="mt-3 px-5 py-2.5 bg-black text-white font-semibold text-sm hover:bg-neutral-800 transition-colors">Reveal answer →</button>`;
       const reveal = () => revealWritten(q);
       $('btn-reveal').addEventListener('click', reveal);
       const ta = document.getElementById('q-input') as HTMLTextAreaElement | null;
@@ -563,17 +563,17 @@ const total = quiz.questions.length;
       const kws = q.keywords || [];
       const chips = kws.map((k) => {
         const hit = typed.includes(k.toLowerCase());
-        return `<span class="inline-block text-[11px] font-mono px-2 py-0.5 mr-1.5 mb-1.5 border ${hit ? 'border-green-600 text-green-700' : 'border-neutral-700 text-neutral-400'}">${hit ? '✓' : '○'} ${esc(k)}</span>`;
+        return `<span class="inline-block text-[11px] font-mono px-2 py-0.5 mr-1.5 mb-1.5 border ${hit ? 'border-green-600 text-green-700' : 'border-neutral-300 text-neutral-600'}">${hit ? '✓' : '○'} ${esc(k)}</span>`;
       }).join('');
 
       const fb = $('q-feedback'), verdict = $('q-verdict');
       fb.classList.remove('hidden', 'border-green-600', 'border-red-500', 'border-amber-400', 'bg-green-50', 'bg-red-50', 'bg-amber-50');
-      fb.classList.add('border-neutral-400', 'bg-neutral-900');
+      fb.classList.add('border-neutral-400', 'bg-white');
       verdict.textContent = 'Model answer'; verdict.className = 'font-semibold text-sm mb-2 text-neutral-100';
       $('q-explanation').innerHTML =
         `<span class="block text-neutral-100 mb-2">${esc(modelAnswer(q))}</span>` +
         (chips ? `<span class="block mb-2">${chips}</span>` : '') +
-        `<span class="block text-neutral-400">${esc(q.explanation)}</span>` +
+        `<span class="block text-neutral-600">${esc(q.explanation)}</span>` +
         `<span class="block mt-3 text-[11px] font-mono uppercase tracking-[0.15em] text-neutral-500">Grade yourself honestly</span>`;
 
       // self-grade buttons
@@ -648,8 +648,8 @@ const total = quiz.questions.length;
       Object.entries(conceptStat).forEach(([concept, st]) => {
         const ok = st.right === st.total;
         const row = document.createElement('div');
-        row.className = 'flex items-center justify-between text-sm border-b border-neutral-800 pb-1.5';
-        row.innerHTML = `<span class="${ok ? 'text-neutral-200' : 'text-red-700 font-medium'}">${esc(concept)}</span><span class="font-mono text-xs ${ok ? 'text-green-700' : 'text-red-600'}">${fmt(st.right)}/${st.total} ${ok ? '✓' : '↻'}</span>`;
+        row.className = 'flex items-center justify-between text-sm border-b border-neutral-200 pb-1.5';
+        row.innerHTML = `<span class="${ok ? 'text-neutral-800' : 'text-red-700 font-medium'}">${esc(concept)}</span><span class="font-mono text-xs ${ok ? 'text-green-700' : 'text-red-600'}">${fmt(st.right)}/${st.total} ${ok ? '✓' : '↻'}</span>`;
         cwrap.appendChild(row);
       });
 
@@ -706,9 +706,9 @@ const total = quiz.questions.length;
         const on = b.dataset.diff === d;
         b.classList.toggle('bg-white', on);
         b.classList.toggle('text-black', on);
-        b.classList.toggle('bg-neutral-900', !on);
+        b.classList.toggle('bg-white', !on);
         const sub = b.querySelector('span:last-child');
-        if (sub) { sub.classList.toggle('text-neutral-300', on); sub.classList.toggle('text-neutral-500', !on); }
+        if (sub) { sub.classList.toggle('text-neutral-700', on); sub.classList.toggle('text-neutral-500', !on); }
       });
       $('diff-desc').textContent = DIFFS[d];
       const n = poolFor(d).length;

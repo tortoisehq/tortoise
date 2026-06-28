@@ -1,4 +1,4 @@
-export type CategorySlug = 'forge' | 'encode' | 'beacon' | 'evolve' | 'dispatch';
+export type CategorySlug = 'forge' | 'encode' | 'beacon' | 'evolve' | 'dispatch' | 'masterclass';
 
 export interface Category {
   slug: CategorySlug;
@@ -94,6 +94,23 @@ export const categories: Record<CategorySlug, Category> = {
       chipText: 'text-neutral-200',
       accent: 'white',
       inverse: 'black',
+    },
+  },
+  masterclass: {
+    slug: 'masterclass',
+    // E33 — the Learn masterclass reads as a classic textbook: black text on white.
+    name: 'Masterclass',
+    description: 'Study guides.',
+    palette: {
+      bg: 'bg-white',
+      text: 'text-black',
+      textMuted: 'text-neutral-500',
+      border: 'border-neutral-200',
+      borderHover: 'hover:border-black',
+      chipBg: 'bg-neutral-100',
+      chipText: 'text-neutral-700',
+      accent: 'black',
+      inverse: 'white',
     },
   },
   dispatch: {
