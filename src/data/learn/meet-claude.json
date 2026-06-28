@@ -1,5 +1,8 @@
 {
   "id": "meet-claude",
+  "courseId": "claude-101",
+  "courseTitle": "Claude 101",
+  "module": 1,
   "title": "Meet Claude",
   "session": "E31",
   "course": "Anthropic Academy — Claude 101, Module 1",

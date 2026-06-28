@@ -918,6 +918,7 @@
   },
   {
     "id": "e27-data-analytics-ladder",
+    "archived": true,
     "title": "The Foundations Ladder",
     "session": "E27",
     "course": "Google Data Analytics — Course 1, Module 1",
@@ -1114,6 +1115,7 @@
   },
   {
     "id": "e28-data-ecosystem",
+    "archived": true,
     "title": "The Data Ecosystem",
     "session": "E28",
     "course": "Google Data Analytics — Course 1, Module 1",

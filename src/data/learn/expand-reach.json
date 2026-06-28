@@ -1,5 +1,8 @@
 {
   "id": "expand-reach",
+  "courseId": "claude-101",
+  "courseTitle": "Claude 101",
+  "module": 3,
   "title": "Expand Claude's Reach",
   "session": "E33",
   "course": "Anthropic Academy — Claude 101, Module 3",

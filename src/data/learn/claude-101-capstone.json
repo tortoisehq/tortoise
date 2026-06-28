@@ -1,5 +1,8 @@
 {
   "id": "claude-101-capstone",
+  "courseId": "claude-101",
+  "courseTitle": "Claude 101",
+  "module": 5,
   "title": "Claude 101 — Capstone",
   "session": "E33",
   "course": "Anthropic Academy — Claude 101, Module 5 (Conclusion)",

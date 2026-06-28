@@ -7,18 +7,18 @@ const meta = categories.encode;
 
 type Quiz = {
   id: string; title: string; session: string; course: string;
-  excerpt: string; passPct: number; questions: unknown[];
+  excerpt: string; passPct: number; questions: unknown[]; archived?: boolean;
 };
-const quizzes = (homework as Quiz[]).slice().reverse(); // newest session first
+const quizzes = (homework as Quiz[]).filter((q) => !q.archived).slice().reverse(); // active only, newest session first
 ---
 
 <Layout title="Encode Homework" description="Scoreable, self-quizzing homework on what I've locked — retrieval practice in public." palette="encode">
   <header class="mb-10">
-    <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 mb-3">
+    <p class="text-xs font-mono uppercase tracking-[0.25em] text-stone-500 mb-3">
       <a href="/encode" class="hover:text-white">// Encode</a> / Homework
     </p>
     <h1 class="text-4xl font-bold tracking-tight mb-3">Homework</h1>
-    <p class="text-lg text-neutral-300 max-w-xl">
+    <p class="text-lg text-stone-300 max-w-xl">
       Self-scoring quizzes on what I've actually locked in a session. Answer, get the why instantly, watch your
       score. Missed questions come back first; your best score and streak live in your browser. This is retrieval
       practice — the part that turns "I watched it" into "I know it."
@@ -26,25 +26,25 @@ const quizzes = (homework as Quiz[]).slice().reverse(); // newest session first
   </header>
 
   {quizzes.length === 0 ? (
-    <p class="text-neutral-400">No homework yet — check back after the next session.</p>
+    <p class="text-stone-400">No homework yet — check back after the next session.</p>
   ) : (
-    <ul class="space-y-px bg-neutral-800 border border-neutral-800">
+    <ul class="space-y-px bg-stone-800 border border-stone-800">
       {quizzes.map((q) => (
-        <li class="bg-neutral-900">
+        <li class="bg-stone-900">
           <a
             href={`/encode/homework/${q.id}`}
             data-quiz-id={q.id}
             data-q-total={q.questions.length}
-            class="hw-card group block p-5 hover:bg-neutral-900 transition-colors"
+            class="hw-card group block p-5 hover:bg-stone-900 transition-colors"
           >
             <div class="flex items-baseline justify-between gap-4 mb-1">
-              <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">{q.session} · {q.questions.length} questions</span>
+              <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-stone-500">{q.session} · {q.questions.length} questions</span>
               <span class="hw-badge hidden text-[10px] font-mono px-2 py-0.5 border"></span>
             </div>
             <h2 class="text-xl font-semibold tracking-tight group-hover:underline">{q.title}</h2>
-            <p class="text-sm text-neutral-500 font-mono mb-1.5">{q.course}</p>
-            <p class="text-sm text-neutral-300 leading-relaxed">{q.excerpt}</p>
-            <p class="hw-stats hidden mt-3 text-[11px] font-mono text-neutral-500"></p>
+            <p class="text-sm text-stone-500 font-mono mb-1.5">{q.course}</p>
+            <p class="text-sm text-stone-300 leading-relaxed">{q.excerpt}</p>
+            <p class="hw-stats hidden mt-3 text-[11px] font-mono text-stone-500"></p>
           </a>
         </li>
       ))}
@@ -70,7 +70,7 @@ const quizzes = (homework as Quiz[]).slice().reverse(); // newest session first
     badge.classList.remove('hidden');
     if (s.bestPct === 100) { badge.textContent = 'Sealed 🔒'; badge.classList.add('border-green-600', 'text-green-700'); }
     else if (due) { badge.textContent = 'Due today'; badge.classList.add('border-amber-500', 'text-amber-700'); }
-    else { badge.textContent = 'Locked ✓'; badge.classList.add('border-neutral-400', 'text-neutral-400'); }
+    else { badge.textContent = 'Locked ✓'; badge.classList.add('border-stone-400', 'text-stone-400'); }
 
     stats.classList.remove('hidden');
     stats.textContent = `Best ${s.bestScore}/${total} · streak ${s.streak} · ${s.attempts} attempt${s.attempts === 1 ? '' : 's'}`;

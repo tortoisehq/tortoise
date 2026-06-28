@@ -47,17 +47,18 @@ export const categories: Record<CategorySlug, Category> = {
   },
   encode: {
     slug: 'encode',
-    // S61 repaint — Encode page palette now matches the homepage Encode block (black).
+    // E33 warm-up — softened from pure black/white to the warm 'stone' family so the
+    // masterclass reads less harsh (keeps near-black so it still matches the homepage block).
     name: 'Encode',
     description: 'AI learning.',
     palette: {
-      bg: 'bg-black',
-      text: 'text-white',
-      textMuted: 'text-neutral-400',
-      border: 'border-neutral-800',
-      borderHover: 'hover:border-white',
-      chipBg: 'bg-neutral-900',
-      chipText: 'text-neutral-200',
+      bg: 'bg-stone-950',
+      text: 'text-stone-100',
+      textMuted: 'text-stone-400',
+      border: 'border-stone-800',
+      borderHover: 'hover:border-stone-300',
+      chipBg: 'bg-stone-900',
+      chipText: 'text-stone-200',
       accent: 'white',
       inverse: 'black',
     },
