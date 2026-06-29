@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="A monk copying a manuscript by candlelight while a distant library burns through the window behind him.">
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#141d33"/>
+    </linearGradient>
+    <radialGradient id="candle" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffd9a0" stop-opacity="0.95"/>
+      <stop offset="0.45" stop-color="#ffb259" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#ffb259" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="fire" cx="0.5" cy="0.6" r="0.6">
+      <stop offset="0" stop-color="#ffd24a" stop-opacity="0.9"/>
+      <stop offset="0.5" stop-color="#ff7a1a" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#ff7a1a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- night room -->
+  <rect width="800" height="450" fill="url(#night)"/>
+
+  <!-- arched window, upper right -->
+  <g>
+    <path d="M470 70 h170 v150 h-170 z M470 70 a85 85 0 0 1 170 0" fill="#0a1324"/>
+    <path d="M470 70 h170 v150 h-170 z M470 70 a85 85 0 0 1 170 0"
+          fill="none" stroke="#3a4a63" stroke-width="9"/>
+    <line x1="555" y1="-5" x2="555" y2="220" stroke="#3a4a63" stroke-width="6"/>
+    <line x1="470" y1="150" x2="640" y2="150" stroke="#3a4a63" stroke-width="6"/>
+
+    <!-- distant burning library, small, through the glass -->
+    <rect x="498" y="158" width="46" height="40" fill="#1c2740"/>
+    <polygon points="498,158 521,140 544,158" fill="#26324f"/>
+    <circle cx="560" cy="170" r="55" fill="url(#fire)"/>
+    <rect x="566" y="150" width="48" height="48" fill="#23304d"/>
+    <polygon points="566,150 590,130 614,150" fill="#2c3a59"/>
+    <path d="M572 150 q6 -22 14 -2 q8 -20 14 0 q7 -16 12 2 q4 16 -10 16 h-22 q-12 0 -8 -16 z" fill="#ff8a1f"/>
+    <path d="M580 150 q4 -14 9 -1 q6 -12 9 1 q3 9 -6 9 h-12 q-7 0 -9 -9 z" fill="#ffcf52"/>
+    <path d="M604 138 q5 -10 9 0" stroke="#5a6781" stroke-width="3" fill="none" opacity="0.6"/>
+  </g>
+
+  <!-- candle glow on the desk -->
+  <ellipse cx="250" cy="300" rx="230" ry="150" fill="url(#candle)"/>
+
+  <!-- desk -->
+  <rect x="60" y="330" width="430" height="16" rx="3" fill="#2a2014"/>
+  <rect x="60" y="346" width="430" height="48" fill="#1f180e"/>
+
+  <!-- manuscript page -->
+  <g transform="rotate(-3 250 318)">
+    <rect x="170" y="296" width="150" height="40" rx="2" fill="#efe6d0"/>
+    <line x1="184" y1="306" x2="306" y2="306" stroke="#b9a87f" stroke-width="2"/>
+    <line x1="184" y1="314" x2="306" y2="314" stroke="#b9a87f" stroke-width="2"/>
+    <line x1="184" y1="322" x2="276" y2="322" stroke="#b9a87f" stroke-width="2"/>
+  </g>
+
+  <!-- candle -->
+  <rect x="372" y="288" width="12" height="44" rx="2" fill="#e8dcc0"/>
+  <path d="M378 270 q9 12 0 22 q-9 -10 0 -22 z" fill="#ffd24a"/>
+  <path d="M378 276 q5 7 0 13 q-5 -6 0 -13 z" fill="#fff3c4"/>
+
+  <!-- monk, hooded, bent over the page -->
+  <g fill="#2c3346">
+    <path d="M150 332 q4 -70 60 -78 q40 -6 58 26 q10 18 6 52 z"/>
+    <ellipse cx="206" cy="252" rx="30" ry="32"/>
+    <path d="M178 250 q28 -34 56 0 q-6 -40 -28 -40 q-22 0 -28 40 z" fill="#222838"/>
+  </g>
+  <ellipse cx="210" cy="266" rx="14" ry="16" fill="#caa775"/>
+  <!-- arm reaching to the page -->
+  <path d="M236 300 q26 6 44 16" stroke="#2c3346" stroke-width="20" stroke-linecap="round" fill="none"/>
+</svg>
