@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" font-family="ui-sans-serif, system-ui, sans-serif">
+  <rect width="640" height="400" fill="#0f1115"/>
+  <text x="40" y="52" fill="#f4f4f5" font-size="26" font-weight="700">Built Five Modules. Studied One.</text>
+  <text x="40" y="80" fill="#9ca3af" font-size="15">Sat down to learn Claude 101. Built the whole course into the site instead.</text>
+
+  <!-- BUILT -->
+  <text x="40" y="156" fill="#f4f4f5" font-size="17" font-weight="700">Built</text>
+  <rect x="150" y="142" width="450" height="22" rx="5" fill="#22c55e"/>
+  <text x="40" y="190" fill="#22c55e" font-size="13" font-weight="700">Five modules + quizzes, an ordered masterclass, a whole-site repaint &#8212; shipped.</text>
+
+  <!-- STUDIED -->
+  <text x="40" y="262" fill="#f4f4f5" font-size="17" font-weight="700">Studied</text>
+  <rect x="150" y="248" width="90" height="22" rx="5" fill="#f59e0b"/>
+  <text x="40" y="296" fill="#f59e0b" font-size="13" font-weight="700">One quiz, 13 of 16 &#8212; then the old man set the book down and grabbed the hammer.</text>
+
+  <line x1="150" y1="340" x2="600" y2="340" stroke="#374151" stroke-width="1.5"/>
+  <text x="150" y="366" fill="#9ca3af" font-size="13">Building the thing that does the learning is not the same as doing the learning.</text>
+</svg>
