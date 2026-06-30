@@ -8,6 +8,8 @@ excerpt: "My build pipeline runs as a cycle. This session I put three independen
 
 A build pipeline is a cycle. Mine runs the same six stations on every task: scope the work, plan it, review the plan, ship the code, close the loop, then back to the top for the next one. One task at a time, around and around. It's how a solo builder keeps a 24-month build from sliding into chaos. The cycle never skips a step, so nothing important gets quietly dropped.
 
+![A glowing forge at the center of a circular build cycle of six stations; three colored lenses ring it as independent reviewers, a blue and a gold beam falling evenly while the third, ember, flares the one station it caught.](./forge-s64-three-minds-one-cycle.svg)
+
 This session I changed what runs *inside* that cycle.
 
 The old shape was one mind. The AI moved each task through every station. It planned the work, then reviewed its own plan. It shipped the code, then reviewed its own code. The flaw is obvious once you say it out loud: an author can't audit their own work. They carry the same blind spots into the review that they had during the build.
