@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="A glowing forge at the center of a circular build cycle marked with six stations. Three differently colored lenses sit around the ring, each an independent reviewer: a blue and a gold beam fall evenly on the cycle, while the third, ember-colored beam catches a flaw flaring at the bottom station.">
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#141d33"/>
+    </linearGradient>
+    <radialGradient id="forge" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffe7bd" stop-opacity="0.95"/>
+      <stop offset="0.4" stop-color="#ff9a3c" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#ff9a3c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dfe7f2"/>
+      <stop offset="0.5" stop-color="#9fb0c7"/>
+      <stop offset="1" stop-color="#6b7d96"/>
+    </linearGradient>
+    <radialGradient id="catch" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffd9b0" stop-opacity="1"/>
+      <stop offset="0.5" stop-color="#ff7a3c" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#ff7a3c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#night)"/>
+
+  <!-- forge glow at the heart of the cycle -->
+  <circle cx="400" cy="225" r="185" fill="url(#forge)"/>
+
+  <!-- the build cycle: a ring -->
+  <circle cx="400" cy="225" r="135" fill="none" stroke="url(#ring)" stroke-width="6" opacity="0.9"/>
+
+  <!-- clockwise flow hint: an open arc arrowhead near the top-right of the ring -->
+  <path d="M470 116 l16 6 l-7 15" fill="none" stroke="#aebbd0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+
+  <!-- six station nodes (the 6-station spine) -->
+  <g stroke="#0b1220" stroke-width="2">
+    <circle cx="400"   cy="90"    r="12" fill="#eef3fb"/>
+    <circle cx="516.9" cy="157.5" r="12" fill="#eef3fb"/>
+    <circle cx="516.9" cy="292.5" r="12" fill="#eef3fb"/>
+    <circle cx="400"   cy="360"   r="12" fill="#eef3fb"/>
+    <circle cx="283.1" cy="292.5" r="12" fill="#eef3fb"/>
+    <circle cx="283.1" cy="157.5" r="12" fill="#eef3fb"/>
+  </g>
+
+  <!-- center: anvil + molten workpiece + sparks -->
+  <g>
+    <path d="M356 252 h88 v9 l-16 9 h-56 l-16 -9 z" fill="#262d3d"/>
+    <rect x="386" y="234" width="28" height="20" rx="3" fill="#262d3d"/>
+    <ellipse cx="400" cy="234" rx="22" ry="7" fill="#ffe3ab"/>
+    <circle cx="400" cy="231" r="6" fill="#fff5e0"/>
+    <g stroke="#ffd9a0" stroke-width="2" stroke-linecap="round" opacity="0.85">
+      <line x1="400" y1="226" x2="392" y2="212"/>
+      <line x1="404" y1="226" x2="412" y2="210"/>
+      <line x1="408" y1="228" x2="420" y2="222"/>
+    </g>
+  </g>
+
+  <!-- three independent reviewers (the forgeline), each a lens with a beam to the ring -->
+
+  <!-- beams (drawn under the lenses) -->
+  <line x1="158" y1="110" x2="283.1" y2="157.5" stroke="#6db3ff" stroke-width="3" opacity="0.5" stroke-linecap="round"/>
+  <line x1="642" y1="110" x2="516.9" y2="157.5" stroke="#ffcf5a" stroke-width="3" opacity="0.5" stroke-linecap="round"/>
+  <line x1="400" y1="406" x2="400" y2="372" stroke="#ff7a3c" stroke-width="3.5" opacity="0.85" stroke-linecap="round"/>
+
+  <!-- the catch: ember reviewer flares the bottom station -->
+  <circle cx="400" cy="360" r="34" fill="url(#catch)"/>
+  <g stroke="#ffb27a" stroke-width="2.5" stroke-linecap="round" opacity="0.95">
+    <line x1="400" y1="332" x2="400" y2="320"/>
+    <line x1="424" y1="346" x2="434" y2="340"/>
+    <line x1="376" y1="346" x2="366" y2="340"/>
+  </g>
+
+  <!-- Foreman lens (steel-blue), upper-left -->
+  <g>
+    <circle cx="140" cy="95" r="26" fill="#0f1830" stroke="#6db3ff" stroke-width="3"/>
+    <circle cx="140" cy="95" r="9" fill="#6db3ff"/>
+  </g>
+  <!-- Smith two (brass-gold), upper-right -->
+  <g>
+    <circle cx="660" cy="95" r="26" fill="#0f1830" stroke="#ffcf5a" stroke-width="3"/>
+    <circle cx="660" cy="95" r="9" fill="#ffcf5a"/>
+  </g>
+  <!-- Smith three (ember), bottom — the divergent one that caught it -->
+  <g>
+    <circle cx="400" cy="420" r="26" fill="#1a1020" stroke="#ff7a3c" stroke-width="3.5"/>
+    <circle cx="400" cy="420" r="9" fill="#ff7a3c"/>
+  </g>
+</svg>
