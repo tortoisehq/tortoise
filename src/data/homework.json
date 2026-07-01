@@ -225,7 +225,7 @@
     "title": "Putting It All Together",
     "session": "E33",
     "course": "Anthropic Academy — Claude 101, Module 4",
-    "excerpt": "Module 4, testable: use-cases by role and the specialized Claude surfaces — Code, Slack, Excel, PowerPoint, Chrome. 14 questions across Easy, Medium, and Hard, with the trap built in (Claude for Chrome is a research preview, not a fully released anything-goes tool) and the one rule that ties it together: pick the surface by where the work lives.",
+    "excerpt": "Module 4, testable: use-cases by role and the specialized Claude surfaces — Code, Slack, Excel, PowerPoint, Chrome. 13 recognition questions with hints on, with the trap built in (Claude for Chrome is a research preview, not a fully released anything-goes tool) and the one rule that ties it together: pick the surface by where the work lives.",
     "passPct": 80,
     "questions": [
       {
@@ -437,7 +437,7 @@
     "title": "Expand Claude's Reach",
     "session": "E33",
     "course": "Anthropic Academy — Claude 101, Module 3",
-    "excerpt": "Module 3, testable: Connectors, Enterprise Search, and Research — the three rings of reach. 16 questions across Easy, Medium, and Hard, with the trap-spots built in (Claude can't read your CEO's inbox, Enterprise Search can't show what you can't access, Research won't run without web search).",
+    "excerpt": "Module 3, testable: Connectors, Enterprise Search, and Research — the three rings of reach. 15 recognition questions with hints on, with the trap-spots built in (Claude can't read your CEO's inbox, Enterprise Search can't show what you can't access, Research won't run without web search).",
     "passPct": 80,
     "questions": [
       {
@@ -653,7 +653,7 @@
     "title": "Organize Your Work",
     "session": "E33",
     "course": "Anthropic Academy — Claude 101, Module 2",
-    "excerpt": "Module 2, testable: Projects, Artifacts, and Skills — the three tools for setting context up once and reusing it. 19 questions across Easy, Medium, and Hard, with the four trap-spots built in on purpose (the description Claude never reads, chats that don't share context, RAG that isn't global, artifacts that aren't search-indexed).",
+    "excerpt": "Module 2, testable: Projects, Artifacts, and Skills — the three tools for setting context up once and reusing it. 17 recognition questions with hints on, with the four trap-spots built in on purpose (the description Claude never reads, chats that don't share context, RAG that isn't global, artifacts that aren't search-indexed).",
     "passPct": 80,
     "questions": [
       {
@@ -1350,7 +1350,7 @@
     "title": "Meet Claude",
     "session": "E31",
     "course": "Anthropic Academy — Claude 101, Module 1",
-    "excerpt": "The whole first module, testable: what Claude is, how to talk to it, and which of the three modes fits the job. 18 questions across Easy, Medium, and Hard — every objective covered, with the Cowork-vs-Chat trap I fell into built in on purpose.",
+    "excerpt": "The whole first module, testable: what Claude is, how to talk to it, and which of the three modes fits the job. 16 recognition questions with hints on — every objective covered, with the Cowork-vs-Chat trap I fell into built in on purpose.",
     "passPct": 80,
     "questions": [
       {
@@ -1628,6 +1628,281 @@
         ],
         "explanation": "Testing against a known answer is the only way to measure trust objectively: match = delegate, repeated misses = don't. Rio's veterans-services attendance analysis anchors the idea — you need a concrete, scoped target you can grade against.",
         "hint": "Grade Claude on an answer key you already hold — match it to trust it."
+      }
+    ]
+  },
+  {
+    "id": "claude-code-101",
+    "title": "Claude Code 101",
+    "session": "E34",
+    "course": "Anthropic Academy — Claude Code 101",
+    "excerpt": "The whole Claude Code course, testable: what the agent is, how to drive it with permission modes, the Explore → Plan → Code → Commit workflow, and the four ways to extend it — CLAUDE.md, subagents, skills, MCP, hooks. Recognition questions with hints on, with the trap-spots built in on purpose (it's not ChatGPT for code, Default doesn't auto-accept, /context isn't /compact, and CLAUDE.md guides while hooks enforce).",
+    "passPct": 80,
+    "questions": [
+      {
+        "id": "cc-mc-01-what-is",
+        "type": "mcq",
+        "concept": "What is Claude Code",
+        "prompt": "What best describes Claude Code?",
+        "options": [
+          "An agentic coding tool that runs its own loop — reading, deciding, acting, verifying — while you supervise",
+          "A chat assistant that answers one coding question at a time as you prompt it",
+          "A terminal-only autocomplete that suggests the next line of code",
+          "A paid model tier that just gives you a larger context window"
+        ],
+        "answer": 0,
+        "explanation": "Claude Code is an agentic tool: it gathers context, decides its next action, acts, and verifies, chaining steps toward the goal you set. You supervise via approval modes and standing instructions rather than driving each step.",
+        "hint": "It runs the loop itself — you're the supervisor, not the driver."
+      },
+      {
+        "id": "cc-tf-02-chatgpt-for-code",
+        "type": "truefalse",
+        "concept": "What is Claude Code",
+        "prompt": "Claude Code is essentially 'ChatGPT for code' — you have to prompt it for each individual action.",
+        "answer": false,
+        "explanation": "That's the wrong mental model. A chat assistant waits for your next instruction; an agent picks its own next action toward the goal and chains steps (read → edit → test → verify) without you intervening.",
+        "hint": "Chat waits for the next prompt; an agent chooses the next move.",
+        "trap": true
+      },
+      {
+        "id": "cc-or-03-agentic-loop",
+        "type": "order",
+        "concept": "The agentic loop",
+        "prompt": "Put one pass of the agentic loop in order.",
+        "items": [
+          "Gather context",
+          "Decide which tool to use",
+          "Act",
+          "Verify the result"
+        ],
+        "explanation": "The loop is gather context → decide the tool → act → verify, then repeat. Each tool result feeds back and informs the next decision.",
+        "hint": "It ends by checking its own work — then repeats."
+      },
+      {
+        "id": "cc-mc-04-model-decides",
+        "type": "mcq",
+        "concept": "The agentic loop",
+        "prompt": "In the agentic loop, which part actually decides what to do next?",
+        "options": [
+          "The model's reasoning",
+          "The tools",
+          "The permission mode",
+          "The CLAUDE.md file"
+        ],
+        "answer": 0,
+        "explanation": "The model's reasoning drives the loop — it decides which tool to invoke and what to make of the result. Tools are passive: they only return information. Remove the model and you have commands with no judgment.",
+        "hint": "Tools are the hands; something else is the brain.",
+        "trap": true
+      },
+      {
+        "id": "cc-mu-05-surfaces",
+        "type": "multi",
+        "concept": "Surfaces & install",
+        "prompt": "Where can Claude Code run? Select all that apply.",
+        "options": [
+          "The terminal",
+          "VS Code",
+          "JetBrains IDEs",
+          "The browser at claude.ai/code",
+          "Only on macOS"
+        ],
+        "answers": [0, 1, 2, 3],
+        "explanation": "Claude Code runs in the terminal, VS Code, JetBrains, the desktop app, and the browser (and CI/CD). It's not macOS-only — and every surface shares the same CLAUDE.md and settings.",
+        "hint": "Many doors in, same house rules — and not one OS only."
+      },
+      {
+        "id": "cc-mc-06-default-asks",
+        "type": "mcq",
+        "concept": "Permission modes",
+        "prompt": "In Default permission mode, what does Claude Code do before editing a file or running a command?",
+        "options": [
+          "Asks for your approval first",
+          "Edits and runs without asking",
+          "Automatically enters plan mode",
+          "Spawns a subagent to do it"
+        ],
+        "answer": 0,
+        "explanation": "Default is the safest, most transparent mode — Claude asks before every file edit and shell command. You approve, then it keeps executing.",
+        "hint": "Default is the cautious one, not the fast one."
+      },
+      {
+        "id": "cc-tf-07-default-autoaccept",
+        "type": "truefalse",
+        "concept": "Permission modes",
+        "prompt": "Default mode auto-accepts all of Claude's edits without asking.",
+        "answer": false,
+        "explanation": "The opposite — Default asks before edits and commands. Auto-accept is a separate opt-in mode you switch to with Shift+Tab.",
+        "hint": "You're thinking of Auto-accept, a different mode.",
+        "trap": true
+      },
+      {
+        "id": "cc-mc-08-plan-mode",
+        "type": "mcq",
+        "concept": "Permission modes",
+        "prompt": "What does Plan mode do?",
+        "options": [
+          "Explores and proposes changes without editing anything",
+          "Applies all changes, then asks you to review them",
+          "Wipes the context window to start fresh",
+          "Runs the full test suite before every edit"
+        ],
+        "answer": 0,
+        "explanation": "In Plan mode Claude reads deeply and proposes a diff for your review without touching disk — the safety checkpoint for complex changes.",
+        "hint": "Propose first, edit later — nothing hits disk yet."
+      },
+      {
+        "id": "cc-or-09-epcc",
+        "type": "order",
+        "concept": "Explore → Plan → Code → Commit",
+        "prompt": "Put the daily workflow phases in order.",
+        "items": [
+          "Explore",
+          "Plan",
+          "Code",
+          "Commit"
+        ],
+        "explanation": "Explore (ask questions), Plan (propose a diff for review), Code (implement and verify), Commit (stage, message, PR). Each phase is gated by your review.",
+        "hint": "Scout, blueprint, build, file the paperwork."
+      },
+      {
+        "id": "cc-mc-10-plan-vs-explore",
+        "type": "mcq",
+        "concept": "Explore → Plan → Code → Commit",
+        "prompt": "Which phase holds a concrete proposed diff for you to approve before anything is written to disk?",
+        "options": [
+          "Plan",
+          "Explore",
+          "Code",
+          "Commit"
+        ],
+        "answer": 0,
+        "explanation": "Plan is the checkpoint — a proposed change held for approval. Explore is reconnaissance: asking Claude to synthesize answers from the codebase, no diff yet.",
+        "hint": "Explore scouts; this one draws the blueprint you sign."
+      },
+      {
+        "id": "cc-mc-11-context-cmd",
+        "type": "mcq",
+        "concept": "Context management",
+        "prompt": "What does the /context command do?",
+        "options": [
+          "Shows what's using space in the context window (read-only)",
+          "Summarizes old messages to free up space",
+          "Wipes the conversation history",
+          "Reloads CLAUDE.md from disk"
+        ],
+        "answer": 0,
+        "explanation": "/context is a read-only diagnostic — it reports what's consuming tokens (files, CLAUDE.md, MCP schemas, tool outputs). It doesn't change anything.",
+        "hint": "It's the fuel gauge, not the fuel burn."
+      },
+      {
+        "id": "cc-tf-12-context-eq-compact",
+        "type": "truefalse",
+        "concept": "Context management",
+        "prompt": "/context and /compact do essentially the same thing.",
+        "answer": false,
+        "explanation": "No — /context only reports usage (read-only); /compact actually summarizes older messages to free space. Diagnose with /context, then /compact if you need room.",
+        "hint": "One reads the gauge; the other burns off weight.",
+        "trap": true
+      },
+      {
+        "id": "cc-mc-13-claudemd-survives",
+        "type": "mcq",
+        "concept": "Context management",
+        "prompt": "After you run /compact or /clear, what happens to CLAUDE.md?",
+        "options": [
+          "It always reloads from disk",
+          "It gets summarized and shortened",
+          "It's deleted along with the rest of the history",
+          "You have to add it back manually"
+        ],
+        "answer": 0,
+        "explanation": "CLAUDE.md always reloads from disk after compact/clear — it never disappears. If instructions 'vanished,' they were only ever in the chat, which is exactly why standing rules belong in CLAUDE.md.",
+        "hint": "It's bolted to the project, not floating in the chat."
+      },
+      {
+        "id": "cc-mc-14-security-review",
+        "type": "mcq",
+        "concept": "Code review",
+        "prompt": "You're shipping changes to an authentication flow and want to catch vulnerabilities and data leaks. Which tool fits?",
+        "options": [
+          "/security-review",
+          "/code-review",
+          "/context",
+          "/compact"
+        ],
+        "answer": 0,
+        "explanation": "/security-review is the dedicated audit for threat vectors, data leaks, and misconfigurations — reach for it on auth, payments, or sensitive data. /code-review hunts correctness and efficiency, a different job.",
+        "hint": "One's a proofreader; you want the locksmith."
+      },
+      {
+        "id": "cc-mc-15-hook-vs-claudemd",
+        "type": "mcq",
+        "concept": "CLAUDE.md vs hooks",
+        "prompt": "You need the linter to run before every commit — guaranteed, no exceptions. Where does that rule belong?",
+        "options": [
+          "A hook",
+          "CLAUDE.md",
+          "A Skill",
+          "The project description"
+        ],
+        "answer": 0,
+        "explanation": "Hooks always execute at their lifecycle point regardless of Claude's judgment. CLAUDE.md is guidance Claude tries to follow but isn't guaranteed to. Must-happen-every-time → hook.",
+        "hint": "Guidance can be skipped; you need a tripwire.",
+        "trap": true
+      },
+      {
+        "id": "cc-tf-16-hooks-always-run",
+        "type": "truefalse",
+        "concept": "CLAUDE.md vs hooks",
+        "prompt": "Hooks execute at their lifecycle point regardless of what Claude decides.",
+        "answer": true,
+        "explanation": "True — that's the defining property of hooks: deterministic execution. It's the opposite of CLAUDE.md, which is guidance Claude may or may not follow.",
+        "hint": "Deterministic means no vote."
+      },
+      {
+        "id": "cc-mc-17-skills-load",
+        "type": "mcq",
+        "concept": "Skills",
+        "prompt": "How does a Skill differ from CLAUDE.md in how it loads?",
+        "options": [
+          "A Skill loads on demand; CLAUDE.md is always in context",
+          "A Skill is always loaded; CLAUDE.md loads on demand",
+          "Both load only when you invoke them",
+          "Both are always loaded in full every session"
+        ],
+        "answer": 0,
+        "explanation": "Skills load on demand (by /invoke or auto-detection) at near-zero context cost until used, so they can be long. CLAUDE.md is always-on guidance, so keep it short. Facts/rules → CLAUDE.md; workflows → Skills.",
+        "hint": "One's a poster always on the wall; one's a recipe card in the drawer."
+      },
+      {
+        "id": "cc-mc-18-mcp-external",
+        "type": "mcq",
+        "concept": "MCP",
+        "prompt": "What is MCP's job?",
+        "options": [
+          "Connecting Claude to external systems like Jira, Slack, and databases",
+          "Packaging an internal repeatable procedure inside your repo",
+          "Enforcing a rule at commit time",
+          "Summarizing the context window when it fills up"
+        ],
+        "answer": 0,
+        "explanation": "MCP (Model Context Protocol) gives Claude direct access to external tools and data — Jira, GitHub, Slack, databases. Skills, by contrast, are internal procedures in your repo. MCP = external reach; Skills = internal process.",
+        "hint": "It's the phone line out to other services."
+      },
+      {
+        "id": "cc-mc-19-subagent-isolated",
+        "type": "mcq",
+        "concept": "Subagents",
+        "prompt": "What's the main reason to hand work to a subagent?",
+        "options": [
+          "To keep heavy exploration out of your main context — it runs in an isolated window and returns a summary",
+          "To permanently store the project's rules and standards",
+          "To connect Claude to an external database",
+          "To force a command to run on every commit"
+        ],
+        "answer": 0,
+        "explanation": "A subagent runs in its own isolated context with its own prompt and tools, then returns just a summary — so tasks that would flood your main conversation (deep exploration, dozens of file reads) stay off to the side.",
+        "hint": "A researcher who reads in another room and brings back one page."
       }
     ]
   }

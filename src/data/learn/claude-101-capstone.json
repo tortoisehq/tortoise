@@ -11,7 +11,7 @@
   "loop": [
     { "step": "Study", "blurb": "Read each idea after you've tried to predict it." },
     { "step": "Retrieve", "blurb": "Say it back in your own words before moving on." },
-    { "step": "Prove", "blurb": "Take the final — Easy, Medium, or Hard." },
+    { "step": "Prove", "blurb": "Take the final — recognition, with hints on." },
     { "step": "Return", "blurb": "Come back; the misses resurface first." }
   ],
   "map": [

@@ -37,7 +37,13 @@ type Quiz = {
 };
 
 interface Props { quiz: Quiz }
-const { quiz } = Astro.props;
+// Single "Easy" mode: recognition types only (pick / select / arrange), hints on.
+// Typed-recall types (written, fillblank) are filtered out here at the boundary so
+// every downstream count — SSR labels, the engine, score denominators — stays consistent.
+const RECOGNITION = new Set(['mcq', 'truefalse', 'multi', 'order']);
+const _src = Astro.props.quiz;
+const _recog = (_src.questions || []).filter((q) => RECOGNITION.has(q.type || 'mcq'));
+const quiz: Quiz = { ..._src, questions: _recog.length ? _recog : _src.questions };
 const total = quiz.questions.length;
 ---
 
@@ -57,26 +63,6 @@ const total = quiz.questions.length;
     </p>
     <h2 class="text-2xl font-bold tracking-tight mb-2">{quiz.title}</h2>
     <p class="text-neutral-700 text-sm leading-relaxed mb-5">{quiz.excerpt}</p>
-
-    <!-- difficulty picker -->
-    <div class="mb-5">
-      <p class="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 mb-2">Difficulty</p>
-      <div class="grid grid-cols-3 gap-px bg-neutral-200 border border-neutral-200">
-        <button type="button" data-diff="easy" class="diff-btn bg-white px-3 py-2.5 text-center hover:bg-neutral-100">
-          <span class="block text-sm font-semibold">Easy</span>
-          <span class="block text-[10px] font-mono text-neutral-500">Recognize</span>
-        </button>
-        <button type="button" data-diff="medium" class="diff-btn bg-white px-3 py-2.5 text-center hover:bg-neutral-100">
-          <span class="block text-sm font-semibold">Medium</span>
-          <span class="block text-[10px] font-mono text-neutral-500">Recall</span>
-        </button>
-        <button type="button" data-diff="hard" class="diff-btn bg-white px-3 py-2.5 text-center hover:bg-neutral-100">
-          <span class="block text-sm font-semibold">Hard</span>
-          <span class="block text-[10px] font-mono text-neutral-500">Reproduce</span>
-        </button>
-      </div>
-      <p id="diff-desc" class="mt-2 text-xs text-neutral-600"></p>
-    </div>
 
     <!-- localStorage-hydrated stat row -->
     <div id="start-stats" class="hidden grid grid-cols-3 gap-px bg-neutral-200 border border-neutral-200 mb-5 text-center">
@@ -181,12 +167,10 @@ const total = quiz.questions.length;
     explanation: string; hint?: string; trap?: boolean;
   };
   type QuizT = { id: string; title: string; session: string; course: string; passPct: number; questions: Q[] };
-  type Diff = 'easy' | 'medium' | 'hard';
   type Store = {
     bestScore: number; bestPct: number; attempts: number;
     lastDate: string | null; streak: number;
     boxes: Record<string, number>; // Leitner box per question id (1=weak … 3=mastered)
-    difficulty?: Diff;
   };
 
   const root = document.getElementById('quiz-root');
@@ -215,9 +199,9 @@ const total = quiz.questions.length;
 
     // Build the order for an attempt: trap-spots + weakest Leitner boxes first.
     const buildOrder = (store: Store, onlyMissed = false): Q[] => {
-      let pool = poolFor(difficulty);
+      let pool = quiz.questions.slice();
       if (onlyMissed) pool = pool.filter((q) => (store.boxes[q.id] ?? 1) <= 1);
-      if (pool.length === 0) pool = poolFor(difficulty);
+      if (pool.length === 0) pool = quiz.questions.slice();
       const byBox: Record<number, Q[]> = {};
       for (const q of pool) {
         let b = store.boxes[q.id] ?? 1;
@@ -236,22 +220,12 @@ const total = quiz.questions.length;
     let answered = false;
     let optionOrder: number[] = [];        // shuffled option indices for the current Q
     let orderState: number[] = [];         // current arrangement for an `order` question
-    let difficulty: Diff = 'medium';
     const conceptStat: Record<string, { right: number; total: number }> = {};
     const sessionBoxes: Record<string, number> = {}; // box updates this attempt
 
-    // Difficulty = retrieval strength.
-    // Easy: recognition types only (pick/arrange). Medium: authored mix. Hard: type everything from memory.
-    const DIFFS: Record<Diff, string> = {
-      easy: 'Recognition only — pick, select, or arrange. Hints on.',
-      medium: 'The authored mix — multiple choice, fill-in, true/false, ordering, recall. Hints on.',
-      hard: 'Type every answer from memory. No hints. Self-graded.',
-    };
-    const RECOGNITION = new Set<QType>(['mcq', 'truefalse', 'multi', 'order']);
-    const poolFor = (d: Diff): Q[] =>
-      d === 'easy' ? quiz.questions.filter((q) => RECOGNITION.has((q.type || 'mcq') as QType)) : quiz.questions.slice();
-    const effType = (q: Q): QType =>
-      difficulty === 'hard' ? 'written' : ((q.type || 'mcq') as QType);
+    // Single "Easy" mode: recognition questions only (filtered at the boundary),
+    // each rendered as its authored type. Hints on.
+    const effType = (q: Q): QType => (q.type || 'mcq') as QType;
 
     // Model answer (used for written/hard reveal).
     const modelAnswer = (q: Q): string => {
@@ -271,7 +245,6 @@ const total = quiz.questions.length;
     // ---- start screen hydration ---------------------------------------------
     const hydrateStart = () => {
       const s = load();
-      setDifficulty(s.difficulty || 'medium', false);
       if (s.attempts > 0) {
         $('start-stats').classList.remove('hidden');
         $('start-stats').classList.add('grid');
@@ -327,10 +300,10 @@ const total = quiz.questions.length;
         (q.trap ? ' <span class="text-amber-600 font-semibold">⚠ trap-spot</span>' : '');
       $('q-prompt').textContent = q.prompt;
 
-      // hint (hidden entirely on Hard)
+      // hint
       const hintBtn = $('btn-hint'), hintP = $('q-hint');
       hintP.classList.add('hidden'); hintP.textContent = q.hint || '';
-      hintBtn.style.display = q.hint && difficulty !== 'hard' ? '' : 'none';
+      hintBtn.style.display = q.hint ? '' : 'none';
       hintBtn.textContent = 'Reveal hint';
 
       // reset feedback + next
@@ -629,7 +602,6 @@ const total = quiz.questions.length;
         lastDate: today,
         streak,
         boxes: { ...s.boxes, ...sessionBoxes },
-        difficulty: s.difficulty,
       };
       save(next);
 
@@ -697,25 +669,6 @@ const total = quiz.questions.length;
       try { await navigator.clipboard.writeText(shareText()); $('share-status').classList.remove('hidden'); }
       catch { /* clipboard blocked — no-op */ }
     });
-
-    // difficulty picker
-    const diffButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('.diff-btn'));
-    const setDifficulty = (d: Diff, persist = true) => {
-      difficulty = d;
-      diffButtons.forEach((b) => {
-        const on = b.dataset.diff === d;
-        b.classList.toggle('bg-white', on);
-        b.classList.toggle('text-black', on);
-        b.classList.toggle('bg-white', !on);
-        const sub = b.querySelector('span:last-child');
-        if (sub) { sub.classList.toggle('text-neutral-700', on); sub.classList.toggle('text-neutral-500', !on); }
-      });
-      $('diff-desc').textContent = DIFFS[d];
-      const n = poolFor(d).length;
-      $('start-count').textContent = `${n} question${n === 1 ? '' : 's'}`;
-      if (persist) { const s = load(); s.difficulty = d; save(s); }
-    };
-    diffButtons.forEach((b) => b.addEventListener('click', () => setDifficulty(b.dataset.diff as Diff)));
 
     // keyboard: 1-9 to answer (mcq/tf/multi), Enter to advance/start
     document.addEventListener('keydown', (e) => {

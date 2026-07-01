@@ -1,0 +1,225 @@
+{
+  "id": "claude-code-101",
+  "courseId": "claude-code-101",
+  "courseTitle": "Claude Code 101",
+  "module": 1,
+  "title": "Claude Code 101",
+  "session": "E34",
+  "course": "Anthropic Academy — Claude Code 101",
+  "promise": "The whole Claude Code course in one place to retrieve. It's not ChatGPT for code — it's an agent that reads your project, decides its own next move, acts, and verifies, while you stay in control through approval modes and standing instructions. Twelve lessons across four modules: what it is, how to drive it, the daily workflow, and the four ways to extend it — with a question before every answer and a quiz that remembers what you missed.",
+  "quizId": "claude-code-101",
+  "loop": [
+    {
+      "step": "Study",
+      "blurb": "Read each idea after you've tried to predict it."
+    },
+    {
+      "step": "Retrieve",
+      "blurb": "Say it back in your own words before moving on."
+    },
+    {
+      "step": "Prove",
+      "blurb": "Take the quiz — recognition, with hints on."
+    },
+    {
+      "step": "Return",
+      "blurb": "Come back; the misses resurface first."
+    }
+  ],
+  "map": [
+    {
+      "stop": "What is Claude Code",
+      "blurb": "An agentic coding tool — reads, decides, acts, verifies in a loop — not a chat you drive step by step."
+    },
+    {
+      "stop": "Driving it",
+      "blurb": "Install it on the surface that fits, then steer with permission modes: Default, Auto-accept, Plan, Auto."
+    },
+    {
+      "stop": "The daily workflow",
+      "blurb": "Explore → Plan → Code → Commit, plus managing context and reviewing your own diffs."
+    },
+    {
+      "stop": "Extending it",
+      "blurb": "CLAUDE.md, subagents, skills, MCP, and hooks — four ways to make Claude yours."
+    }
+  ],
+  "intro": [
+    "Every tool in Module 1 of Claude 101 was about steering a single chat. Claude Code is a different animal. In a chat you run the loop: you ask, it answers, you decide the next step, you ask again. Claude Code runs the loop itself — it gathers context (reads files, runs commands), decides which tool to use, acts, checks the result, and repeats until the task is done. You went from driver to supervisor.",
+    "Hold this shape before the details: the agent does the chaining, the model does the deciding, the tools are just hands. You keep control two ways — approval modes (how much Claude can do before asking) and standing instructions (CLAUDE.md and hooks that persist across every session). The course is four moves: understand the agent, drive it safely, run the daily workflow, and extend it. Everything below is one of those four."
+  ],
+  "sections": [
+    {
+      "n": 1,
+      "lesson": "M1.1",
+      "heading": "It's an agent, not a chatbot",
+      "challenge": "What actually makes Claude Code different from a chat-based AI like a chat assistant?",
+      "body": [
+        "Claude Code is an agentic coding tool that lives where you work — terminal, VS Code, JetBrains, the desktop app, the browser, even CI/CD. The difference from chat AI isn't the model; it's who runs the loop. In a chat, you drive every step: prompt, read, decide, prompt again. Claude Code decides for itself — it reads files, runs commands, chains actions (read → understand → edit → test → verify), and course-corrects mid-task without you intervening.",
+        "That's why 'ChatGPT for code' is the wrong mental model. A chat assistant waits for your next instruction. An agent picks its own next action toward the goal you set, and you supervise rather than micromanage. You stay in control through approval modes and persistent instructions, not by driving each keystroke."
+      ],
+      "plain": "A chatbot is a co-worker you brief one task at a time; an agent is one you hand a goal and check on — it figures out the steps.",
+      "lockIt": "Define Claude Code as an agentic coding tool that runs its own loop — reads, decides, acts, verifies, repeats — and contrast it with chat AI where you drive every step. You supervise; you don't micromanage.",
+      "video": "https://www.youtube.com/watch?v=fl1DSmwQKKY"
+    },
+    {
+      "n": 2,
+      "lesson": "M1.2",
+      "heading": "The agentic loop: gather → decide → act → verify → repeat",
+      "challenge": "Name the steps of the agentic loop, and say which part is doing the actual thinking.",
+      "body": [
+        "Two pieces power Claude Code: the model (the reasoning engine that understands code and decides what to do) and tools (file operations, search, execution, web, code intelligence). The loop is: gather context → decide which tool to use → act → verify the result → repeat, until the task is complete. Each tool result feeds back and informs the next decision.",
+        "The part people get backwards: the tools don't do the work, the model's reasoning does. A tool is passive — it just returns information. The model is what decides which tool to invoke and what to make of the output. Remove the model and you have commands with no judgment. You extend this base loop later with skills, MCP, hooks, and subagents."
+      ],
+      "plain": "The loop is a hand (tools) guided by a brain (the model): the hand fetches and acts, but the brain decides every move.",
+      "lockIt": "Recite the loop — gather context, decide the tool, act, verify, repeat — and lock that the model's reasoning drives it while tools are passive information-returners.",
+      "video": "https://www.youtube.com/watch?v=6bs5b4FltCU"
+    },
+    {
+      "n": 3,
+      "lesson": "M2.1",
+      "heading": "Same brain, many surfaces",
+      "challenge": "Where can Claude Code run, and what do all those surfaces share?",
+      "body": [
+        "Claude Code isn't terminal-only. It installs natively in the terminal (curl/Homebrew/WinGet/package managers, with auto-update), as a VS Code extension, as a JetBrains plugin (which needs the CLI installed too), as a standalone desktop app, and it runs in the browser at claude.ai/code with no local setup. All of it needs a Claude subscription (Pro/Max/Team/Enterprise) or a Console account.",
+        "The point that matters more than the install command: every surface reads the same CLAUDE.md and settings, so your configuration travels with you. Pick the interface that fits the work — terminal for speed, IDE for inline edits, browser for zero-setup — and Claude behaves consistently across all of them."
+      ],
+      "plain": "One agent, many doors in — terminal, IDE, desktop, browser — and they all read the same house rules, so your setup follows you.",
+      "lockIt": "List the surfaces (terminal, VS Code, JetBrains, desktop, web/CI) and lock the throughline: they all need a Claude plan and share the same CLAUDE.md and settings, so configuration travels with you.",
+      "video": "https://www.youtube.com/watch?v=0kILa02vKuI"
+    },
+    {
+      "n": 4,
+      "lesson": "M2.2",
+      "heading": "Permission modes are how you set risk tolerance",
+      "challenge": "Name the four permission modes and what Default actually does.",
+      "body": [
+        "Four permission modes, toggled with Shift+Tab. Default asks before every file edit and shell command — it's the safest, most transparent mode. Auto-accept edits lets Claude edit files and run safe filesystem commands without asking (still asks for riskier commands). Plan mode has Claude explore and propose changes without editing anything. Auto mode (a research preview) lets Claude evaluate its own actions with background safety checks.",
+        "The trap is thinking Default 'auto-accepts everything' — it's the opposite; Default is the one that asks. Auto-accept is a separate opt-in. Effective prompts are specific (name the files/functions), give Claude something to verify against (tests, expected output, a screenshot), and separate research from building (plan mode first for anything complex). Press Esc to interrupt at any point."
+      ],
+      "plain": "The four modes are a dial from 'ask me everything' (Default) to 'just go' (Auto) — Shift+Tab turns the dial, Esc slams the brakes.",
+      "lockIt": "Name the four modes — Default (asks before edits/commands), Auto-accept (edits + safe commands without asking), Plan (proposes, no edits), Auto (self-evaluating preview) — and correct the trap: Default is the safest, not an auto-accept.",
+      "video": "https://www.youtube.com/watch?v=gbetp6D7J_Q"
+    },
+    {
+      "n": 5,
+      "lesson": "M3.1",
+      "heading": "Explore → Plan → Code → Commit",
+      "challenge": "Walk the four phases of the workflow, and say how Explore differs from Plan.",
+      "body": [
+        "The core workflow for anything non-trivial is four phases. Explore: ask questions ('what does this module do?', 'find all the auth files') and let Claude read and summarize. Plan: press Shift+Tab into plan mode; Claude reads deeply and proposes a diff without touching disk, for your review. Code: exit plan mode; Claude implements, runs tests, and iterates on feedback. Commit: Claude stages changes, writes descriptive messages, makes branches, opens PRs if you ask.",
+        "Explore and Plan look similar but aren't. Explore is reconnaissance — asking Claude to synthesize answers from your codebase. Plan is Claude holding a concrete proposed change for you to approve before it edits anything. Plan mode is the safety checkpoint for big changes; you review the diff before a single file is written."
+      ],
+      "plain": "Explore is scouting the ground, Plan is drawing the blueprint you sign off on, Code is building, Commit is filing the paperwork — each phase gated by your review.",
+      "lockIt": "Order the phases — Explore, Plan, Code, Commit — and distinguish the first two: Explore is asking/synthesizing (reconnaissance); Plan is a proposed diff held for approval before any edit.",
+      "video": "https://www.youtube.com/watch?v=xJQuF02NAK8"
+    },
+    {
+      "n": 6,
+      "lesson": "M3.2",
+      "heading": "Context management: /context, /compact, /clear",
+      "challenge": "What does each of the three context commands do — and which one is read-only?",
+      "body": [
+        "The context window (~200k tokens) fills as you work — conversation, file reads, tool outputs. Three commands manage it. /context is a read-only diagnostic: it shows what's using space (files, CLAUDE.md, MCP schemas, tool outputs). /compact summarizes older messages to free space, optionally with a focus ('/compact focus on the API changes') to preserve specific threads. /clear wipes the conversation history entirely. Claude also auto-compacts near the limit.",
+        "The trap is treating /context and /compact as the same — /context only reports, /compact actually changes things. Use /context to diagnose, then /compact if you need room. And the reassurance to lock: CLAUDE.md always reloads from disk after /compact and /clear, so it never disappears — if 'instructions vanished,' they were only ever in the chat, which is exactly why standing rules belong in CLAUDE.md."
+      ],
+      "plain": "/context is the fuel gauge (just reads), /compact burns off dead weight to make room, /clear empties the tank — and CLAUDE.md is bolted on, so it survives all three.",
+      "lockIt": "Separate the three: /context is read-only (shows usage), /compact summarizes to free space, /clear wipes history — and lock that CLAUDE.md always reloads after compact/clear.",
+      "video": "https://www.youtube.com/watch?v=eW3oTyfeWZ0"
+    },
+    {
+      "n": 7,
+      "lesson": "M3.3",
+      "heading": "Reviewing your own diffs",
+      "challenge": "What's the difference between /code-review and /security-review?",
+      "body": [
+        "Claude Code can review your changes before anyone else sees them. /code-review runs locally in your session over your diff (commits ahead of upstream plus uncommitted changes), hunting correctness bugs and reuse/simplification/efficiency cleanups. It takes effort levels (low = fewer, high-confidence findings; high→max = broader, some uncertain), and flags like --fix (apply findings) or --comment (post to a GitHub PR). /security-review is a dedicated audit for threat vectors, data leaks, and misconfigurations.",
+        "Don't collapse the two: code review hunts logic errors and performance; security review hunts vulnerabilities and PII leaks — reach for it when touching auth, payments, or sensitive data. Both are advisory: the local review doesn't block your merge. (There's also a paid GitHub automated Code Review that posts inline comments on PRs and tags findings by severity.)"
+      ],
+      "plain": "/code-review is a proofreader for bugs and mess; /security-review is a locksmith checking for break-in points — different jobs, both advisory.",
+      "lockIt": "Distinguish them: /code-review = correctness + efficiency over your diff (local, advisory, effort levels, --fix/--comment); /security-review = threats + data safety, used for auth/payments/sensitive code.",
+      "video": "https://www.youtube.com/watch?v=RKsADl0ZC3Y"
+    },
+    {
+      "n": 8,
+      "lesson": "M4.1",
+      "heading": "CLAUDE.md is persistent memory you write",
+      "challenge": "What goes in CLAUDE.md, and why is it guidance rather than a guarantee?",
+      "body": [
+        "CLAUDE.md is a markdown file Claude reads at the start of every session. Put build/test commands, coding standards, architecture decisions, preferred libraries, and naming conventions in it. It exists at three levels: project (./CLAUDE.md), user (~/.claude/CLAUDE.md, your prefs across all projects), and local (./CLAUDE.local.md, gitignored personal notes). You can pull in other files with @path syntax. Keep it around ~200 lines for adherence; it loads in full. Auto memory (MEMORY.md) is separate — learnings Claude saves itself, loading only the first ~200 lines / 25KB.",
+        "The line to hold: CLAUDE.md is guidance, not enforcement. Claude reads it and tries to follow it, but it isn't guaranteed to fire. If a rule must happen every time regardless of Claude's judgment — 'always lint before commit' — that's a job for hooks, not CLAUDE.md. Context guides; hooks enforce."
+      ],
+      "plain": "CLAUDE.md is the standing brief pinned to the project wall — Claude reads it every session and tries to follow it — but 'tries to' is the catch: for must-happen rules, you need a hook.",
+      "lockIt": "Explain CLAUDE.md — persistent per-session instructions at project/user/local levels, ~200 lines, loaded in full — and lock that it's guidance Claude tries to follow, not enforcement (use hooks for that). Distinguish it from auto memory (MEMORY.md), which Claude writes itself.",
+      "video": "https://www.youtube.com/watch?v=O0FGCxkHM-U"
+    },
+    {
+      "n": 9,
+      "lesson": "M4.2",
+      "heading": "Subagents keep your main context clean",
+      "challenge": "What is a subagent, and what problem does its isolated context solve?",
+      "body": [
+        "A subagent is a specialized assistant with its own context window, system prompt, and tool access. Claude delegates to one automatically when a task's scope matches — the subagent works independently in a fresh context and returns just a summary. The reason they exist: some tasks (deep exploration, reading dozens of files) would flood your main conversation with output you'll never reference again. Farm that out to a subagent and your main context stays focused.",
+        "Two clarifications worth locking. Subagents run within one session but in isolated contexts — that's different from background agents, which are actual parallel sessions you monitor. And by default a subagent gets a fresh context, not your CLAUDE.md, unless you configure it to. Isolation is the whole point: the messy work happens off to the side."
+      ],
+      "plain": "A subagent is a researcher you send to the library — they read a hundred books in their own room and come back with a one-page summary, so your desk never fills with their notes.",
+      "lockIt": "Define a subagent — isolated context window, own prompt and tools, returns a summary — and name what it solves: keeping heavy exploration out of your main context. Note it's within one session (unlike parallel background agents).",
+      "video": "https://www.youtube.com/watch?v=jKErNxuxPXg"
+    },
+    {
+      "n": 10,
+      "lesson": "M4.3",
+      "heading": "Skills are procedures that load on demand",
+      "challenge": "How does a Skill differ from CLAUDE.md in when and how it loads?",
+      "body": [
+        "A Skill is a reusable workflow packaged as a SKILL.md file (in .claude/skills/skill-name/). Skills load on demand — only when you invoke one (/skill-name) or when Claude auto-detects it's relevant. Because they're not always in context, they cost almost nothing until used, which means they can be long and detailed. Build one when you catch yourself pasting the same checklist or multi-step procedure into chat over and over.",
+        "The clean contrast: CLAUDE.md and Skills are opposites in loading model. CLAUDE.md is always-on guidance (in context every session, so keep it short). A Skill is on-demand procedure (near-zero cost until invoked, so it can be big). Use CLAUDE.md for facts and rules; use Skills for workflows. You can stop auto-invocation with disable-model-invocation in the skill's frontmatter."
+      ],
+      "plain": "CLAUDE.md is the poster always on the wall (keep it short, it's always in view); a Skill is a recipe card in the drawer you pull out only when you need it (so it can be as long as it wants).",
+      "lockIt": "Define a Skill — a SKILL.md workflow that loads on demand (by /invoke or auto-detection) at near-zero context cost — and lock the contrast with CLAUDE.md: always-on guidance vs on-demand procedure. Facts/rules in CLAUDE.md; workflows in Skills.",
+      "video": "https://www.youtube.com/watch?v=bjdBVZa66oU"
+    },
+    {
+      "n": 11,
+      "lesson": "M4.4",
+      "heading": "MCP connects Claude to the outside world",
+      "challenge": "What does MCP do, and how is it different from a Skill?",
+      "body": [
+        "MCP (Model Context Protocol) is an open standard for connecting Claude Code to external tools and data — Jira, GitHub, Slack, databases, design tools, dashboards. An MCP server gives Claude direct access to that system. Connect GitHub and Jira, say 'implement the feature in ENG-4521 and open a PR,' and Claude reads Jira itself instead of asking you to copy-paste. Tool schemas load deferred by default (names only) and expand on demand via tool search, so they don't bloat context.",
+        "Don't confuse MCP with Skills. Skills are internal procedures — markdown in your repo that automates your workflow. MCP is external access — it automates Claude's reach into other services. One teaches Claude how to do your process; the other plugs Claude into tools that live outside the project."
+      ],
+      "plain": "A Skill teaches Claude a routine it does in-house; MCP hands Claude a phone line to outside services (Jira, Slack, your database) so it can fetch and act without you relaying messages.",
+      "lockIt": "Define MCP — an open standard connecting Claude to external systems (Jira/GitHub/Slack/databases) with direct access — and distinguish it from Skills: MCP = external reach, Skills = internal procedures. Note schemas defer and load on demand.",
+      "video": "https://www.youtube.com/watch?v=kkBFmwkDzdo"
+    },
+    {
+      "n": 12,
+      "lesson": "M4.5",
+      "heading": "Hooks enforce what must always happen",
+      "challenge": "What are hooks, and when do you reach for one instead of CLAUDE.md?",
+      "body": [
+        "Hooks are user-defined shell commands that execute at fixed lifecycle points — before/after an edit, before/after a commit, when new input arrives. Use them to enforce rules ('run the linter before every commit'), automate chores ('auto-format after every edit'), or integrate tools ('Slack notification when a task finishes'). They're configured in settings files (.claude/settings.json or the user-level one).",
+        "The defining property: hooks always execute, regardless of Claude's judgment — that's the opposite of CLAUDE.md, which is guidance Claude may or may not follow. So the decision rule is simple: must-happen-every-time → hook; preference or standing context → CLAUDE.md. 'Always lint before commit' is a hook; 'prefer TypeScript' is CLAUDE.md."
+      ],
+      "plain": "CLAUDE.md is a request ('please lint'); a hook is a tripwire ('lint runs, no vote') — wire the tripwire for anything that must never be skipped.",
+      "lockIt": "Define hooks — shell commands that fire deterministically at lifecycle points, configured in settings — and lock the decision rule against CLAUDE.md: hooks enforce (always run), CLAUDE.md guides (may be followed). Must-happen → hook; preference → CLAUDE.md.",
+      "video": "https://www.youtube.com/watch?v=IkaPHiMDazM"
+    }
+  ],
+  "nugget": {
+    "title": "What lives where — the map that turns features into a workflow",
+    "challenge": "Session context, CLAUDE.md, Skills, MCP, subagents, hooks — sort each by what it's actually for.",
+    "body": [
+      "The master key to Claude Code isn't any single feature; it's knowing where knowledge lives and choosing the right home for each thing. Session context is ephemeral — this conversation, gone when it ends. CLAUDE.md and auto memory are persistent — reloaded every session, the project's long-term brain for facts, rules, and learnings. Skills are on-demand procedures — reusable, loaded only when used. MCP is external access — the line out to tools beyond your project. Subagents are isolated context — heavy work farmed off so your main window stays clean. Hooks are deterministic enforcement — rules that fire no matter what.",
+      "The gap between a novice and an expert is entirely this sorting. Put a 500-line procedure in CLAUDE.md and you bloat every session — it belonged in a Skill. Put a critical linting rule in CLAUDE.md and it might not fire — it belonged in a hook. Run a big search in your main conversation and you drown in results — it belonged in a subagent. Master the map and the workflows fall out of it: store knowledge once (CLAUDE.md), encode process once (Skill), reach out once (MCP), isolate the noise (subagent), and enforce the non-negotiables (hook)."
+    ],
+    "whyItMatters": "Most people learn Claude Code as a pile of commands and features. The master-level move is seeing them as one system organized by where things live — ephemeral vs persistent, guidance vs enforcement, internal vs external, in-context vs isolated. Miles already lives this: his Encode pipeline is CLAUDE.md project instructions, his phases are Skills, his .encode/resources is a knowledge base, and his ship gates are the kind of must-happen rules hooks exist for. The map names what he's been hand-building.",
+    "lockIt": "Sort the homes: session context = ephemeral; CLAUDE.md/auto memory = persistent brain; Skills = on-demand procedure; MCP = external access; subagents = isolated context; hooks = deterministic enforcement — and state the payoff: putting each thing in its right home is the whole skill."
+  },
+  "outro": [
+    "Step back and Claude Code is one idea with a toolkit hanging off it. The idea is the agentic loop: it gathers, decides, acts, and verifies on its own, and you supervise through approval modes and standing instructions instead of driving each step. The toolkit — CLAUDE.md, subagents, skills, MCP, hooks — is just five answers to one question: where should this knowledge or rule live?",
+    "Carry the where-does-it-live question into real work. Every time you're about to paste the same thing twice, ask: is this a standing fact (CLAUDE.md), a repeatable procedure (Skill), an outside connection (MCP), noisy exploration (subagent), or a non-negotiable (hook)? Answer that and you stop collecting commands and start driving an agent on purpose — which is the difference between using Claude Code and being fluent in it."
+  ],
+  "officialCourseUrl": "https://anthropic.skilljar.com/claude-code-101",
+  "officialCourseLabel": "Anthropic Academy — Claude Code 101"
+}
