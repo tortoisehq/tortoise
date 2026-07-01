@@ -109,7 +109,16 @@ const fmtDate = (iso: string) =>
       {certs.map((c) => (
         <div class="border border-neutral-800 bg-neutral-950 hover:border-gold transition-colors group">
           {c.image && !c.imagePending ? (
-            <img src={c.image} alt={`${c.title} certificate`} class="w-full border-b border-neutral-800" />
+            <a href={c.pdf || c.verifyUrl} target="_blank" rel="noopener noreferrer" class="block" title={`Open the full ${c.title} certificate`}>
+              <img src={c.image} alt={`${c.title} certificate`} class="w-full border-b border-neutral-800" />
+            </a>
+          ) : c.pdf ? (
+            <a href={c.pdf} target="_blank" rel="noopener noreferrer" class="block relative group/cert" title={`Open the full ${c.title} certificate`}>
+              <object data={`${c.pdf}#toolbar=0&navpanes=0&scrollbar=0&view=Fit`} type="application/pdf" class="w-full h-64 bg-neutral-100 border-b border-neutral-800 pointer-events-none">
+                <div class="aspect-[1.6] bg-neutral-900 flex items-center justify-center text-neutral-400 text-sm">View certificate →</div>
+              </object>
+              <span class="absolute bottom-2 right-2 text-[10px] font-mono bg-black/75 text-white px-2 py-1 opacity-0 group-hover/cert:opacity-100 transition-opacity">Open full →</span>
+            </a>
           ) : (
             <div class="aspect-[1.6] bg-neutral-900 border-b border-neutral-800 flex items-center justify-center">
               <span class="text-4xl font-black text-neutral-700 group-hover:text-gold transition-colors">✓</span>
