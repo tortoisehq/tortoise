@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" font-family="Georgia, 'Times New Roman', serif">
+  <rect width="880" height="420" fill="#f4efe4"/>
+  <text x="48" y="60" font-size="30" font-weight="bold" fill="#1c1917">Where the learning's at.</text>
+  <text x="48" y="90" font-size="16" fill="#57534e" font-style="italic">One cert in the bag, two courses climbing, and a day spent on the sign out front.</text>
+
+  <!-- Claude 101 - done -->
+  <text x="48" y="146" font-size="14" font-weight="bold" letter-spacing="1" fill="#166534">CLAUDE 101 &#8212; CERTIFIED</text>
+  <rect x="48" y="156" width="784" height="34" rx="3" fill="#16a34a"/>
+  <text x="822" y="179" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="end">✓ done</text>
+
+  <!-- Claude Code 101 - in progress -->
+  <text x="48" y="228" font-size="14" font-weight="bold" letter-spacing="1" fill="#b45309">CLAUDE CODE 101 &#8212; IN PROGRESS</text>
+  <rect x="48" y="238" width="784" height="34" rx="3" fill="#e5ddcb"/>
+  <rect x="48" y="238" width="255" height="34" rx="3" fill="#d6a54a"/>
+
+  <!-- Claude Platform 101 - in progress -->
+  <text x="48" y="310" font-size="14" font-weight="bold" letter-spacing="1" fill="#b45309">CLAUDE PLATFORM 101 &#8212; IN PROGRESS</text>
+  <rect x="48" y="320" width="784" height="34" rx="3" fill="#e5ddcb"/>
+  <rect x="48" y="320" width="200" height="34" rx="3" fill="#d6a54a"/>
+
+  <text x="48" y="392" font-size="15" fill="#44403c">This session: rebranded to Love Learn Lift · built study guides + quizzes for the next two · hung a Hire Me shingle.</text>
+</svg>
