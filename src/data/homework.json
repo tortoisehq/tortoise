@@ -1905,5 +1905,327 @@
         "hint": "A researcher who reads in another room and brings back one page."
       }
     ]
+  },
+  {
+    "id": "claude-platform-101",
+    "title": "Claude Platform 101",
+    "session": "E34",
+    "course": "Anthropic Academy — Claude Platform 101",
+    "excerpt": "The whole developer course, testable: the platform's three layers, your first messages.create, choosing a model, the agent loop, tool use, thinking, built-in tools, Skills, MCP, context management, and managed agents. Recognition questions with hints on, with the trap-spots built in on purpose (response content is an array not a string, your code runs the tool not Claude, pick the cheapest model that ships, Skills load progressively, and you open the event stream before the kickoff).",
+    "passPct": 80,
+    "questions": [
+      {
+        "id": "cp-mc-01-three-layers",
+        "type": "mcq",
+        "concept": "The platform",
+        "prompt": "The Claude Developer Platform is often described as three layers. Which set names them?",
+        "options": [
+          "Primitives, infrastructure, controls",
+          "Chat, projects, artifacts",
+          "Free, Pro, Enterprise",
+          "Model, prompt, response"
+        ],
+        "answer": 0,
+        "explanation": "Primitives are the API building blocks (Messages API, tools, files, web search, code execution, MCP, skills), infrastructure is what scales them (managed agents, retries, queues, observability), and controls are what you run them with (dashboards, evals). Build with primitives, scale on infrastructure, run with control.",
+        "hint": "Build with __, scale on __, run with __."
+      },
+      {
+        "id": "cp-mc-02-messages-inputs",
+        "type": "mcq",
+        "concept": "First API call",
+        "prompt": "What three things does every messages.create call specify?",
+        "options": [
+          "A model, a max_tokens limit, and a list of messages",
+          "A username, a password, and a prompt",
+          "A temperature, a seed, and a stop sequence",
+          "An endpoint, a region, and a rate limit"
+        ],
+        "answer": 0,
+        "explanation": "Every call goes through messages.create with a model (which Claude), max_tokens (response cap), and messages (user/assistant role objects). A system prompt is added to shape the persona.",
+        "hint": "Which model, how long, and what was said."
+      },
+      {
+        "id": "cp-tf-03-content-array",
+        "type": "truefalse",
+        "concept": "First API call",
+        "prompt": "The response's message content is a plain string you can print directly.",
+        "answer": false,
+        "explanation": "Content is an array of typed blocks, not a string. A basic reply is usually one text block, but Claude can return several (text, tool calls, thinking), so you loop over the blocks and check each type.",
+        "hint": "Claude can return text, tool calls, and thinking — so it's a list.",
+        "trap": true
+      },
+      {
+        "id": "cp-mc-04-cheapest-ships",
+        "type": "mcq",
+        "concept": "Choosing a model",
+        "prompt": "What's the rule for choosing a model?",
+        "options": [
+          "Pick the cheapest model whose output you'd actually ship",
+          "Always default to the most capable model",
+          "Always pick the cheapest model to minimize cost",
+          "Pick whichever model has the largest context window"
+        ],
+        "answer": 0,
+        "explanation": "Build a small eval (20-30 real examples), run it from Haiku upward, and stop at the cheapest model whose output holds up. Defaulting to the smartest surprises your bill; defaulting to the cheapest can break quality.",
+        "hint": "Cheapest that you'd still put in front of a customer.",
+        "trap": true
+      },
+      {
+        "id": "cp-mc-05-haiku-volume",
+        "type": "mcq",
+        "concept": "Choosing a model",
+        "prompt": "Which model is the right default for high-volume, low-complexity work like classification, extraction, and routing?",
+        "options": [
+          "Haiku",
+          "Opus",
+          "Fable",
+          "Sonnet"
+        ],
+        "answer": 0,
+        "explanation": "Haiku is the fastest and lowest cost, optimized for speed and volume. Sonnet is the balanced sweet spot; Opus is for deep reasoning; Fable sits above Opus for the toughest work.",
+        "hint": "Fastest and cheapest tier."
+      },
+      {
+        "id": "cp-or-06-agent-loop",
+        "type": "order",
+        "concept": "The agent loop",
+        "prompt": "Put one turn of the agent loop in order.",
+        "items": [
+          "Send a message to Claude with tools available",
+          "Claude requests a tool (stop_reason: tool_use)",
+          "Your code executes the tool",
+          "Send the tool result back to Claude"
+        ],
+        "explanation": "Send messages with tools, Claude requests a tool, your code runs it, you feed the result back — repeat until the stop reason is end_turn.",
+        "hint": "It repeats until end_turn."
+      },
+      {
+        "id": "cp-mc-07-who-executes",
+        "type": "mcq",
+        "concept": "Tool use",
+        "prompt": "When Claude uses a custom tool, who actually executes the function?",
+        "options": [
+          "Your code does",
+          "Claude does, internally",
+          "Anthropic's servers do",
+          "The tool schema does, automatically"
+        ],
+        "answer": 0,
+        "explanation": "Claude only requests the call; your code executes the function and returns the result as a tool_result block. (Server tools are the exception — Anthropic runs those.)",
+        "hint": "Claude asks; you run.",
+        "trap": true
+      },
+      {
+        "id": "cp-tf-08-vague-descriptions",
+        "type": "truefalse",
+        "concept": "Tool use",
+        "prompt": "A tool's description doesn't matter much as long as the name and input schema are correct.",
+        "answer": false,
+        "explanation": "The description is what Claude reads to decide whether to call the tool. Vague descriptions are the number-one reason agents misfire or fail to use available tools. Be specific.",
+        "hint": "It's the #1 reason agents misfire.",
+        "trap": true
+      },
+      {
+        "id": "cp-mc-09-tool-parts",
+        "type": "mcq",
+        "concept": "Tool use",
+        "prompt": "A tool definition is a JSON schema with which three parts?",
+        "options": [
+          "A name, a description, and an input schema",
+          "A URL, a method, and a body",
+          "A model, a token limit, and a prompt",
+          "An id, a version, and an auth token"
+        ],
+        "answer": 0,
+        "explanation": "Tools are JSON schemas with a name, a description, and an input schema, passed to Claude in the request as a tools array.",
+        "hint": "What it's called, what it does, what it takes."
+      },
+      {
+        "id": "cp-mc-10-effort-location",
+        "type": "mcq",
+        "concept": "Extended thinking",
+        "prompt": "On Opus 4.7, you control how much Claude thinks with the effort parameter. Where does it go?",
+        "options": [
+          "Inside output_config",
+          "Next to the thinking block",
+          "In the system prompt",
+          "In the tools array"
+        ],
+        "answer": 0,
+        "explanation": "The gotcha: effort (low, medium, high, xhigh, max) goes inside output_config, not next to the thinking block. On Opus 4.7, thinking is adaptive — you turn it on and Claude decides how much to think.",
+        "hint": "It lives in output_config, not by the thinking block.",
+        "trap": true
+      },
+      {
+        "id": "cp-mc-11-skip-thinking",
+        "type": "mcq",
+        "concept": "Extended thinking",
+        "prompt": "When should you SKIP extended thinking?",
+        "options": [
+          "For simple classification, extraction, or boilerplate",
+          "For multi-step math and logic",
+          "For code debugging",
+          "For weighing trade-offs across options"
+        ],
+        "answer": 0,
+        "explanation": "Thinking helps with hard, trade-off-heavy work (math, debugging, regulatory analysis, comparisons). For simple tasks it just adds latency and cost without improving results.",
+        "hint": "Skip it where there's nothing to reason through."
+      },
+      {
+        "id": "cp-tf-12-server-tools-loop",
+        "type": "truefalse",
+        "concept": "Built-in tools",
+        "prompt": "Server tools like web search require you to run an agent loop and feed results back yourself.",
+        "answer": false,
+        "explanation": "Server tools run on Anthropic's infrastructure — no agent loop needed. Claude calls the tool on its own and the result comes back inside the same response.",
+        "hint": "Anthropic runs them; the result is already in the response.",
+        "trap": true
+      },
+      {
+        "id": "cp-mc-13-server-tool-examples",
+        "type": "mcq",
+        "concept": "Built-in tools",
+        "prompt": "Which are the main server (built-in) tools Anthropic runs for you?",
+        "options": [
+          "Web search, code execution, and web fetch",
+          "Login, logout, and refresh",
+          "Compact, clear, and context",
+          "Explore, plan, and commit"
+        ],
+        "answer": 0,
+        "explanation": "The main server tools are web search (results with citations), code execution (Python in a sandbox), and web fetch (full URL content). Client tools like memory and bash run your side, but the SDK ships their schema.",
+        "hint": "Search the web, run Python, fetch a URL."
+      },
+      {
+        "id": "cp-mc-14-skills-how",
+        "type": "mcq",
+        "concept": "Skills",
+        "prompt": "What's the clean distinction between tools and Skills?",
+        "options": [
+          "Tools are about what Claude can do; Skills are about how you want it done",
+          "Tools are free; Skills are paid",
+          "Tools are internal; Skills connect to third parties",
+          "Tools load on demand; Skills are always loaded"
+        ],
+        "answer": 0,
+        "explanation": "Tools connect Claude to data and actions (what it can do). Skills teach Claude a procedure — your template, your checklist (how you want it done), packaged as a SKILL.md.",
+        "hint": "What Claude can do vs. how you want it done."
+      },
+      {
+        "id": "cp-tf-15-skills-progressive",
+        "type": "truefalse",
+        "concept": "Skills",
+        "prompt": "When Skills are available, each one loads fully into Claude's context at startup.",
+        "answer": false,
+        "explanation": "Skills load progressively — only the name and description load at startup, and the full Skill loads into context only when the agent decides it's relevant. That keeps context lean even with many Skills available.",
+        "hint": "Name and description first; the rest only when needed.",
+        "trap": true
+      },
+      {
+        "id": "cp-mc-16-why-mcp",
+        "type": "mcq",
+        "concept": "MCP",
+        "prompt": "Why does MCP exist when you can already write custom tools?",
+        "options": [
+          "It shifts integration maintenance to the service provider, who publishes and updates the server",
+          "It runs your tools faster than custom tools",
+          "It's the only way to give Claude any external access",
+          "It replaces the need for a system prompt"
+        ],
+        "answer": 0,
+        "explanation": "With custom tools you maintain a pile of third-party wrappers that break when APIs change. MCP shifts that upkeep to the provider — Asana/Slack/Google publish and maintain their own servers, and you change nothing when their API changes.",
+        "hint": "Who has to fix it when Slack changes its API?"
+      },
+      {
+        "id": "cp-mc-17-tsm-split",
+        "type": "mcq",
+        "concept": "MCP",
+        "prompt": "In the tools / Skills / MCP split, what is MCP for?",
+        "options": [
+          "Third-party services (someone else's stuff)",
+          "Your internal database and proprietary APIs",
+          "Your report templates and checklists",
+          "Managing the context window"
+        ],
+        "answer": 0,
+        "explanation": "Tools are for your stuff (your data/APIs, you maintain), Skills are for your processes (templates, checklists), and MCP is for everyone else's stuff (third-party services the provider maintains).",
+        "hint": "Your data, your process, everyone else's services."
+      },
+      {
+        "id": "cp-mc-18-window-full",
+        "type": "mcq",
+        "concept": "Context management",
+        "prompt": "What happens when the context window fills up?",
+        "options": [
+          "The request fails",
+          "Claude answers faster",
+          "Older tokens are billed at a discount",
+          "Claude automatically upgrades to a bigger model"
+        ],
+        "answer": 0,
+        "explanation": "Context is the input to every call — you pay for it in and out, and once the window is full, the request fails. The goal isn't to fit everything in, it's to fit the right things in.",
+        "hint": "It doesn't degrade gracefully — it breaks."
+      },
+      {
+        "id": "cp-mu-19-context-patterns",
+        "type": "multi",
+        "concept": "Context management",
+        "prompt": "Which are the four patterns Anthropic publishes for managing context? Select all that apply.",
+        "options": [
+          "Just-in-time context",
+          "Server-side compaction",
+          "Prompt caching",
+          "The memory tool",
+          "Deleting the system prompt"
+        ],
+        "answers": [0, 1, 2, 3],
+        "explanation": "The four are just-in-time context (a design pattern), server-side compaction, prompt caching, and the memory tool. Three are first-class API features; just-in-time is the design pattern. You layer all four in production.",
+        "hint": "Load late, summarize old turns, cache stable parts, remember across sessions."
+      },
+      {
+        "id": "cp-mc-20-managed-what",
+        "type": "mcq",
+        "concept": "Managed agents",
+        "prompt": "What is a managed agent?",
+        "options": [
+          "The agent loop, run for you on Anthropic's infrastructure",
+          "A bigger context window for one API call",
+          "A model tier above Opus",
+          "A chat interface with saved projects"
+        ],
+        "answer": 0,
+        "explanation": "Managed agents run the same agent loop (reason, call a tool, read the result, repeat) inside an isolated container on Anthropic's infrastructure — so you delegate the loop, the sandbox, and resumability, and just stream events.",
+        "hint": "Same loop — but you're not the one running it."
+      },
+      {
+        "id": "cp-or-21-managed-primitives",
+        "type": "order",
+        "concept": "Managed agents",
+        "prompt": "Put the four managed-agent primitives in the order the course gives them.",
+        "items": [
+          "Agent (reusable persona: model, system prompt, toolset)",
+          "Environment (where it runs: cloud/local, networking)",
+          "Session (a single run of an agent in an environment)",
+          "Events (messages flowing in and out)"
+        ],
+        "explanation": "Agent → Environment → Session → Events. The agent is reusable; the environment is where it runs; the session is the unit of work; events are how everything flows. The shift: you send and read events instead of running a while loop.",
+        "hint": "Persona, place, run, messages."
+      },
+      {
+        "id": "cp-mc-22-stream-before-kickoff",
+        "type": "mcq",
+        "concept": "Managed agents",
+        "prompt": "When running a managed-agent session, what's the ordering gotcha?",
+        "options": [
+          "Open the event stream BEFORE sending the kickoff message",
+          "Send the kickoff message before creating the agent",
+          "Create the session before the agent",
+          "Close the stream before reading events"
+        ],
+        "answer": 0,
+        "explanation": "The stream only delivers events that occur after it opens, so always open the event stream before sending the kickoff message — otherwise you miss the early events. Then watch agent.message, agent.tool_use, and session.status_idle.",
+        "hint": "The stream only catches what happens after it opens."
+      }
+    ]
   }
 ]
