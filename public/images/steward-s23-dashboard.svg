@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="-apple-system,Segoe UI,Roboto,sans-serif">
+  <rect width="800" height="500" fill="#eef1f4"/>
+  <!-- phone -->
+  <g transform="translate(250,26)">
+    <rect x="0" y="0" width="300" height="448" rx="26" fill="#f7f7f7" stroke="#d5dae0"/>
+    <!-- header -->
+    <rect x="0" y="0" width="300" height="52" rx="26" fill="#2a3f54"/>
+    <rect x="0" y="26" width="300" height="26" fill="#2a3f54"/>
+    <text x="20" y="33" fill="#ecf0f1" font-size="20" font-weight="800">☰</text>
+    <text x="150" y="28" fill="#ecf0f1" font-size="13" font-weight="800" text-anchor="middle">Miles Miller</text>
+    <text x="150" y="42" fill="#8aa0b3" font-size="9" font-weight="600" text-anchor="middle">PIN 164904</text>
+    <circle cx="272" cy="26" r="13" fill="#fff"/><text x="272" y="30" fill="#2a3f54" font-size="9" font-weight="800" text-anchor="middle">855</text>
+    <!-- deadline alarm -->
+    <rect x="14" y="64" width="272" height="40" rx="10" fill="#fdeceb" stroke="#f3b8b2"/>
+    <text x="26" y="89" font-size="14">⚠️</text>
+    <text x="46" y="89" fill="#c0392b" font-size="13" font-weight="800">File within 5 days</text>
+    <rect x="238" y="76" width="34" height="18" rx="9" fill="#c0392b"/><text x="255" y="89" fill="#fff" font-size="10" font-weight="800" text-anchor="middle">+1</text>
+    <!-- 2x2 buttons -->
+    <g fill="#337ab7">
+      <rect x="14" y="116" width="130" height="52" rx="10"/><rect x="156" y="116" width="130" height="52" rx="10"/>
+      <rect x="14" y="178" width="130" height="52" rx="10"/><rect x="156" y="178" width="130" height="52" rx="10"/>
+    </g>
+    <g fill="#fff" font-size="11" font-weight="700" text-anchor="middle">
+      <text x="79" y="146">Submit a</text><text x="79" y="159">Violation</text>
+      <text x="221" y="146">Submit Health</text><text x="221" y="159">&amp; Safety</text>
+      <text x="79" y="208">Request for</text><text x="79" y="221">Leave</text>
+      <text x="221" y="208">CMC Wait</text><text x="221" y="221">Time</text>
+    </g>
+    <!-- ask steward -->
+    <rect x="14" y="242" width="272" height="46" rx="11" fill="#1abb9c"/>
+    <circle cx="42" cy="265" r="15" fill="#ffffff33"/><text x="42" y="270" font-size="14" text-anchor="middle">🎤</text>
+    <text x="66" y="262" fill="#fff" font-size="13" font-weight="800">Ask Steward</text>
+    <text x="66" y="277" fill="#ffffffdd" font-size="9">Tap &amp; speak — I'll find it in the system</text>
+    <!-- list -->
+    <rect x="14" y="300" width="272" height="132" rx="11" fill="#fff" stroke="#e6e9ed"/>
+    <text x="28" y="322" fill="#2a3f54" font-size="12" font-weight="800">Your grievances · 12</text>
+    <g font-size="11">
+      <text x="28" y="348" fill="#2a3f54" font-weight="700">Rest Violation (Road)</text>
+      <rect x="222" y="338" width="50" height="18" rx="9" fill="#fdeceb"/><text x="247" y="351" fill="#c0392b" font-size="10" font-weight="800" text-anchor="middle">5d left</text>
+      <text x="28" y="378" fill="#2a3f54" font-weight="700">Missed Meal</text>
+      <rect x="216" y="368" width="56" height="18" rx="9" fill="#fdf2e0"/><text x="244" y="381" fill="#a86807" font-size="10" font-weight="800" text-anchor="middle">17d left</text>
+      <text x="28" y="408" fill="#2a3f54" font-weight="700">Rest Violation (Road)</text>
+      <rect x="216" y="398" width="56" height="18" rx="9" fill="#e8f8f4"/><text x="244" y="411" fill="#12876e" font-size="10" font-weight="800" text-anchor="middle">48d left</text>
+    </g>
+  </g>
+  <text x="400" y="492" fill="#95a0ad" font-size="11" text-anchor="middle">Steward home — the soonest filing deadline is always the loudest thing on the screen.</text>
+</svg>
